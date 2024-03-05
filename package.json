@@ -23,7 +23,11 @@
     "url": "https://github.com/ysmazaheri/CS326-Group50"
   },
   "contributors": [
-
+    {
+      "name": "Ian McGregor",
+      "email": "imcgregor@umass.edu",
+      "github-username": "ianmcgregor1"
+    }
   ],
   "scripts": {
     "dev": "",
