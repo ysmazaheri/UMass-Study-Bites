@@ -13,7 +13,7 @@
   "homepage": "",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ysmazaheri/CS326-Group50"
   },
   "bugs": "",
   "keywords": [],
@@ -27,6 +27,11 @@
       "name": "Ian McGregor",
       "email": "imcgregor@umass.edu",
       "github-username": "ianmcgregor1"
+    },
+    {
+      "name": "Vrishabh Shriwardhankar",
+      "email": "vshriwardhan@umass.edu",
+      "github-username": "vrishabhshri"
     }
   ],
   "scripts": {
