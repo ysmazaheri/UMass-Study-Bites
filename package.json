@@ -41,7 +41,8 @@
   ],
   "scripts": {
     "dev": "",
-    "test": ""
+    "test": "",
+    "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s"
   },
   "devDependencies": {
     "html-validate": "^8.17.1",
