@@ -1,4 +1,4 @@
-# CS326-Group50
+# UMass-Study-Bites
 
 Campus Food Delivery Service:
 - for dining halls
