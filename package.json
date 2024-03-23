@@ -19,7 +19,6 @@
   "keywords": [],
   "author": {
     "name": "Ctrl-Alt-CantHandleDaHeat",
-    "email": "",
     "url": "https://github.com/ysmazaheri/UMass-Study-Bites"
   },
   "contributors": [
@@ -41,12 +40,14 @@
   ],
   "scripts": {
     "dev": "",
-    "test": ""
-  },
-  "dependencies": {
-
+    "test": "",
+    "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
+    "validate-html": "html-validate 'src/**/*.html",
+    "prettier": "prettier src -write"
   },
   "devDependencies": {
-
+    "html-validate": "^8.17.1",
+    "http-server": "^14.1.1",
+    "prettier": "^3.2.5"
   }
 }
