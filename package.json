@@ -1,5 +1,5 @@
 {
-  "name": "CS326-Group50",
+  "name": "umass-study-bites",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,14 +13,14 @@
   "homepage": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ysmazaheri/CS326-Group50"
+    "url": "https://github.com/ysmazaheri/UMass-Study-Bites"
   },
   "bugs": "",
   "keywords": [],
   "author": {
     "name": "Ctrl-Alt-CantHandleDaHeat",
     "email": "",
-    "url": "https://github.com/ysmazaheri/CS326-Group50"
+    "url": "https://github.com/ysmazaheri/UMass-Study-Bites"
   },
   "contributors": [
     {
