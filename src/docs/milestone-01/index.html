@@ -3,34 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Title</title>
+    <title>Milestone 1</title>
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <!-- JavaScript Files -->
     <script type="module" src="script.js" defer></script>
 </head>
 <body>
-    <header>
+    <header id="vision">
         <!-- Navigation bar, logo, etc. -->
+        <h1>UMass Study Bytes</h1>
+
     </header>
 
-    <nav>
+    <section id="team">
+        
+        <h2>Our Team!</h2>
+
+        <div id="team-memberS">
+
+            <div class="team-member">
+                Said
+            </div>
+            <div class="team-member">
+                Ian
+            </div>
+            <div class="team-member">
+                Vrishabh
+            </div>
+
+        </div>
+
+    </section>
+
+    <nav id="nav-bar">
         <!-- Links to different sections/pages -->
+        <div class="nav-bar-link"><a href="">Vision</a></div>
+        <div class="nav-bar-link"><a href="">Team</a></div>
+        <div class="nav-bar-link"><a href="">Overview</a></div>
+
     </nav>
 
     <main>
         <!-- Main content of the document -->
-        <article>
-            <!-- Primary content like a blog post or article -->
-        </article>
+        <div id="overview">
 
-        <section>
-            <!-- Related content or subsections -->
-        </section>
+            <div class="main-title"> 
+                <h2>Overview</h2>
+            </div>
 
-        <aside>
-            <!-- Side content like ads, links to other posts, or author info -->
-        </aside>
+            <div class="main-body">
+
+                UMass Study Bites is a food delivery app that is targeted toward students on the UMass Amherst 
+                flagship campus and that deals exclusively with on-campus dining hall food. Study Bites will allow 
+                users to order food from a given dining hall through a live UMass menu, and then have the food 
+                delivered to their dorm. This project aims to be an all-in-one, intuitive place for students to 
+                find out what is being served around campus, as well as get that food brought to them in an organized 
+                way. Right now, if you are a student who is sick or injured in a significant way, it can be very 
+                difficult to get to a dining hall, and in the process, you risk getting others sick or further injuring 
+                yourself. This app intends to help students in these situations get their food safely and without 
+                all the hassle. Additionally, during midterms and finals, waiting in dining hall lines eats up a 
+                lot of potential studying time. This app helps students get food conveniently, allowing them to 
+                spend their limited time on more demanding tasks.
+
+            </div>
+
+        </div>
+
+        <div id="application-parts">
+
+            <div class="main-title">
+                <h2>Application Parts</h2>
+            </div>
+            <div class="main-body">
+                The first critical component of Study Bytes is the selection of a delivery 
+                location from a predetermined list. At release, Study Bytes will limit delivery 
+                locations to UMass Amherst dining halls, with the potential to scale the app 
+                to other on-campus locations if popularity increases.
+                A second major part of Study Bites is the dining hall selection. Our app will pull 
+                both the Grab-n-Go and dine-in menus of all 4 dining halls. The user ordering 
+                food will be able to click 
+                any of these locations and easily view these menus. The menus will be consistent with 
+                the UMass Dining app’s listings, extracting their data from a common source. From this 
+                menu, the receiving user can select up to four desired items from their specified 
+                dining hall—thereby abiding by UMass Grab-n-Go restrictions and ensuring that the 
+                deliveries are reasonably sized for carrying.
+                Another critical component of the app is the delivery service. Because UMass dining 
+                halls largely rely on dining plans that are accessed via UCards, involving non-UMass 
+                Amherst students in the system adds an unneeded layer of complexity. Similarly, 
+                converting the meal swipes expended in picking up food to USD that the ordering user 
+                pays becomes a difficult conversion. Instead, Study Bites relies on a token system, 
+                where all users start with one token. Delivering food to a student allows users to gain 
+                tokens, which they can then spend to get food delivered to themselves. Securing this 
+                UMass-Amherst student token system is the requirement that Study Bites accounts be made 
+                with a UMass email, thereby ensuring that students don’t create multiple accounts for 
+                free tokens, especially those without meal plans. Delivery to the correct student is 
+                confirmed by the displaying of the recipient’s UCard.
+
+            </div>
+
+        </div>
+
+        <div id="data-requirements">
+
+            <div class="main-title">
+                <h2>Data Requirements</h2>
+            </div>
+
+            <div class="main-body">
+                Due to the account system of Study Bites, the web app will need 
+                to handle user data. Necessary data will include the student’s 
+                name as appears on their UCard so that deliveries are given to the 
+                correct student, the student’s phone number and student email to 
+                send connect deliverers and recipients, the student’s commonly 
+                used addresses, and the number of orders they have placed and 
+                delivered. Only essential user information will be stored, with Study 
+                Bites taking special care to not store sensitive information, such as 
+                Spire IDs. Even with this avoidance of highly sensitive information, 
+                Study Bites will need to take special precautions to keep user data 
+                secure and to use the information responsibly. Study Bites will also 
+                provide an avenue through which users can have their stored information 
+                removed and their accounts deleted, thus ensuring that the web app is 
+                non-committal.
+                Because Study Bites revolves around delivering food between specified locations, 
+                its user interface is highly enhanced by the use of locational data. With Study 
+                Bites, this data will manifest itself on the user interface through a map feature, 
+                likely implemented through an API such as that provided by Google Maps. Through 
+                this map feature, users can navigate through delivery location and dining hall options 
+                in a more visually appealing manner than scrolling through a long list. This map 
+                also allows for the future implementation of delivery time estimates. Because geocoding, 
+                the conversion of addresses or location names into coordinate values, is a process 
+                that many providers charge for, the enumerated addresses of pick-up and delivery 
+                locations will be geocoded before release. In the future, a larger budget may allow 
+                for individuals to pin delivery locations or use their current location as the delivery point.
+                Study Bites can also use trends in order data to improve its user experience. By 
+                keeping a list of orders placed within a determined length of time, Study Bites can 
+                observe what menu items have been popular at dining halls. Through this feature, 
+                students who regularly order said popular item will have an easier time adding it 
+                to their order, and students who may not have tried it before will be encouraged 
+                to try what other students are recommending. Similarly, Study Bites can note what 
+                menu items are often ordered in combination. Whether the items are ordered together 
+                because the flavors pair well—such as a burger and fries—or because they combine to 
+                form one dish—such as cereal and milk—this quickens the delivery process for those 
+                seeking these combinations.
+                For the menu view and selection feature, Study Bites will require UMass Amherst 
+                dining hall menu data. The web application will need to clearly convey the hours 
+                at which the dining hall opens and closes, as well as the hours at which the menu 
+                changes. In addition to expressing this information to the user, the application 
+                will also need to limit the options available to said user. Users should not be 
+                able to place orders for dining halls that are currently closed or are closing soon 
+                and should not be able to place orders on menus that are no longer available or are 
+                changing soon. In the vein of time-sensitive menus, Study Bites should allow users 
+                to view upcoming menus, thereby giving students the foresight to determine what 
+                they would like to eat or order later in the day. This future menu data can be extended 
+                to the creation of a pre-order feature, in which individuals place orders to be 
+                delivered hours after they place them.
+                With such large volumes of data being stored across so many categories, a thorough 
+                but intuitive database structure will be pivotal. The information must be not only 
+                well-structured but also updated in a runtime-friendly manner at points of low app 
+                use. For example, when no dining halls are open such as shortly after midnight, the 
+                menus for the following day can be retrieved. With the storage of user data, the 
+                respect and security of data becomes a major concern. Local laws must be abided by 
+                concerning the dispensing of user data. Beyond legal responsibilities, it is the 
+                moral responsibility of Study Bites to be transparent about what user data is 
+                stored, in what manner it is kept, and how much control the user has over its storage. 
+
+            </div>
+
+        </div>
+        
     </main>
 
     <footer>
