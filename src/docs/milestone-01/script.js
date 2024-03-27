@@ -1,4 +1,4 @@
-let imgArr = ["./assets/coffee1", "./assets/coffee2", "./assets/coffee3"]
+let imgArr = ["./assets/coffee1.jpg", "./assets/coffee2.jpg", "./assets/coffee3.jpg"]
 let descArr = ["Coffee 1", "Coffee 2", "Coffee 3"]
 
 let curImg = 0;
@@ -19,4 +19,4 @@ function changeImg() {
 
 let nextButton = document.getElementById("next");
 
-nextButton.addEventListener("click", () => changeImg);
+nextButton.addEventListener("click", changeImg);
