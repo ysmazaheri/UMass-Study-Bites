@@ -1,5 +1,5 @@
-let imgArr = ["./assets/coffee1.jpg", "./assets/coffee2.jpg", "./assets/coffee3.jpg"]
-let descArr = ["Coffee 1", "Coffee 2", "Coffee 3"]
+let imgArr = ["./assets/Delivery_Selection.png", "./assets/Dining_Selection.png", "./assets/Order_Selection.png", "./assets/Order_View.png", "./assets/Report_Issue.png", "./assets/Sign_In_Up.png"];
+let descArr = ["Select Delivery Location", "Select Dining Hall To Order From", "View the Dining Hall Menu", "View Orders Available To Deliver", "Report an Issue", "Sign In or Sign Up"];
 
 let curImg = 0;
 
