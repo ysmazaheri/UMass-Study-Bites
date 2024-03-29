@@ -13,8 +13,6 @@ function changeImg() {
     let desc = document.getElementById("wire-frame-desc");
     desc.innerHTML = descArr[curImg];
 
-    console.log("hi");
-
 }
 
 let nextButton = document.getElementById("next");
