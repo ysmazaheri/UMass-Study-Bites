@@ -25,7 +25,7 @@
     flex-direction: row;
     text-align: center;
     justify-content: space-between;
-    margin: 30px 225px 85px 225px;
+    margin: 5%;
 
 }
 
@@ -35,7 +35,7 @@
 
     border: 10px solid #264653;
     border-radius: 10px;
-    width: 300px;
+    width: 32%;
     font-size: 20px;
     background-color: rgb(38, 70, 83, 0.4);
 
