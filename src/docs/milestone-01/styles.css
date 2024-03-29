@@ -36,7 +36,6 @@
     border: 10px solid #264653;
     border-radius: 10px;
     width: 300px;
-    height: 300px;
     font-size: 20px;
     background-color: rgb(38, 70, 83, 0.4);
 
@@ -125,5 +124,13 @@ a{
     justify-content: center;
     text-align: center;
     font-size: 25px;
+
+}
+
+.team-img {
+
+    /* curved edges */
+    border-radius: 8px;
+    width: 250px;
 
 }
