@@ -1,4 +1,4 @@
-let imgArr = ["./assets/Delivery_Selection.png", "./assets/Dining_Selection.png", "./assets/Order_Selection.png", "./assets/Order_View.png", "./assets/Report_Issue.png", "./assets/Sign_In_Up.png"];
+let imgArr = ["./assets/wireframes/Delivery_Selection.png", "./assets/wireframes/Dining_Selection.png", "./assets/wireframes/Order_Selection.png", "./assets/wireframes/Order_View.png", "./assets/wireframes/Report_Issue.png", "./assets/wireframes/Sign_In_Up.png"];
 let descArr = ["Select Delivery Location", "Select Dining Hall To Order From", "View the Dining Hall Menu", "View Orders Available To Deliver", "Report an Issue", "Sign In or Sign Up"];
 
 let curImg = 0;
