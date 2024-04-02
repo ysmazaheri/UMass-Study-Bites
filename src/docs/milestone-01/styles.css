@@ -86,7 +86,7 @@ a{
 
 .nav-bar-link:hover {
     transform: scale(1.2);
-
+    background-color: white;
 }
 
 .main-div {
