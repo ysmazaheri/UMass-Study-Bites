@@ -1,3 +1,23 @@
+.container {
+    width: 100%;
+    display: grid;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 200px auto;
+}
+  
+.sidebar {
+    grid-area: sidebar;
+    height: 100vw;
+    background-color: lightgray;
+    position: fixed;
+}
+  
+.main {
+    grid-area: main;
+    height: 100vw;
+    background-color: rgb(209, 209, 209);
+}
+
 #vision {
 
     padding: 20px 0px;
