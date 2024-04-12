@@ -21,8 +21,6 @@ function changeImg() {
     let descTitle = document.getElementById("wire-frame-desc-title");
     descTitle.innerHTML = (`<b>${descTitleArr[curImg]}</b>`);
 
-    console.log(descTitle[curImg]);
-
     let descBody = document.getElementById("wire-frame-desc-body");
     descBody.innerHTML = descBodyArr[curImg];
 
