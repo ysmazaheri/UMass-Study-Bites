@@ -30,6 +30,7 @@
     height: 60px; /* must be the same as line-height*/
     line-height: 60px;
     border: 10px;
+    color:rgb(242, 242, 242);
     align-items: center;
     font-size: large;
     text-align: center;
