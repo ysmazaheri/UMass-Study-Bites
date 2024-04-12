@@ -1,13 +1,24 @@
 /* CSS that applies to all pages */
 
+html, body {
+    margin:0;
+    padding:0;
+}
+
+.topbar {
+    overflow-x: hidden;
+    height: 40px;
+    background-color: rgb(202, 67, 67);
+    margin: auto;
+    padding: 10px;
+}
+
 .sidebar {
     position: absolute;
-    top: 0;
     left: 0;
     overflow-x: hidden;
     height: 100%;
-    width: 11%; /*this must stay the same width as margin-left of main*/
-    min-width: 150px;
+    width: 150px; /*this must stay at least the same width as the sidebar*/
     margin: 0px;
     padding: 10px;
     border: 0px;
@@ -16,8 +27,7 @@
 }
   
 .main {
-    height: 100vh;
-    margin-left: 12%; /*this must stay at least the same width as the sidebar*/
+    margin-left: 150px; /*this must stay at least the same width as the sidebar*/
     width: fill;
     padding: 30px;
     border: 1px;
