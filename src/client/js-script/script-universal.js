@@ -1,0 +1,1 @@
+/* JS that applies to all pages */
