@@ -1,8 +1,14 @@
 /* CSS that applies to all pages */
 
+/* Reset browser default CSS */
 html, body {
     margin:0;
     padding:0;
+}
+
+.bordered {
+    border: 1px solid;
+    margin: 5px;
 }
 
 .topbar {
