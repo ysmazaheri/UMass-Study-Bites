@@ -6,6 +6,11 @@ html, body {
     padding:0;
 }
 
+
+.full-width {
+    width: 100%;
+}
+
 .bordered {
     border: 1px solid;
     margin: 5px;
