@@ -38,8 +38,10 @@ html, body {
 }
   
 .main {
-    margin-left: 150px; /*this must stay at least the same width as the sidebar*/
-    width: fill;
+    margin-left: 150px; /* must stay at least the same width as the sidebar */
+    width: auto;
+    overflow-x: scroll;
+    overflow-y: scroll;
     padding: 30px;
     border: 1px;
     background-color: rgb(242, 242, 242);
