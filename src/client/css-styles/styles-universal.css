@@ -8,7 +8,7 @@ html, body {
 .topbar {
     overflow-x: hidden;
     height: 40px;
-    background-color: rgb(202, 67, 67);
+    background-color: rgb(161, 51, 51);
     margin: auto;
     padding: 10px;
 }
@@ -22,7 +22,7 @@ html, body {
     margin: 0px;
     padding: 10px;
     border: 0px;
-    background-color: rgb(161, 51, 51);
+    background-color: rgb(202, 67, 67);
     align-items: center;
 }
   
@@ -56,5 +56,5 @@ html, body {
     text-align: center;
     border: 1px solid;
     z-index: 1;
-    background-color: rgb(202, 67, 67);
+    background-color: rgb(161, 51, 51);
 }

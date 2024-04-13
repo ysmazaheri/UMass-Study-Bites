@@ -14,7 +14,6 @@ function toggleSidebar() {
     }
     // Show sidebar
     else {
-        console.log("show!");
         sidebar.style.width = "150px";
         sidebar.style.display = "inline";
         main.style.marginLeft = "150px";
