@@ -4,7 +4,8 @@
 }
 
 #location-text {
-    width: 60%;
+    width: 78%;
+    min-width: 500px;
     height: 40px;
     margin-bottom: 0px;
     padding-left: 10px;
