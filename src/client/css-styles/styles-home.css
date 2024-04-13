@@ -1,8 +1,4 @@
 
-.full-width {
-    width: 100%;
-}
-
 #location-container {
     padding: 10px;
 }
@@ -17,19 +13,24 @@
 #map-container {
     display: grid;
     grid-template-columns: 80% auto;
+    min-width: 800px; /* Must be equal to location-list-container min-width + map min-width */
     height: 400px;
     margin-top: 0px;
     padding-left: 0px;
 }
 #map {
     margin-left: 0px;
+    min-width: 500px;
+}
+
+#location-list-container {
+    width: 300px;
 }
 
 #location-list {
     height: 100%;
     overflow: hidden;
     overflow-y: scroll;
-    background-color: white;
     margin: 0px;
     padding: 5px;
     text-align: center;
@@ -42,6 +43,7 @@
     padding: 5px;
     margin-bottom: 0px;
     margin-top: 5px;
+    border-radius: 15px;
     border: 1px solid black;
 }
 .location:hover {
