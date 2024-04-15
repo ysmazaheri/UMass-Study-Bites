@@ -1,0 +1,100 @@
+/* Location Selection */
+
+#location-selection {
+
+    /* border: 2px solid black; */
+    width: auto;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+#search-bar-plus-map {
+
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    width: calc(100% - 350px); /* matches with inverse dining-hall-selection width */
+    height: auto;
+
+}
+
+#search-bar-text {
+
+    width: 89%;
+    height: 40px;
+    padding: 0px 0px 0px 10px;
+    margin: 30px 0px 0px 40px;
+
+}
+
+#map {
+
+    width: 90%;
+    height: 70%;
+    border: 2px solid green;
+    margin: 20px 0px 0px 40px;
+
+}
+
+#drop-off-selection {
+
+    /* border: 2px solid blue; */
+    width: 350px; /* matches with inverse of search-bar-plus-map */
+    height: auto;
+    margin: 10px 0px 0px 0px;
+    overflow-y: scroll;
+
+}
+
+#location-list {
+    height: auto;
+    margin: 0px 25px 0px 0px;
+    padding: 5px;
+    text-align: center;
+    list-style: none;
+}
+
+.location {
+
+    height: 50px;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 30px 0px 0px 0px;
+    margin: 13px 0px;
+
+}
+.location:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Mission Stataement */
+
+#mission-statement {
+
+    width: auto;
+    height: calc(100vh - 400px); /* matches with inverse of height for sidebar and main */
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid black; */
+
+}
+
+#mission-statement-text {
+
+    width: 650px; /* matches with inveerse of mission-statement-image */
+    padding: 0px 10px 0px 45px;
+    margin: 0px 0px 0px 50px;
+
+}
+
+#mission-statement-image {
+
+    width: 400px; /* matches with inverse of mission-statement-text */
+    border: 1px solid black;
+    margin: 50px;
+
+}

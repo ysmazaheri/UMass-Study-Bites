@@ -44,12 +44,13 @@
     /* border: 2px solid blue; */
     width: 350px; /* matches with inverse of search-bar-plus-map */
     height: auto;
+    margin: 10px 0px 0px 0px;
 
 }
 
 #location-list {
     height: auto;
-    margin: 65px 25px 0px 0px;
+    margin: 0px 25px 0px 0px;
     padding: 5px;
     text-align: center;
     list-style: none;
