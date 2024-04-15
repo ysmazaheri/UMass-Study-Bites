@@ -86,3 +86,10 @@ html, body {
     flex-direction: row;
 
 }
+
+img {
+
+    height: 100%;
+    object-fit: cover;
+    
+}

@@ -93,7 +93,6 @@
 #mission-statement-image {
 
     width: 400px; /* matches with inverse of mission-statement-text */
-    border: 1px solid black;
     margin: 50px;
 
 }
