@@ -1,62 +1,98 @@
+/* Location Selection */
 
-#location-container {
-    padding: 10px;
+#location-selection {
+
+    /* border: 2px solid black; */
+    width: auto;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
 }
 
-#location-text {
-    width: 78%;
-    min-width: 500px;
+#search-bar-plus-map {
+
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    width: calc(100% - 350px); /* matches with inverse dining-hall-selection width */
+    height: auto;
+
+}
+
+#search-bar-text {
+
+    width: 89%;
     height: 40px;
-    margin-bottom: 0px;
-    padding-left: 10px;
+    padding: 0px 0px 0px 10px;
+    margin: 30px 0px 0px 40px;
+
 }
 
-#map-container {
-    display: grid;
-    grid-template-columns: 80% auto;
-    min-width: 800px; /* Must be equal to location-list-container min-width + map min-width */
-    height: 400px;
-    margin-top: 0px;
-    padding-left: 0px;
-}
 #map {
-    margin-left: 0px;
-    min-width: 500px;
+
+    width: 90%;
+    height: 70%;
+    border: 2px solid green;
+    margin: 20px 0px 0px 40px;
+
 }
 
-#location-list-container {
-    width: 300px;
+#dining-hall-selection {
+
+    /* border: 2px solid blue; */
+    width: 350px; /* matches with inverse of search-bar-plus-map */
+    height: auto;
+
 }
 
 #location-list {
-    height: 100%;
-    overflow: hidden;
-    overflow-y: scroll;
-    margin: 0px;
+    height: auto;
+    margin: 65px 25px 0px 0px;
     padding: 5px;
     text-align: center;
+    list-style: none;
 }
 
 .location {
+
     height: 50px;
-    line-height: 50px;
-    list-style: none;
-    padding: 5px;
-    margin-bottom: 0px;
-    margin-top: 5px;
     border-radius: 15px;
     border: 1px solid black;
+    padding: 30px 0px 0px 0px;
+    margin: 13px 0px;
+
 }
 .location:hover {
     background-color: black;
     color: white;
 }
 
-#mission-statement-title {
-    padding-bottom: 0px;
+/* Mission Stataement */
+
+#mission-statement {
+
+    width: auto;
+    height: calc(100vh - 400px); /* matches with inverse of height for sidebar and main */
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid black; */
+
 }
 
-#overview {
-    display: grid;
-    grid-template-columns: 60% auto;
+#mission-statement-text {
+
+    /* border: 2px solid red;  */
+    width: 60%; /* matches with inveerse of mission-statement-image */
+    padding: 0px 10px 0px 45px;
+
+}
+
+#mission-statement-image {
+
+    width: 40%; /* matches with inverse of mission-statement-text */
+    border: 1px solid black;
+    margin: 50px;
+
 }
