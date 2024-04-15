@@ -83,15 +83,15 @@
 
 #mission-statement-text {
 
-    /* border: 2px solid red;  */
-    width: 60%; /* matches with inveerse of mission-statement-image */
+    width: 650px; /* matches with inveerse of mission-statement-image */
     padding: 0px 10px 0px 45px;
+    margin: 0px 0px 0px 50px;
 
 }
 
 #mission-statement-image {
 
-    width: 40%; /* matches with inverse of mission-statement-text */
+    width: 400px; /* matches with inverse of mission-statement-text */
     border: 1px solid black;
     margin: 50px;
 

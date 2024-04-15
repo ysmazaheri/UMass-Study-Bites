@@ -10,12 +10,12 @@ function toggleSidebar() {
     if (sidebar.style.width !== "0px") {
         sidebar.style.width = "0px";
         sidebar.style.display = "none";
-        main.style.marginLeft = "0px";
+        main.style.width = "100vw";
     }
     // Show sidebar
     else {
-        sidebar.style.width = "150px";
-        sidebar.style.display = "inline";
-        main.style.marginLeft = "150px";
+        sidebar.style.width = "165px";
+        sidebar.style.display = "block";
+        main.style.width = "calc(100vw - 165px)";
     }
 }
