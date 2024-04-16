@@ -87,7 +87,8 @@
 
     width: 650px; /* matches with inveerse of mission-statement-image */
     padding: 0px 10px 0px 45px;
-    margin: 0px 0px 0px 50px;
+    margin: 0px 0px 30px 50px;
+    overflow-y: scroll;
 
 }
 
