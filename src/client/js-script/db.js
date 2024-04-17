@@ -13,7 +13,7 @@ let userDB = new PouchDB("users");
  * @returns {Promise<void>} - A promise that resolves when the user is saved
  * @throws {Error} - Throws an error if the operation fails
  */
-export async function saveUser(username,password,info) {
+export async function createUser(username,password,info) {
     await userDB.post({ username,password,info });
 }
 
@@ -47,7 +47,7 @@ export async function loadUser(userId) {
  * Asynchronously removes a user from the database by its id.
  *
  * @async
- * @param {string} name - The id of the user to be removed.
+ * @param {string} userId - The id of the user to be removed.
  * @returns {Promise<void>} - A promise that resolves when the user has been
  * successfully removed.
  * @throws {Error} - Throws an error if the user cannot be removed, e.g., it
@@ -67,7 +67,7 @@ export async function removeUser(userId) {
  * @throws {Error} - Throws an error if the operation fails, e.g., due to
  * database connectivity issues.
  */
-export async function saveMenu(menu,date,meal) {
+export async function createMenu(menu,date,meal) {
     await menuDB.post({ menu,date,meal });
 }
 
@@ -103,7 +103,7 @@ export async function loadMenu(menuId) {
  * Asynchronously removes a menu from the database by its id.
  *
  * @async
- * @param {string} name - The id of the menu to be removed.
+ * @param {string} menuId - The id of the menu to be removed.
  * @returns {Promise<void>} - A promise that resolves when the menu has been
  * successfully removed.
  * @throws {Error} - Throws an error if the menu cannot be removed, e.g., it
