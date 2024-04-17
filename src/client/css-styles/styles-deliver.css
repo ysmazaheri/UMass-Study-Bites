@@ -1,100 +1,112 @@
-/* Location Selection */
-
-#location-selection {
-
-    /* border: 2px solid black; */
-    width: auto;
-    height: 500px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
+#page-wrapper {
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-top: 50px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
-#search-bar-plus-map {
-
+.searchbar-wrapper {
     display: flex;
     flex-direction: column;
-    /* border: 2px solid red; */
-    width: calc(100% - 350px); /* matches with inverse dining-hall-selection width */
+    width: 100%;
     height: auto;
-
+    margin-bottom: 20px;
 }
 
-#search-bar-text {
-
-    width: 89%;
-    height: 40px;
-    padding: 0px 0px 0px 10px;
-    margin: 30px 0px 0px 40px;
-
-}
-
-#map {
-
-    width: 90%;
-    height: 70%;
-    border: 2px solid green;
-    margin: 20px 0px 0px 40px;
-
-}
-
-#drop-off-selection {
-
-    /* border: 2px solid blue; */
-    width: 350px; /* matches with inverse of search-bar-plus-map */
-    height: auto;
-    margin: 10px 0px 0px 0px;
-    overflow-y: scroll;
-
-}
-
-#location-list {
-    height: auto;
-    margin: 0px 25px 0px 0px;
-    padding: 5px;
-    text-align: center;
-    list-style: none;
-}
-
-.location {
-
-    height: 50px;
-    border-radius: 15px;
-    border: 1px solid black;
-    padding: 30px 0px 0px 0px;
-    margin: 13px 0px;
-
-}
-.location:hover {
-    background-color: black;
-    color: white;
-}
-
-/* Mission Stataement */
-
-#mission-statement {
-
+.searchbar {
     width: auto;
-    height: calc(100vh - 400px); /* matches with inverse of height for sidebar and main */
-    display: flex;
-    flex-direction: row;
-    /* border: 2px solid black; */
+    height: 35px;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 3px;
+}
+
+.searchbar-text {
+    font-weight: bold;
+}
+
+#order-wrapper {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+#order-text {
+    font-weight: bold;
+}
+
+#orders {
+    border: 1px solid black;
+    height: auto;
+}
+
+#order-list-header {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+.order-header {
+    height: 35px;
+    background-color: gray;
+    line-height: 35px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid black;
 
 }
 
-#mission-statement-text {
-
-    width: 650px; /* matches with inveerse of mission-statement-image */
-    padding: 0px 10px 0px 45px;
-    margin: 0px 0px 30px 50px;
+.order-list {
+    width: auto; /* matches with inverse of search-bar-plus-map */
+    height: auto;
+    max-height: 450px;
+    margin: 0px;
+    padding: 0px;
     overflow-y: scroll;
-
+    list-style: none;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
 }
 
-#mission-statement-image {
+.order {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    background-color: white;
+}
 
-    width: 400px; /* matches with inverse of mission-statement-text */
-    margin: 50px;
+.order:hover {
+    background-color: rgb(102, 179, 209);
+}
 
+.order-info {
+    height: 35px;
+    background-color: transparent;
+    line-height: 35px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.food-option {
+    height: 40px;
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 40px;
+}
+
+.food-option:hover {
+    background-color: rgb(102, 179, 209);
+}
+
+.food-button {
+    height: auto;
+    border: none;
+    background-color: transparent;
+    text-align: center;
 }

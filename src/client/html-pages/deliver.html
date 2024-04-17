@@ -46,106 +46,127 @@
 
         <div class="main">
 
-            <div id="location-selection">
-
-                <div id="search-bar-plus-map">
-
-                    <div id="search-bar">
-                        <input type="text" id="search-bar-text" placeholder="Find Drop-off Location"/>
-                    </div>
-
-                    <div id="map">
-                        map goes here
-                    </div>
-                
+            <div id="page-wrapper">
+                <div id="pickup-wrapper" class="searchbar-wrapper">
+                    <div id="pickup-text" class="searchbar-text">Filter by Pickup Location</div>
+                    <input type="text" id="pickup-search" class="searchbar" placeholder="Enter Food Pickup Location"/>
                 </div>
-
-                <div id="drop-off-selection">
-                    <ul id="location-list">
-                        <li class="location">Baker Hall</li>
-                        <li class="location">Brett Hall</li>
-                        <li class="location">Butterfield Hall</li>
-                        <li class="location">Chadbourne Hall</li>
-                        <li class="location">Gorman Hall</li>
-                        <li class="location">Greenough Hall</li>
-                        <li class="location">Van Meter Hall</li>
-                        <li class="location">Wheeler Hall</li>
-                        <li class="location">Birch Hall</li>
-                        <li class="location">Elm Hall</li>
-                        <li class="location">Linden Hall</li>
-                        <li class="location">Maple Hall</li>
-                        <li class="location">Oak Hall</li>
-                        <li class="location">Sycamore Hall</li>
-                        <li class="location">North Apartment A</li>
-                        <li class="location">North Apartment B</li>
-                        <li class="location">North Apartment C</li>
-                        <li class="location">North Apartment D</li>
-                        <li class="location">Crabtree Hall</li>
-                        <li class="location">Dwight Hall</li>
-                        <li class="location">Hamlin Hall</li>
-                        <li class="location">Johnson Hall</li>
-                        <li class="location">Knowlton Hall</li>
-                        <li class="location">Leach Hall</li>
-                        <li class="location">Lewis Hall</li>
-                        <li class="location">Mary Lyon Hall</li>
-                        <li class="location">Thatcher Hall</li>
-                        <li class="location">Dickinson Hall</li>
-                        <li class="location">Field Hall</li>
-                        <li class="location">Grayson Hall</li>
-                        <li class="location">Webster Hall</li>
-                        <li class="location">Cance Hall</li>
-                        <li class="location">Coolidge Hall</li>
-                        <li class="location">Crampton Hall</li>
-                        <li class="location">Emerson Hall</li>
-                        <li class="location">James Hall Hall</li>
-                        <li class="location">John Adams Hall Hall</li>
-                        <li class="location">John Quincy Adams Hall</li>
-                        <li class="location">Kennedy Hall Hall</li>
-                        <li class="location">MacKimmie Hall</li>
-                        <li class="location">Melville Hall</li>
-                        <li class="location">Moore Hall</li>
-                        <li class="location">Patterson Hall</li>
-                        <li class="location">Pierpont Hall</li>
-                        <li class="location">Prince Hall</li>
-                        <li class="location">Thoreau Hall</li>
-                        <li class="location">Washington Hall</li>
-                        <li class="location">Brown Hall</li>
-                        <li class="location">Cashin Hall</li>
-                        <li class="location">McNamara Hall</li>
-                    </ul>
+                <div id="delivery-wrapper" class="searchbar-wrapper">
+                    <div id="delivery-text" class="searchbar-text">Filter by Delivery Location</div>
+                    <input type="text" id="delivery-search" class="searchbar" placeholder="Enter Food Delivery Location"/>
                 </div>
+                <div id="order-wrapper">
 
-            </div>
+                    <div id="order-text">Orders</div>
+                    <div id="orders"> 
 
-            <!-- Mission Statement -->
 
-            <div id="mission-statement">
+                        
+                        <ul class="order-list">
+                            <div id="order-list-header">
+                                <div id="name-header" class="order-header">
+                                    Recipient Name
+                                </div>
+                                <div id="pickup-header" class="order-header">
+                                    Pickup Point
+                                </div>
+                                <div id="delivery-header" class="order-header">
+                                    Delivery Point
+                                </div>
+                                <div id="time-header" class="order-header">
+                                    Time Placed
+                                </div>
+                            </div>
 
-                <div id="mission-statement-text">
+                            <!--This list will be procedurally generated as we fetch from the database-->
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                            <li class="order">
+                                <div class="order-info order-name">First Name</div>
+                                <div class="order-info order-pickup">Pickup Point</div>
+                                <div class="order-info order-delivery">Delivery Point</div>
+                                <div class="order-info order-time">Time Placed</div>
+                            </li>
+                        </ul>
 
-                    <div id="mission-statement-title">
-
-                        <h1>Mission Statement</h1>
 
                     </div>
-
-                    <div id="mission-statement-desc">
-                        <p>
-                            UMass Study Bites aims to revolutionize the dining experience for UMass Amherst students by providing a
-                            convenient and efficient food delivery service directly from on-campus dining halls. Our app is designed
-                            to help students access delicious meals without the need to leave their dorms, especially during times of
-                            illness or injury when going to a dining hall may be challenging. By offering a user-friendly interface that
-                            integrates live UMass menus, Study Bites streamlines the ordering process, saving students valuable time,
-                            particularly during busy periods like midterms and finals. Our commitment is to provide a safe, reliable, and
-                            innovative solution that enhances the overall campus living experience.
-                        </p>
-                    </div>
-
-                </div>
-
-                <div id="mission-statement-image">
-
-                    <img src="../assets/UMass-Amherst-Campus.jpg" alt="UMass Amherst Campus">
 
                 </div>
 

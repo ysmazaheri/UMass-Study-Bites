@@ -19,6 +19,7 @@
     height: auto;
     align-items: center;
     line-height: 25px; /* must match border radius */
+    background-color: white;
 }
 
 .meal:hover {
@@ -88,6 +89,7 @@
     border: 1px solid black;
     text-align: center;
     line-height: 40px;
+    background-color: white;
 }
 
 .food-option:hover {
