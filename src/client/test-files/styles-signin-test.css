@@ -32,7 +32,8 @@
     text-align: center;
     margin: 0px 65px;
     color: white;
-
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
 
 }
 
@@ -118,6 +119,12 @@ input.input-field, textarea {
     border-color: white;
 
 } 
+
+.fadeTextAndButton {
+
+    opacity: 0;
+
+}
 
 .slideCover {
 

@@ -55,7 +55,7 @@ html, body {
 /* Side Bar */
 
 .sidebar {
-    height: 100vh; /* matches with main */
+    height: calc(100vh - 60px); /* matches with main */
     width: 165px; /* matches with inverse of main */
     margin: 0px;
     border: 0px;
@@ -111,7 +111,7 @@ a:active {
 .main {
 
     /* border: 2px solid black; */
-    height: 100vh; /* matches with sidebar */
+    height: calc(100vh - 60px); /* matches with sidebar */
     width: calc(100vw - 165px); /* matches with inverse of sidebar */
     background-color: rgb(242, 242, 242);
 
