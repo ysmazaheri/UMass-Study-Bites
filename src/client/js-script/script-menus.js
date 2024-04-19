@@ -21,7 +21,7 @@ function filterOptions() {
             foodOption.style.visibility = 'visible';
             foodOption.style.height = '35px';
         } else {
-            // Show if matches query
+            // Show if doesn't match query
             foodOption.style.visibility = 'hidden';
             foodOption.style.height = '0px';
         }
