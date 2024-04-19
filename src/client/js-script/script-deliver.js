@@ -27,7 +27,7 @@ function filterOptions() {
             orderOption.style.visibility = 'visible';
             orderOption.style.height = '35px';
         } else {
-            // Show if matches query
+            // Show if doesn't match query
             orderOption.style.visibility = 'hidden';
             orderOption.style.height = '0px';
         }

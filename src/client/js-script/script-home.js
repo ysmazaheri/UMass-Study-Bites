@@ -12,24 +12,22 @@ let locationOptions = document.getElementsByClassName('location');
 searchBarElement.addEventListener('input', filterOptions);
 
 function filterOptions() {
-    // Update the list of what food options are on the page currently, in case it has changed
+    // Update the list of what location options are on the page currently, in case it has changed
     locationOptions = document.getElementsByClassName('location');
     let locationOptionsArr = [].slice.call(locationOptions);
     // Get the search query
     let query = String(searchBarElement.value).toLowerCase();
     // Filter via contains
     locationOptionsArr.forEach(locationOption => {
-        // Food options are list items. The contents are children HTML elements, buttons
+        // Location options are list items
         let locationName = String(locationOption.innerHTML).toLowerCase();
         // Remove/show items by toggling 'hiding'
         if (locationName.includes(query)) {
             // Show if matches query
-            locationOption.style.visibility = 'visible';
-            locationOption.style.height = '35px';
+            locationOption.style.display = 'list-item';
         } else {
-            // Show if matches query
-            locationOption.style.visibility = 'hidden';
-            locationOption.style.height = '0px';
+            // Show if doesn't match the query
+            locationOption.style.display = 'none';
         }
     });
 }
