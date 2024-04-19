@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+#sign-in-sign-up-container {
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;  
+    font-family: "Poppins", sans-serif;
+
+}
+
+#sign-in-sign-up-cover {
+
+    width: 50%;
+    /* height: 100%; */
+    /* border: 2px solid black; */
+    background-color: #971B2F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    z-index: 2;
+
+}
+
+#sign-in-sign-up-cover-text {
+
+    /* border: 2px solid black; */
+    text-align: center;
+    margin: 0px 65px;
+    color: white;
+
+
+}
+
+#sign-in-sign-up-cover-title {
+
+    font-weight: bold;
+    font-size: 1.5rem;
+
+}
+
+#sign-in-sign-up-cover-desc {
+
+    margin: 10px 0px 0px 0px;
+
+}
+
+#sign-in-sign-up-cover-button {
+
+    width: 150px;
+    height: 50px;
+    background-color: #971B2F;
+    border-radius: 40px;
+    border-color: white;
+    border-style: solid;
+    color: white;
+    font-size: 1rem;
+    margin: 10px 0px 0px 0px;
+
+}
+
+#sign-in-sign-up-form {
+
+    width: 50%;
+    height: 100%;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    z-index: 1;
+
+}
+
+#sign-in-sign-up-form-title {
+
+    font-size: 2.5rem;
+    font-weight: bold;
+
+}
+
+#sign-in-sign-up-form-fillout {
+
+    margin: 30px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#sign-in-sign-up-form-button {
+
+    width: 150px;
+    height: 50px;
+    background-color: #971B2F;
+    border-radius: 40px;
+    border-color: #971B2F;
+    border-style: solid;
+    color: white;
+    font-size: 1rem;
+    margin: 10px 0px 0px 0px;
+
+}
+
+input.input-field, textarea { 
+
+    background: white; 
+    margin: 10px 0px;
+    font-size: 1.2rem;
+    padding: 15px 45px 15px 5px;
+    border-radius: 40px;
+    border-style: solid;
+    border-color: white;
+
+} 
+
+.slideCover {
+
+    transform: translate(100%);
+    /* transition-delay: 1s; */
+    /* height:  */
+
+}
+
+.slideForm {
+
+    transform: translate(-100%);
+
+}

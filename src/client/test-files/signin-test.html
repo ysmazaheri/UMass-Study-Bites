@@ -1,0 +1,83 @@
+<!-- Page for creating or signing into an account -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-in</title>
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="../test-files/styles-signin-test.css">
+    <link rel="stylesheet" href="../css-styles/styles-universal.css">
+    <!-- JavaScript Files -->
+    <script type="module" src="../test-files/script-signin-test.js" defer></script>
+    <script type="module" src="../js-script/script-universal.js" defer></script>
+    
+</head>
+<body>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="topbar">
+
+        <i id="sidebar-toggle" class="fa fa-bars" style="font-size:40px;color:#FFFFFF"></i>
+
+    </div>
+
+    <div class="sidebar-plus-main">
+
+        <!-- Sidebar -->
+
+        <div class="sidebar">
+
+            <div class="site-nav-bar-links">
+
+                <!-- Links to different pages -->
+
+                <a href="home.html"><div class="site-nav-bar-link">Homepage</div></a>
+                <a href="menus.html"><div class="site-nav-bar-link">Menus</div></a>
+                <a href="deliver.html"><div class="site-nav-bar-link">Deliver</div></a>
+                <a href="signin.html"><div class="site-nav-bar-link">Sign in / Sign up</div></a>
+
+            </div>
+
+        </div>
+
+        <div class="main">
+
+            <div id="sign-in-sign-up-container">
+
+                <div id="sign-in-sign-up-cover">
+                    
+                    <div id="sign-in-sign-up-cover-text">
+                        <div id="sign-in-sign-up-cover-title">New here?</div>
+                        <div id="sign-in-sign-up-cover-desc">Sign up for fast, safe, and efficient delivery services. 
+                            Open to all UMass students and faculty.</div>
+                    </div>
+                    <input type="button" id="sign-in-sign-up-cover-button" value="Sign Up">
+
+                </div>
+                
+                <div id="sign-in-sign-up-form">
+
+                    <div id="sign-in-sign-up-form-title">Sign In</div>
+                    <div id="sign-in-sign-up-form-fillout">
+                        <input class="input-field" type="text" placeholder="Username">
+                        <input class="input-field" type="text" placeholder="Password">
+                        <input id="confirm-pass" class="input-field" type="text" placeholder="Confirm Password" visibility="hidden">
+                    </div>
+                    <input type="button" id="sign-in-sign-up-form-button" value="Sign In">
+
+                </div>
+
+            </div>
+          
+        </div>
+
+    </div>
+
+    <footer>
+        <!-- Footer content like copyright, links to privacy policy, etc. -->
+    </footer>
+</body>
+</html>

@@ -6,17 +6,13 @@
   box-sizing: border-box;
 }
 
-body,
-input {
-  font-family: "Poppins", sans-serif;
-}
-
 .container {
   position: relative;
   width: 100%;
   background-color: #fff;
-  min-height: 100vh;
+  min-height: 100%;
   overflow: hidden;
+  font-family: "Poppins", sans-serif;
 }
 
 .forms-container {
@@ -85,6 +81,7 @@ form.sign-in-form {
   color: #acacac;
   transition: 0.5s;
   font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .input-field input {

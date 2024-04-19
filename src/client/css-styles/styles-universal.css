@@ -19,9 +19,9 @@ html, body {
 /* Top Bar */
 
 .topbar {
-    height: 50px;
+    height: 40px;
     background-color: rgb(161, 51, 51);
-    padding-left: 10px;
+    padding: 10px;
     /* border: 2px solid green; */
     position: -webkit-sticky; /* Safari */
     position: sticky;
@@ -55,7 +55,7 @@ html, body {
 /* Side Bar */
 
 .sidebar {
-    height: calc(100vh + 100px); /* matches with main */
+    height: 100vh; /* matches with main */
     width: 165px; /* matches with inverse of main */
     margin: 0px;
     border: 0px;
@@ -110,8 +110,8 @@ a:active {
 
 .main {
 
-    /* border: 5px solid black; */
-    height: calc(100vh + 100px); /* matches with sidebar */
+    /* border: 2px solid black; */
+    height: 100vh; /* matches with sidebar */
     width: calc(100vw - 165px); /* matches with inverse of sidebar */
     background-color: rgb(242, 242, 242);
 
