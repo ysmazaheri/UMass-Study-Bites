@@ -18,10 +18,12 @@ function filterOptions() {
         // Remove/show items by toggling 'hiding'
         if (foodName.includes(query)) {
             // Show if matches query
-            foodOption.style.display = 'list-item';
+            foodOption.style.visibility = 'visible';
+            foodOption.style.height = '35px';
         } else {
             // Show if matches query
-            foodOption.style.display = 'none';
+            foodOption.style.visibility = 'hidden';
+            foodOption.style.height = '0px';
         }
     });
 }

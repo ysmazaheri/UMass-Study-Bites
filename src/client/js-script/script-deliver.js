@@ -24,10 +24,12 @@ function filterOptions() {
         // Remove/show items by toggling 'hiding'
         if (orderPickupName.includes(pickupQuery) && orderDropoffName.includes(dropoffQuery)) {
             // Show if matches query
-            orderOption.style.display = 'list-item';
+            orderOption.style.visibility = 'visible';
+            orderOption.style.height = '35px';
         } else {
             // Show if matches query
-            orderOption.style.display = 'none';
+            orderOption.style.visibility = 'hidden';
+            orderOption.style.height = '0px';
         }
     });
 }
