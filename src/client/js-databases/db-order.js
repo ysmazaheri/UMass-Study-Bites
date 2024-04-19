@@ -1,5 +1,5 @@
 import PouchDB from "pouchdb";
-
+import Order from "../js-models/order.js";
 /*instantiating our PouchDB and filling with dummy data*/
 let orderDB = new PouchDB("orders");
 
@@ -13,8 +13,8 @@ let orderDB = new PouchDB("orders");
  * @returns {Promise<void>} - A promise that resolves when the order is saved
  * @throws {Error} - Throws an error if the operation fails
  */
-export async function createOrder(info,time,orderer,pickup) {
-    await orderDB.post({ info,time,orderer,pickup });
+export async function createOrder(order) {
+    await orderDB.post(order);
 }
 
 /**

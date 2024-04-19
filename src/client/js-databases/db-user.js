@@ -1,4 +1,5 @@
 import PouchDB from "pouchdb";
+import User from "../js-models/user.js";
 
 /*instantiating our PouchDB and filling with dummy data*/
 let userDB = new PouchDB("users");
@@ -12,8 +13,8 @@ let userDB = new PouchDB("users");
  * @returns {Promise<void>} - A promise that resolves when the user is saved
  * @throws {Error} - Throws an error if the operation fails
  */
-export async function createUser(username,password,info) {
-    await userDB.post({ username,password,info });
+export async function createUser(user) {
+    await userDB.post(user);
 }
 
 /**

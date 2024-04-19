@@ -1,5 +1,5 @@
 import PouchDB from "pouchdb";
-
+import Menu from "../js-models/menu.js";
 let menuDB = new PouchDB("menu");
 
 
