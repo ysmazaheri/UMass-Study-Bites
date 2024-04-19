@@ -5,15 +5,17 @@ export class Order {
         this.residence = residence;
         this.food = food;
         this.deliverer = "";
-        this.completed = false;
+        this.isCompleted = false;
         this.time = undefined;
-
     }
     complete() {
-        this.completed = true;
+        this.isCompleted = true;
     }
     setDeliverer(deliverer) {
         this.deliverer = deliverer;
+    }
+    hasDeliverer() {
+        return this.deliverer !== "";
     }
     setTime(time) {
         this.time = time;
