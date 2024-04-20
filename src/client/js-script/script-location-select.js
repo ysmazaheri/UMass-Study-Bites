@@ -8,206 +8,295 @@ let infoWindow;
 // Data
 const dorms = [
     {
-      position: { lat: 42.3898, lng: -72.5270 }, // Baker Hall
+      position: { lat: 42.3895, lng: -72.5198 },
       title: "Baker Hall"
     },
     {
-      position: { lat: 42.3904, lng: -72.5283 }, // Brett Hall
+      position: { lat: 42.38959, lng: -72.52157 },
       title: "Brett Hall"
     },
     {
-      position: { lat: 42.3915, lng: -72.5263 }, // Butterfield Hall
+      position: { lat: 42.38855, lng: -72.51825 },
       title: "Butterfield Hall"
     },
     {
-      position: { lat: 42.3912, lng: -72.5274 }, // Chadbourne Hall
+      position: { lat: 42.38936, lng: -72.51913 },
       title: "Chadbourne Hall"
     },
     {
-      position: { lat: 42.3910, lng: -72.5280 }, // Gorman Hall
+      position: { lat: 42.38766, lng: -72.52105 },
       title: "Gorman Hall"
     },
     {
-      position: { lat: 42.3892, lng: -72.5279 }, // Greenough Hall
+      position: { lat: 42.39007, lng: -72.51934 },
       title: "Greenough Hall"
     },
     {
-      position: { lat: 42.3933, lng: -72.5284 }, // Van Meter Hall
+      position: { lat: 42.38987, lng: -72.51838 },
       title: "Van Meter Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5274 }, // Wheeler Hall
+      position: { lat: 42.38886, lng: -72.52128 },
       title: "Wheeler Hall"
     },
     {
-      position: { lat: 42.3911, lng: -72.5278 }, // Birch Hall
+      position: { lat: 42.38806, lng: -72.53135 },
       title: "Birch Hall"
     },
     {
-      position: { lat: 42.3907, lng: -72.5277 }, // Elm Hall
+      position: { lat: 42.38814, lng: -72.52988 },
       title: "Elm Hall"
     },
     {
-      position: { lat: 42.3906, lng: -72.5283 }, // Linden Hall
+      position: { lat: 42.38696, lng: -72.53097 },
       title: "Linden Hall"
     },
     {
-      position: { lat: 42.3906, lng: -72.5279 }, // Maple Hall
+      position: { lat: 42.38747, lng: -72.53090 },
       title: "Maple Hall"
     },
     {
-      position: { lat: 42.3906, lng: -72.5277 }, // Oak Hall
+      position: { lat: 42.38753, lng: -72.53031 },
       title: "Oak Hall"
     },
     {
-      position: { lat: 42.3906, lng: -72.5276 }, // Sycamore Hall
+      position: { lat: 42.38856, lng: -72.53024 },
       title: "Sycamore Hall"
     },
     {
-      position: { lat: 42.3897, lng: -72.5266 }, // North Apartment A
+      position: { lat: 42.39762, lng: -72.52412 },
       title: "North Apartment A"
     },
     {
-      position: { lat: 42.3900, lng: -72.5262 }, // North Apartment B
+      position: { lat: 42.39670, lng: -72.52420 },
       title: "North Apartment B"
     },
     {
-      position: { lat: 42.3903, lng: -72.5258 }, // North Apartment C
+      position: { lat: 42.39760, lng: -72.52510 },
       title: "North Apartment C"
     },
     {
-      position: { lat: 42.3907, lng: -72.5254 }, // North Apartment D
+      position: { lat: 42.39677, lng: -72.52512 },
       title: "North Apartment D"
     },
     {
-      position: { lat: 42.3915, lng: -72.5260 }, // Crabtree Hall
+      position: { lat: 42.39400, lng: -72.52506 },
       title: "Crabtree Hall"
     },
     {
-      position: { lat: 42.3905, lng: -72.5273 }, // Dwight Hall
+      position: { lat: 42.39538, lng: -72.52519 },
       title: "Dwight Hall"
     },
     {
-      position: { lat: 42.3898, lng: -72.5264 }, // Hamlin Hall
+      position: { lat: 42.39493, lng: -72.52633 },
       title: "Hamlin Hall"
     },
     {
-      position: { lat: 42.3910, lng: -72.5285 }, // Johnson Hall
+      position: { lat: 42.39557, lng: -72.52449 },
       title: "Johnson Hall"
     },
     {
-      position: { lat: 42.3893, lng: -72.5257 }, // Knowlton Hall
+      position: { lat: 42.39388, lng: -72.52571 },
       title: "Knowlton Hall"
     },
     {
-      position: { lat: 42.3899, lng: -72.5277 }, // Leach Hall
+      position: { lat: 42.39524, lng: -72.52581 },
       title: "Leach Hall"
     },
     {
-      position: { lat: 42.3914, lng: -72.5272 }, // Lewis Hall
+      position: { lat: 42.39505, lng: -72.52393 },
       title: "Lewis Hall"
     },
     {
-      position: { lat: 42.3911, lng: -72.5289 }, // Mary Lyon Hall
+      position: { lat: 42.39425, lng: -72.52452 },
       title: "Mary Lyon Hall"
     },
     {
-      position: { lat: 42.3905, lng: -72.5263 }, // Thatcher Hall
+      position: { lat: 42.39445, lng: -72.52379 },
       title: "Thatcher Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5267 }, // Dickinson Hall
+      position: { lat: 42.39215, lng: -72.51966 },
       title: "Dickinson Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5261 }, // Field Hall
+      position: { lat: 42.39162, lng: -72.51869 },
       title: "Field Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5270 }, // Grayson Hall
+      position: { lat: 42.39225, lng: -72.51888 },
       title: "Grayson Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5255 }, // Webster Hall
+      position: { lat: 42.39152, lng: -72.51949 },
       title: "Webster Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5279 }, // Cance Hall
+      position: { lat: 42.38111, lng: -72.53009 },
       title: "Cance Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5277 }, // Coolidge Hall
+      position: { lat: 42.38367, lng: -72.52986 },
       title: "Coolidge Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5272 }, // Crampton Hall
+      position: { lat: 42.38330, lng: -72.52908 },
       title: "Crampton Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Emerson Hall
+      position: { lat: 42.38342, lng: -72.53127 },
       title: "Emerson Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // James Hall Hall
-      title: "James Hall Hall"
+      position: { lat: 42.38412, lng: -72.53115 },
+      title: "James Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // John Adams Hall Hall
-      title: "John Adams Hall Hall"
+      position: { lat: 42.38185, lng: -72.52876 },
+      title: "John Adams Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // John Quincy Adams Hall
+      position: { lat: 42.38218, lng: -72.52910 },
       title: "John Quincy Adams Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Kennedy Hall Hall
-      title: "Kennedy Hall Hall"
+      position: { lat: 42.38409, lng: -72.52961 },
+      title: "Kennedy Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // MacKimmie Hall
+      position: { lat: 42.38290, lng: -72.52862 },
       title: "MacKimmie Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Melville Hall
+      position: { lat: 42.38468, lng: -72.53079 },
       title: "Melville Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Moore Hall
+      position: { lat: 42.38193, lng: -72.53079 },
       title: "Moore Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Patterson Hall
+      position: { lat: 42.38182, lng: -72.52832 },
       title: "Patterson Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Pierpont Hall
+      position: { lat: 42.38138, lng: -72.53080 },
       title: "Pierpont Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Prince Hall
+      position: { lat: 42.38408, lng: -72.52891 },
       title: "Prince Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Thoreau Hall
+      position: { lat: 42.38431, lng: -72.53011 },
       title: "Thoreau Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Washington Hall
+      position: { lat: 42.38158, lng: -72.52927 },
       title: "Washington Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Brown Hall
+      position: { lat: 42.39742, lng: -72.52292 },
       title: "Brown Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // Cashin Hall
+      position: { lat: 42.39751, lng: -72.52178 },
       title: "Cashin Hall"
     },
     {
-      position: { lat: 42.3908, lng: -72.5276 }, // McNamara Hall
+      position: { lat: 42.39793, lng: -72.52224 },
       title: "McNamara Hall"
     }
   ];
+  
+
+// Initialize Google map, markers, and info window using async
+// Initialize map click filtering behaviors
+// Intiialize location-option click filtering behaviors 
+initMap();
+
+// Intiialize location-search value-change filtering behaviors 
+// Refine markers and list of options every time the input value changes
+searchBarElement.addEventListener('input', (query) => { 
+    filterOptions(); 
+    filterMap();
+});
+
+// INITIALIZE MAP FEATURE
+// Initialize Google map, markers, and info window using async
+async function initMap() {
+    // Request libraries when needed, not in the script tag.
+    const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+    // Initialize map for campus
+    map = new Map(document.getElementById("map"), {
+        center: { lat: 42.390226433882404, lng: -72.5266487745724 },
+        zoom: 14,
+        mapId: "StudyBitesLocationSelectWindow",
+    });
+    // Create an info window to share between markers.
+    infoWindow = new InfoWindow();
+    // Default map markers for each DC
+    markers = [];
+    dorms.forEach(({ position, title }, i) => {
+        const pin = new PinElement({
+          glyph: `${i + 1}`,
+        });
+        const marker = new AdvancedMarkerElement({
+          position,
+          map,
+          title: title,
+          content: pin.element,
+        });
+        // Add marker to the list of markers for future access
+       markers[markers.length] = marker;
+      });
+  
+    // Initialize map click filtering behaviors
+    initializeMapInteractions();
+    // Intiialize location-option click filtering behaviors 
+    initializeOptionsInteractions();
+}
+
+// INITIALIZE MAP INTERACTION BEHAVIOR
+function initializeMapInteractions() {
+    // Add all marker interactions
+    markers.forEach(marker => {
+        // Add a click listener for each marker, and set up the info window.
+        marker.addListener("click", ({ domEvent, latLng }) => {
+            // Clicking marker updates and shows the info window
+            infoWindow.close();
+            infoWindow.setContent(marker.title);
+            infoWindow.open(marker.map, marker);
+            // Clicking marker filters search bar, options, and map
+            searchBarElement.value = marker.title;
+            filterOptions();
+            filterMap();
+          });
+    })
+    // When info window is closed, unfilter search bar, options, and map
+    infoWindow.addListener("close",  () => {
+        searchBarElement.value = "";
+        filterOptions();
+        filterMap();
+    });
+}
+
+// INITIALIZE OPTIONS INTERACTION BEHAVIOR
+// To each option, when it is selected, filter search bar, options, and map
+function initializeOptionsInteractions() {
+    // Update the list of what location options are on the page currently, in case it has changed
+    let locationOptions = document.getElementsByClassName('location');
+    let locationOptionsArr = [].slice.call(locationOptions);
+    // Clicking option filters search bar, options, and map
+    locationOptionsArr.forEach(option => {
+        option.addEventListener("click", () => {
+            searchBarElement.value = option.innerHTML;
+            filterOptions();
+            filterMap();
+        });
+    });
+}
 
 // NEXT BUTTON
 document.getElementById('nextBtn').addEventListener('click', function() {
@@ -221,15 +310,29 @@ document.getElementById('backBtn').addEventListener('click', function() {
   window.location.href = 'home.html';
 });
 
-// LOCATION FILTER
-let locationOptions = document.getElementsByClassName('location');
+// GOOGLE MAP MARKER FILTER
+function filterMap() {
+    // Get the search query
+    let query = String(searchBarElement.value).toLowerCase();
+    // Filter via contains
+    markers.forEach(marker => {
+        // Get marker's location
+        let markerLoc = marker.title.toLowerCase();
+        // Remove/show markers by toggling visibility
+        if (markerLoc.includes(query)) {
+            // Show if matches query
+            marker.map = map;
+        } else {
+            // Show if doesn't match the query
+            marker.map = null;
+        }
+    });
+}
 
-// Refine search every time the input value changes
-searchBarElement.addEventListener('input', filterOptions);
-
+// LOCATION OPTION FILTER
 function filterOptions() {
     // Update the list of what location options are on the page currently, in case it has changed
-    locationOptions = document.getElementsByClassName('location');
+    let locationOptions = document.getElementsByClassName('location');
     let locationOptionsArr = [].slice.call(locationOptions);
     // Get the search query
     let query = String(searchBarElement.value).toLowerCase();

@@ -46,7 +46,6 @@ async function initMap() {
     });
     // Create an info window to share between markers.
     infoWindow = new InfoWindow();
-    console.log(infoWindow);
     // Default map markers for each DC
     markers = [];
     diningHalls.forEach(({ position, title }, i) => {
@@ -85,7 +84,6 @@ function initializeMapInteractions() {
             filterMap();
           });
     })
-    console.log(infoWindow);
     // When info window is closed, unfilter search bar, options, and map
     infoWindow.addListener("close",  () => {
         searchBarElement.value = "";
@@ -96,7 +94,6 @@ function initializeMapInteractions() {
 
 // INITIALIZE OPTIONS INTERACTION BEHAVIOR
 // To each option, when it is selected, filter search bar, options, and map
-// To each option, when it is unselected, unfilter search bar, options, and map
 function initializeOptionsInteractions() {
     // Update the list of what location options are on the page currently, in case it has changed
     let locationOptions = document.getElementsByClassName('location');
