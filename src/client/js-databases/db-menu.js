@@ -1,5 +1,5 @@
 import PouchDB from "pouchdb";
-
+import Menu from "../js-models/menu.js";
 let menuDB = new PouchDB("menu");
 
 
@@ -13,8 +13,8 @@ let menuDB = new PouchDB("menu");
  * @throws {Error} - Throws an error if the operation fails, e.g., due to
  * database connectivity issues.
  */
-export async function createMenu(menu,date,meal) {
-    await menuDB.post({ menu,date,meal });
+export async function createMenu(menu,date,meals) {
+    await menuDB.post({ menu,date,meals });
 }
 
 /**
