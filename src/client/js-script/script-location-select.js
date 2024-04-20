@@ -1,3 +1,25 @@
+
+// UI components
+const searchBarElement = document.getElementById('search-bar-text');
+let map;
+let markers = [];
+let infoWindow;
+
+// Data
+const diningHalls = [ {
+        position: { lat: 42.39316, lng: -72.52515 },
+        title: "Worcester Dining Commons",
+    }, {
+        position: { lat: 42.38927, lng: -72.52245 },
+        title: "Franklin Dining Commons",
+    }, {
+        position: { lat: 42.38382, lng: -72.53051 },
+        title: "Hampshire Dining Commons",
+    }, {
+        position: { lat: 42.38180, lng: -72.52984 },
+        title: "Berkshire Dining Commons",
+    },];
+
 // NEXT BUTTON
 document.getElementById('nextBtn').addEventListener('click', function() {
     // Navigate to order.html
@@ -11,7 +33,6 @@ document.getElementById('backBtn').addEventListener('click', function() {
 });
 
 // LOCATION FILTER
-const searchBarElement = document.getElementById('search-bar-text');
 let locationOptions = document.getElementsByClassName('location');
 
 // Refine search every time the input value changes
