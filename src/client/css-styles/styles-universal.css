@@ -55,7 +55,7 @@ html, body {
 /* Side Bar */
 
 .sidebar {
-    height: calc(100vh + 100px); /* matches with main */
+    height: calc(100vh - 60px); /* matches with main */
     width: 165px; /* matches with inverse of main */
     margin: 0px;
     border: 0px;
@@ -71,7 +71,22 @@ html, body {
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 80px;
+    font-family: "Verdana", sans-serif;
 
+}
+
+/* remove link underline */
+a:link { 
+    text-decoration: none; 
+} 
+a:visited { 
+    text-decoration: none; 
+} 
+a:hover { 
+    text-decoration: none; 
+} 
+a:active { 
+    text-decoration: none; 
 }
 
 .site-nav-bar-link {
@@ -95,8 +110,8 @@ html, body {
 
 .main {
 
-    /* border: 5px solid black; */
-    height: calc(100vh + 100px); /* matches with sidebar */
+    /* border: 2px solid black; */
+    height: calc(100vh - 60px); /* matches with sidebar */
     width: calc(100vw - 165px); /* matches with inverse of sidebar */
     background-color: rgb(242, 242, 242);
 
