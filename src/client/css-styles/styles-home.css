@@ -18,12 +18,13 @@
     /* border: 2px solid red; */
     width: calc(100% - 350px); /* matches with inverse dining-hall-selection width */
     height: auto;
+    margin: 0px 40px 0px 0px
 
 }
 
 #search-bar-text {
 
-    width: calc(100% - 75px - 80px);
+    width: calc(100% - 151px);
     height: 40px;
     padding: 0px 0px 0px 10px;
     margin: 30px 0px 0px 40px;
@@ -31,13 +32,13 @@
 }
 
 #nextBtn {
-    width: 80px;
+    width: 90px;
     height: 40px;
 }
 
 #map {
 
-    width: 90%;
+    width: calc(100% - 40px);
     height: 100%;
     border: 2px solid green;
     margin: 20px 0px 40px 40px;
