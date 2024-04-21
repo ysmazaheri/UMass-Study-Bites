@@ -4,6 +4,7 @@ const searchBarElement = document.getElementById('search-bar-text');
 let map;
 let markers = [];
 let infoWindow;
+let selectedLocations = [];
 
 // Data
 const dorms = [
@@ -291,15 +292,29 @@ function initializeOptionsInteractions() {
     // Clicking option filters search bar, options, and map
     locationOptionsArr.forEach(option => {
         option.addEventListener("click", () => {
-            searchBarElement.value = option.innerHTML;
-            filterOptions();
-            filterMap();
+            // If the item isn't selected, select
+            if (option.style.color === "black") {
+              searchBarElement.value = option.innerHTML;
+              filterOptions();
+              filterMap();
+          } else {
+              // If the item is selected, unselect
+              searchBarElement.value = "";
+              infoWindow.close()
+              filterOptions();
+              filterMap();
+          }
         });
     });
 }
 
 // NEXT BUTTON
 document.getElementById('nextBtn').addEventListener('click', function() {
+    // If no valid location is selected, alert
+    if (selectedLocations.length === 0) {
+      alert("Please Select a Valid Drop-Off Location")
+      return;
+    }
     // Navigate to order.html
     window.location.href = 'order.html';
   });
@@ -344,9 +359,25 @@ function filterOptions() {
         if (locationName.includes(query)) {
             // Show if matches query
             locationOption.style.display = 'list-item';
+            // If it is an exact match, select the option
+            if (locationName === query) {
+              locationOption.style.background = "black";
+              locationOption.style.color = "white";
+              selectedLocations.push(locationName);
+            } 
+            // Otherwise, unselect it
+            else {
+              locationOption.style.background = "white";
+              locationOption.style.color = "black";
+              selectedLocations = selectedLocations.filter(e => e !== locationName);
+            }
         } else {
-            // Show if doesn't match the query
+            // Hide if doesn't match the query
             locationOption.style.display = 'none';
+            // Unselect it
+            locationOption.style.background = "white";
+            locationOption.style.color = "black";
+            selectedLocations = selectedLocations.filter(e => e !== locationName);
         }
     });
 }
