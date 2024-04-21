@@ -127,13 +127,6 @@ a:active {
 
 }
 
-img {
-
-    height: 100%;
-    object-fit: cover;
-    
-}
-
 .test {
     border: 1px solid black;
 }

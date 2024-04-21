@@ -80,25 +80,8 @@
 #mission-statement {
 
     width: auto;
-    height: calc(100vh - 400px); /* matches with inverse of height for sidebar and main */
-    display: flex;
-    flex-direction: row;
-    /* border: 2px solid black; */
-
-}
-
-#mission-statement-text {
-
-    width: 650px; /* matches with inveerse of mission-statement-image */
-    padding: 0px 10px 0px 45px;
-    margin: 0px 0px 30px 50px;
+    height: calc(100vh - 500px - 60px - 20px); /* Inverse of main height, topbar height, and topbar padding */
+    padding: 0px 45px 0px 45px;
+    margin: 0px 0px 30px 0px;
     overflow-y: scroll;
-
-}
-
-#mission-statement-image {
-
-    width: 400px; /* matches with inverse of mission-statement-text */
-    margin: 50px;
-
 }
