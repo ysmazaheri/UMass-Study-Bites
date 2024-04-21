@@ -102,26 +102,3 @@
     margin: 50px;
 
 }
-
-
-/* Specifi homepage main and sidebar */
-
-#sidebar-homepage {
-    height: calc(100vh + 100px); /* matches with main */
-    width: 165px; /* matches with inverse of main */
-    margin: 0px;
-    border: 0px;
-    background-color: rgb(202, 67, 67);
-    align-items: center;
-    /* transition-duration: 0.5s; */
-    transition:300ms linear;
-}
-
-#main-homepage {
-
-    /* border: 5px solid black; */
-    height: calc(100vh + 100px); /* matches with sidebar */
-    width: calc(100vw - 165px); /* matches with inverse of sidebar */
-    background-color: rgb(242, 242, 242);
-
-}
