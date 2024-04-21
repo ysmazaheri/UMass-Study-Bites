@@ -4,7 +4,7 @@
 
     /* border: 2px solid black; */
     width: auto;
-    height: 500px;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -38,9 +38,9 @@
 #map {
 
     width: 90%;
-    height: 70%;
+    height: 100%;
     border: 2px solid green;
-    margin: 20px 0px 0px 40px;
+    margin: 20px 0px 40px 40px;
 
 }
 
@@ -48,8 +48,9 @@
 
     /* border: 2px solid blue; */
     width: 350px; /* matches with inverse of search-bar-plus-map */
-    height: auto;
-    margin: 10px 0px 0px 0px;
+    height: calc(100%-40px);
+    margin: 20px 0px 40px 10px;
+    overflow-y: scroll;
 
 }
 
@@ -73,55 +74,4 @@
 .location:hover {
     background-color: black;
     color: white;
-}
-
-/* Mission Stataement */
-
-#mission-statement {
-
-    width: auto;
-    height: calc(100vh - 400px); /* matches with inverse of height for sidebar and main */
-    display: flex;
-    flex-direction: row;
-    /* border: 2px solid black; */
-
-}
-
-#mission-statement-text {
-
-    width: 650px; /* matches with inveerse of mission-statement-image */
-    padding: 0px 10px 0px 45px;
-    margin: 0px 0px 30px 50px;
-    overflow-y: scroll;
-
-}
-
-#mission-statement-image {
-
-    width: 400px; /* matches with inverse of mission-statement-text */
-    margin: 50px;
-
-}
-
-
-/* Specifi homepage main and sidebar */
-
-#sidebar-homepage {
-    height: calc(100vh + 100px); /* matches with main */
-    width: 165px; /* matches with inverse of main */
-    margin: 0px;
-    border: 0px;
-    background-color: rgb(202, 67, 67);
-    align-items: center;
-    /* transition-duration: 0.5s; */
-    transition:300ms linear;
-}
-
-#main-homepage {
-
-    /* border: 5px solid black; */
-    height: calc(100vh + 100px); /* matches with sidebar */
-    width: calc(100vw - 165px); /* matches with inverse of sidebar */
-    background-color: rgb(242, 242, 242);
-
 }
