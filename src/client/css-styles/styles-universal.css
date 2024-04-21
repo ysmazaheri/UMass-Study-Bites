@@ -62,8 +62,6 @@ html, body {
     border: 0px;
     background-color: rgb(202, 67, 67);
     align-items: center;
-    /* transition-duration: 0.5s; */
-    transition:300ms linear;
 }
 
 .site-nav-bar-links {
