@@ -4,6 +4,7 @@ const searchBarElement = document.getElementById('search-bar-text');
 let map;
 let markers = [];
 let infoWindow;
+let selectedLocations = [];
 
 // Data
 const diningHalls = [ {
@@ -119,6 +120,11 @@ function initializeOptionsInteractions() {
 
 // NEXT BUTTON
 document.getElementById('nextBtn').addEventListener('click', function() {
+    // If no valid location is selected, alert
+    if (selectedLocations.length === 0) {
+        alert("Please Select a Valid Pick-Up Location")
+        return;
+    }
     // Navigate to location-select.html
     window.location.href = 'location-select.html';
   });
@@ -161,12 +167,14 @@ function filterOptions() {
             if (locationName === query) {
                 locationOption.style.background = "black";
                 locationOption.style.color = "white";
+                selectedLocations.push(locationName);
             } 
             // Otherwise, unselect it
             else {
                 
                 locationOption.style.background = "white";
                 locationOption.style.color = "black";
+                selectedLocations = selectedLocations.filter(e => e !== locationName);
             }
         } else {
             // Hide if doesn't match the query
@@ -174,6 +182,7 @@ function filterOptions() {
             // Unselect it
             locationOption.style.background = "white";
             locationOption.style.color = "black";
+            selectedLocations = selectedLocations.filter(e => e !== locationName);
         }
     });
 }
