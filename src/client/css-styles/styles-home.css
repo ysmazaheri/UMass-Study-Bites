@@ -48,8 +48,8 @@
 
     /* border: 2px solid blue; */
     width: 350px; /* matches with inverse of search-bar-plus-map */
-    height: 100%;
-    margin: 10px 0px 0px 10px;
+    height: calc(100%-40px);
+    margin: 20px 0px 40px 10px;
     overflow-y: scroll;
 
 }
