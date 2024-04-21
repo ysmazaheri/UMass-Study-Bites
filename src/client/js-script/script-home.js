@@ -101,9 +101,18 @@ function initializeOptionsInteractions() {
     // Clicking option filters search bar, options, and map
     locationOptionsArr.forEach(option => {
         option.addEventListener("click", () => {
-            searchBarElement.value = option.innerHTML;
-            filterOptions();
-            filterMap();
+                // If the item isn't selected, select
+                if (option.style.color === "black") {
+                searchBarElement.value = option.innerHTML;
+                filterOptions();
+                filterMap();
+            } else {
+                // If the item is selected, unselect
+                searchBarElement.value = "";
+                infoWindow.close()
+                filterOptions();
+                filterMap();
+            }
         });
     });
 }
@@ -148,9 +157,23 @@ function filterOptions() {
         if (locationName.includes(query)) {
             // Show if matches query
             locationOption.style.display = 'list-item';
+            // If it is an exact match, select the option
+            if (locationName === query) {
+                locationOption.style.background = "black";
+                locationOption.style.color = "white";
+            } 
+            // Otherwise, unselect it
+            else {
+                
+                locationOption.style.background = "white";
+                locationOption.style.color = "black";
+            }
         } else {
-            // Show if doesn't match the query
+            // Hide if doesn't match the query
             locationOption.style.display = 'none';
+            // Unselect it
+            locationOption.style.background = "white";
+            locationOption.style.color = "black";
         }
     });
 }
