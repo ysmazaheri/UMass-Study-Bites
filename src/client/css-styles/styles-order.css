@@ -113,3 +113,15 @@ input.search-bar, textarea {
     transform: scale(1.05);
 
 }
+
+#order-item-added {
+
+    border: 2px solid black;
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    height: 100px;
+
+}
