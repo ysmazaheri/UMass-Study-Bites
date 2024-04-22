@@ -114,7 +114,7 @@ input.search-bar, textarea {
 
 }
 
-#order-item-added {
+.order-item-added {
 
     border: 2px solid black;
 
@@ -124,6 +124,21 @@ input.search-bar, textarea {
     bottom: 10px;
     right: 50px;
     width: 400px;
-    height: 100px;
+    height: 50px;
+    background-color: white;
+    border-color: #971B2F;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 50px;
+    transition-duration: 0.5s;
+    opacity: 0;
+
+}
+
+.order-item-added-tag {
+
+    opacity: 1;
 
 }

@@ -27,6 +27,8 @@ function filterOptions() {
 
 searchBarElement.addEventListener('input', filterOptions);
 
+const showOI = document.getElementsByClassName('order-item-added')[0];
+
 // Checking which food items were selected
 for (let i = 0; i < foodOptions.length; i++) {
 
@@ -35,7 +37,14 @@ for (let i = 0; i < foodOptions.length; i++) {
         let foodName = String(foodOptionsArr[i].innerHTML);
         orderCart.addOI(foodName);
 
-        
+        showOI.classList.toggle('order-item-added-tag');
+        showOI.innerHTML = "1 order of " + foodName + " added";
+        setTimeout(() => {
+
+            showOI.classList.toggle('order-item-added-tag');
+            console.log("hello");
+
+        }, 1500)
 
     });
 
