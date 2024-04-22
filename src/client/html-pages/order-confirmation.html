@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="../css-styles/styles-order-confirmation.css">
+    <link rel="stylesheet" href="../css-styles/styles-universal.css">
+    <!-- JavaScript Files -->
+    <script type="module" src="../js-script/script-order-confirmation.js" defer></script>
+    <script type="module" src="../js-script/script-universal.js" defer></script>
+    
+</head>
+<body>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="topbar">
+
+        <i id="sidebar-toggle" class="fa fa-bars" style="font-size:40px;color:#FFFFFF"></i>
+        <button id="backBtn">Back</button>
+
+    </div>
+
+    <div class="sidebar-plus-main">
+
+        <!-- Sidebar -->
+
+        <div class="sidebar">
+
+            <div class="site-nav-bar-links">
+
+                <!-- Links to different pages -->
+
+                <a href="home.html"><div class="site-nav-bar-link">Homepage</div></a>
+                <a href="menus.html"><div class="site-nav-bar-link">Menus</div></a>
+                <a href="deliver.html"><div class="site-nav-bar-link">Deliver</div></a>
+                <a href="signin.html"><div class="site-nav-bar-link">Sign in / Sign up</div></a>
+
+            </div>
+
+        </div>
+
+        <div class="main">
+
+            <div id="page-container">
+        
+                <div id="form-container">
+
+                    <div id="checkout-title">
+
+                        Checkout
+
+                    </div>
+
+                    <div id="contact-information-form">
+
+                        <form class="form-area">
+
+                            Contact Information
+
+                            <div class="input-title">
+                                E-Mail
+                            </div>
+                            <input class="input-field" type="text" placeholder="Enter your email" />
+                            
+                            <div class="input-title">
+                                Phone
+                            </div>
+                            <input class="input-field" type="text" placeholder="Enter your phone" />
+
+                            <div class="input-title">
+                                Full Name
+                            </div>
+                            <input class="input-field" type="text" placeholder="Enter your full name" />
+
+                        </form>
+
+                    </div>
+
+                    <div id="location-information-form">
+
+                        <form class="form-area">
+
+                            Location Information Confirmation
+
+                            <div class="input-title">
+                                Pick-up
+                            </div>
+                            <input class="input-field" type="text" placeholder="Pick-up address" />
+                            
+                            <div class="input-title">
+                                Delivery
+                            </div>
+                            <input class="input-field" type="text" placeholder="Delivery address" />
+
+                        </form>
+
+                    </div>
+
+                    <button id="continue-button">Continue</button>
+
+                </div>
+
+                <div id="cart-container">
+
+                    <div id="order-preview-list">
+
+                        <!-- <div class="order-item">
+
+                            <div class="title-price-container">
+
+                                <div class="order-item-title">
+                                    Burger
+                                </div>
+    
+                                <div class="order-item-price">
+                                    1 point
+                                </div>
+
+                            </div>
+
+                            <div class="order-item-quantity-container">
+
+                                <button class="minus-quantity-button">-</button>
+                                <div class="order-item-quantity">1</div>
+                                <button class="plus-quantity-button">+</button>
+
+                            </div>
+
+                        </div> -->
+
+                    </div>
+
+                    <div id="tip">
+                        Tip: idk if we need this
+                    </div>
+
+                    <div id="total">
+                        Total: 1 point
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <!-- Footer content like copyright, links to privacy policy, etc. -->
+    </footer>
+</body>
+</html>

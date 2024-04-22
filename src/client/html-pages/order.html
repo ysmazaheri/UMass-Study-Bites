@@ -45,103 +45,69 @@
         <div class="main">
 
             <div id="page-container">
-        
-                <div id="form-container">
-
-                    <div id="checkout-title">
-
-                        Checkout
-
-                    </div>
-
-                    <div id="contact-information-form">
-
-                        <form class="form-area">
-
-                            Contact Information
-
-                            <div class="input-title">
-                                E-Mail
-                            </div>
-                            <input class="input-field" type="text" placeholder="Enter your email" />
-                            
-                            <div class="input-title">
-                                Phone
-                            </div>
-                            <input class="input-field" type="text" placeholder="Enter your phone" />
-
-                            <div class="input-title">
-                                Full Name
-                            </div>
-                            <input class="input-field" type="text" placeholder="Enter your full name" />
-
-                        </form>
-
-                    </div>
-
-                    <div id="location-information-form">
-
-                        <form class="form-area">
-
-                            Location Information Confirmation
-
-                            <div class="input-title">
-                                Pick-up
-                            </div>
-                            <input class="input-field" type="text" placeholder="Pick-up address" />
-                            
-                            <div class="input-title">
-                                Delivery
-                            </div>
-                            <input class="input-field" type="text" placeholder="Delivery address" />
-
-                        </form>
-
-                    </div>
-
-                    <button id="continue-button">Continue</button>
-
+                    
+                <div id="search-bar-plus-next">
+                    <input type="text" class="search-bar" placeholder="Enter Food Item (or click below)"/>
+                    <button id="next-button">Next</button>
                 </div>
+                
+                <div id="menu">
 
-                <div id="cart-container">
 
-                    <div id="order-preview-list">
+                    <!--These lists will be procedurally generated as we fetch from the database-->
+                    <div class="food-type-container"> 
 
-                        <div class="order-item">
-
-                            <div class="title-price-container">
-
-                                <div class="order-item-title">
-                                    Burger
-                                </div>
-    
-                                <div class="order-item-price">
-                                    1 point
-                                </div>
-
-                            </div>
-
-                            <div class="order-item-quantity-container">
-
-                                <button class="minus-quantity-button">-</button>
-                                <div class="order-item-quantity">1</div>
-                                <button class="plus-quantity-button">+</button>
-
-                            </div>
-
+                        <div class="food-type-title">
+                            Entree (test)
                         </div>
+                        <div class="food-option-list">
+                            <div class="food-option">Chicken</div>
+                            <div class="food-option">Fries</div>
+                            <div class="food-option">Burger</div>
+                            <div class="food-option">Grilled Cheese</div>
+                            <div class="food-option">Pizza</div>
+                            <div class="food-option">Pasta</div>
+                            <div class="food-option">Crab Rangoons</div>
+                            <div class="food-option">Soup</div>
+                            <div class="food-option">Burrito</div>
+                            <div class="food-option">Pork</div>
+                            <div class="food-option">Ribs</div>
+                            <div class="food-option">Seafood</div>
+                            <div class="food-option">Biscuit</div>
+                            <div class="food-option">Fried Chicken</div>
+                            <div class="food-option">Dumplings</div>
+                            <div class="food-option">Stir Fry</div>
+                            <div class="food-option">Sushi</div>
+                            <div class="food-option">Chicken Curry</div>
+                            <div class="food-option">Naan</div>
+                            <div class="food-option">Vegetables</div>
+                            <div class="food-option">Pho</div>
+                        </div>
+                        
+                    </div>    
 
-                    </div>
-
-                    <div id="tip">
-                        Tip: idk if we need this
-                    </div>
-
-                    <div id="total">
-                        Total: 1 point
-                    </div>
+                    <div class="food-type-container"> 
+                        
+                        <div class="food-type-title">
+                            Dessert
+                        </div>
+                        <div class="food-option-list">
+                            <div class="food-option">Vanilla Ice Cream</div>
+                            <div class="food-option">Chocolate Ice Cream</div>
+                            <div class="food-option">Strawberry Ice Cream</div>
+                            <div class="food-option">Brownie</div>
+                            <div class="food-option">Chocolate Chip Cookie</div>
+                            <div class="food-option">Chocolate Cake</div>
+                            <div class="food-option">M&M Cookie</div>
+                            <div class="food-option">Cheesecake</div>
+                            <div class="food-option">Ice Cream Sandwich</div>
+                        </div>
+                        
+                    </div>  
 
                 </div>
+
+                <div class="order-item-added"></div>
 
             </div>
 
