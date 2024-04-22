@@ -7,10 +7,11 @@ const orderKeys = order.getOINames();
 
 for (let i = 0; i < order.OIListLength(); i++) {
 
-  // Creating div elements for each part of OI (Order Item)
+  // Creating div elements for each part of OI (Order Item) and assigning respective values
   let OI = document.createElement('div');
   OI.classList.add('order-item');
 
+  // Assigning name and price
   let titlePriceCont = document.createElement('div');
   titlePriceCont.classList.add('title-price-container');
   let OITitle = document.createElement('div');
@@ -20,6 +21,7 @@ for (let i = 0; i < order.OIListLength(); i++) {
   OIPrice.classList.add('order-item-price');
   OIPrice.innerHTML = order.getIOValueByName(orderKeys[i]);
 
+  // Assigning quantity and adding plus and minus buttons for cart editing
   let OIQuanCont = document.createElement('div');
   OIQuanCont.classList.add('order-item-quantity-container');
   let minusQuan = document.createElement('button');
