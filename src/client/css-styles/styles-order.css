@@ -118,9 +118,11 @@ input.search-bar, textarea {
 
     border: 2px solid black;
 
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 10px;
+    right: 50px;
     width: 400px;
     height: 100px;
 

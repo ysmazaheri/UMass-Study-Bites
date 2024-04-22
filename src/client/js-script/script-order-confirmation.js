@@ -1,13 +1,13 @@
-import { Order } from "./ds-order.js";
+import { OrderCart } from "../js-models/orderCart.js";
 
-const order = new Order();
+const orderCart = new OrderCart();
 const orderListElement = document.getElementById('order-preview-list');
 
-const orderKeys = order.getOINames();
+const orderKeys = orderCart.getOINames();
 
 let pointTotal = 0;
 
-for (let i = 0; i < order.OIListLength(); i++) {
+for (let i = 0; i < orderCart.OIListLength(); i++) {
 
   // Creating div elements for each part of OI (Order Item) and assigning respective values
   let OI = document.createElement('div');
@@ -21,7 +21,7 @@ for (let i = 0; i < order.OIListLength(); i++) {
   OITitle.innerHTML = orderKeys[i];
   let OIPrice = document.createElement('div');
   OIPrice.classList.add('order-item-price');
-  OIPrice.innerHTML = order.getIOValueByName(orderKeys[i]) + " point(s)";
+  OIPrice.innerHTML = orderCart.getIOValueByName(orderKeys[i]) + " point(s)";
 
   // Assigning quantity and adding plus and minus buttons for cart editing
   let OIQuanCont = document.createElement('div');
@@ -31,7 +31,7 @@ for (let i = 0; i < order.OIListLength(); i++) {
   minusQuan.innerHTML = "-";
   let OIQuan = document.createElement('div');
   OIQuan.classList.add('order-item-quantity');
-  OIQuan.innerHTML = order.getIOValueByName(orderKeys[i]);
+  OIQuan.innerHTML = orderCart.getIOValueByName(orderKeys[i]);
   let plusQuan = document.createElement('button');
   plusQuan.classList.add('plus-quantity-button');
   plusQuan.innerHTML = "+";
@@ -48,7 +48,7 @@ for (let i = 0; i < order.OIListLength(); i++) {
 
   orderListElement.appendChild(OI);
 
-  pointTotal += order.getIOValueByName(orderKeys[i]);
+  pointTotal += orderCart.getIOValueByName(orderKeys[i]);
 
 }
 

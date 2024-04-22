@@ -1,6 +1,6 @@
-import { Order } from "./ds-order.js";
+import { OrderCart } from "../js-models/orderCart.js";
 
-const order = new Order();
+const orderCart = new OrderCart();
 
 const searchBarElement = document.getElementsByClassName('search-bar')[0];
 const foodOptions = document.getElementsByClassName('food-option');
@@ -33,9 +33,9 @@ for (let i = 0; i < foodOptions.length; i++) {
     foodOptions[i].addEventListener("click", () => {
 
         let foodName = String(foodOptionsArr[i].innerHTML);
-        order.addOI(foodName);
+        orderCart.addOI(foodName);
 
-        order.printOIList();
+        
 
     });
 
@@ -46,7 +46,7 @@ const nextButton = document.getElementById('next-button');
 // NEXT BUTTON
 nextButton.addEventListener('click', () => {
     // If no valid location is selected, alert
-    if (order.OIListLength() === 0) {
+    if (orderCart.OIListLength() === 0) {
         alert("Please select a food item")
         return;
     }

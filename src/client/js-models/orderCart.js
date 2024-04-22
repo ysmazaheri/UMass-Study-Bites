@@ -1,6 +1,6 @@
 const ls = window.localStorage;
 
-export class Order {
+export class OrderCart {
 
     #OIList;
 
