@@ -60,11 +60,6 @@ nextButton.addEventListener('click', () => {
 const backButton = document.getElementById('backBtn');
 
 backButton.addEventListener('click', () => {
-    // If no valid location is selected, alert
-    if (order.OIListLength() === 0) {
-        alert("Please select a food item")
-        return;
-    }
 
     // Navigate to location-select.html
     window.location.href = 'location-select.html';

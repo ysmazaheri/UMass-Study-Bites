@@ -9,7 +9,7 @@ export class Order {
         if (ls.getItem('OIList') !== null) this.#OIList = JSON.parse(ls.getItem('OIList'));
         else {
             this.#OIList = {};
-            ls.setItem('OIList', this.#OIList);
+            ls.setItem('OIList', JSON.stringify(this.#OIList));
         }
 
     }

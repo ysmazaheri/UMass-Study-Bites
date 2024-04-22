@@ -5,6 +5,8 @@ const orderListElement = document.getElementById('order-preview-list');
 
 const orderKeys = order.getOINames();
 
+let pointTotal = 0;
+
 for (let i = 0; i < order.OIListLength(); i++) {
 
   // Creating div elements for each part of OI (Order Item) and assigning respective values
@@ -19,7 +21,7 @@ for (let i = 0; i < order.OIListLength(); i++) {
   OITitle.innerHTML = orderKeys[i];
   let OIPrice = document.createElement('div');
   OIPrice.classList.add('order-item-price');
-  OIPrice.innerHTML = order.getIOValueByName(orderKeys[i]);
+  OIPrice.innerHTML = order.getIOValueByName(orderKeys[i]) + " point(s)";
 
   // Assigning quantity and adding plus and minus buttons for cart editing
   let OIQuanCont = document.createElement('div');
@@ -46,7 +48,12 @@ for (let i = 0; i < order.OIListLength(); i++) {
 
   orderListElement.appendChild(OI);
 
+  pointTotal += order.getIOValueByName(orderKeys[i]);
+
 }
+
+const totalPoints = document.getElementById('total');
+totalPoints.innerHTML = pointTotal + " point(s)";
 
 // Back Button
 
