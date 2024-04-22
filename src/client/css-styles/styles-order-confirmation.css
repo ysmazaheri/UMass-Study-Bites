@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+#page-container {
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: scroll;
+
+}
+
+#form-container {
+
+    /* border: 2px solid blue; */
+
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    margin: 0px 0px 0px 200px;
+    /* align-items: center; */
+    /* text-align: center; */
+
+}
+
+#checkout-title {
+
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 30px 0px 0px 0px;
+
+}
+
+#contact-information-form {
+
+    /* border: 2px solid black; */
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+#location-information-form {
+
+    /* border: 2px solid black; */
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 15px 0px 0px 0px;
+
+}
+
+.form-area {
+
+    /* border: 2px solid black; */
+
+    padding-top: 20px;
+    font-size: 1.3rem;
+
+}
+
+.input-title {
+
+    margin: 20px 0px 5px 0px;
+    font-size: 1rem;
+
+}
+
+input.input-field, textarea { 
+
+    background: white; 
+    margin: 3px 0px;
+    font-size: 1rem;
+    padding: 10px 30px 10px 5px;
+    border-radius: 0px;
+    border-style: solid;
+    border-color: white;
+    transition-duration: 0.2s;
+
+} 
+
+.input-field:hover {
+
+    transform: scale(1.03);
+
+}
+
+#continue-button {
+
+    width: 80px;
+    height: 30px;
+    font-size: 0.8rem;
+    background-color: #971B2F;
+    border-color: #971B2F;
+    border-style: solid;
+    border-radius: 8px;
+    color: white;
+    margin: 45px 0px 0px 450px;
+    transition-duration: 0.2s;
+
+}
+
+#continue-button:hover {
+
+    transform: scale(1.05);
+
+}
+
+#cart-container {
+
+    /* border: 2px solid red; */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+    margin: 0px 0px 0px 100px;
+
+}
+
+#order-preview-list {
+
+    /* border: 2px solid black; */
+
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    height: 300px;
+    width: 300px;
+    overflow-y: scroll;
+
+}
+
+.title-price-container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.order-item-title {
+
+    font-weight: bold;
+
+}
+
+.order-item-quantity-container {
+
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px 20px 10px;
+
+}
+
+.order-item-quantity {
+
+    margin: 0px 10px 0px 10px;
+
+}
+
+.minus-quantity-button, .plus-quantity-button {
+
+    font-size: 0.9rem;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    border-style: solid;
+    transition-duration: 0.2s;
+
+}
+
+.minus-quantity-button:hover, .plus-quantity-button:hover {
+
+    transform: scale(1.07);
+
+}
+
+#tip {
+
+    margin: 10px 0px 0px 0px;
+
+}
+
+#total {
+
+    margin: 10px 0px 0px 0px;
+
+}
