@@ -1,13 +1,10 @@
 export class OrderStorage {
-    static saveSelections(diningHall, dropOffLocation) {
+    static saveDiningHall(diningHall) {
         localStorage.setItem('selectedDiningHall', diningHall);
-        localStorage.setItem('selectedDropOffLocation', dropOffLocation);
     }
 
-    static getSelections() {
-        const diningHall = localStorage.getItem('selectedDiningHall');
-        const dropOffLocation = localStorage.getItem('selectedDropOffLocation');
-        return { diningHall, dropOffLocation };
+    static saveDropOff(dropOffLocation) {
+        localStorage.setItem('selectedDropOffLocation', dropOffLocation);
     }
 
     static getDiningHall() {
@@ -16,5 +13,11 @@ export class OrderStorage {
 
     static getDelivery() {
         return localStorage.getItem('selectedDropOffLocation');
+    }
+
+    static getSelections() {
+        const diningHall = localStorage.getItem('selectedDiningHall');
+        const dropOffLocation = localStorage.getItem('selectedDropOffLocation');
+        return { diningHall, dropOffLocation };
     }
 }
