@@ -1,7 +1,11 @@
+import { OrderStorage } from "../js-models/orderStorage";
+
 const pickupFilerElement = document.getElementById('pickup-search');
 const dropoffFilerElement = document.getElementById('delivery-search');
 
 let orderOptions = document.getElementsByClassName('order');
+
+const orderStorage = new OrderStorage();
 
 // Refine search every time the input value changes
 pickupFilerElement.addEventListener('input', filterOptions);
@@ -33,3 +37,6 @@ function filterOptions() {
         }
     });
 }
+
+// Adding orders to delivery page
+
