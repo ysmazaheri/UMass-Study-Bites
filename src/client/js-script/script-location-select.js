@@ -1,4 +1,3 @@
-
 // UI components
 const searchBarElement = document.getElementById('search-bar-text');
 let map;

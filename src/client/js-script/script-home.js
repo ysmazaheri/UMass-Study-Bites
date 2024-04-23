@@ -1,10 +1,10 @@
-
 // UI components
 const searchBarElement = document.getElementById('search-bar-text');
 let map;
 let markers = [];
 let infoWindow;
 let selectedLocations = [];
+
 
 // Data
 const diningHalls = [ {
