@@ -50,6 +50,18 @@ export class OrderCart {
 
     }
 
+    getOINames() {
+
+        return Object.keys(this.#OIList);
+
+    }
+
+    getIOValueByName(name) {
+
+        return this.#OIList[name];
+
+    }
+
     printOIList() {
 
         console.log(this.#OIList);
