@@ -1,4 +1,4 @@
-import { OrderCart } from "../js-models/orderCart.js";
+import { OrderCart } from "../js-models/OrderCart.js";
 
 const orderCart = new OrderCart();
 
