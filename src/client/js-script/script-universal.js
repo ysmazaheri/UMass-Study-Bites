@@ -1,7 +1,9 @@
 /* JS that applies to all pages */
 
 import { createMenu, loadAllMenus } from "../js-databases/db-menu.js";
+import { createOrder, loadAllOrders } from "../js-databases/db-order.js";
 import Menu from "../js-models/menu.js";
+import Order from "../js-models/order.js";
 
 let toggleButton = document.getElementById("sidebar-toggle");
 toggleButton.addEventListener("click", toggleSidebar);
@@ -43,8 +45,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+//Put all other code above this point because it's super long
 
-//Setup for placeholder data in PouchDB
+//Setup for placeholder data in PouchDB. 
 
 let frankBreakfastMenu = {
     "entrees": [{
@@ -219,12 +222,20 @@ let wooDinnerMenu = {
     }],
 };
 
-//addDataToPouch(); //Un-comment this line to populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
-    
-//let list = await loadAllMenus();
-//console.log(list);
+let order1 = new Order('Ian McGregor', 'Franklin Dining Commons', 'JQA Hall', {});
+order1.setTime('12:00 AM');
+//don't worry guys, I know your last names, they're just not needed for this
+let order2 = new Order('Said', 'Worcester Dining Commons', 'Wheeler Hall', {});
+order2.setTime('9:00 AM');
+let order3 = new Order('Vishrabh', 'Franklin Dining Commons', 'IDK Hall', {});
+order3.setTime('12:00 PM');
+let order4 = new Order('Drew', 'Berkshire Dining Commons', 'W.E.B. Du Bois Library', {});
+order4.setTime('12:00 AM');
 
-async function addDataToPouch(){
+//addMenusToPouch(); //Un-comment this line to populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
+//addOrdersToPouch(); //Un-comment this line to populate the local PouchDB with the above orders
+
+async function addMenusToPouch(){
     let frankBreak = new Menu("Franklin Dining Commons", "Breakfast", frankBreakfastMenu);
     let res = await createMenu(frankBreak);
     //console.log(res);
@@ -240,4 +251,12 @@ async function addDataToPouch(){
     let wooDinner = new Menu("Worcester Dining Commons", "Dinner", wooDinnerMenu);
     await createMenu(wooDinner);
 
+}
+
+async function addOrdersToPouch(){
+    await createOrder(order1);
+    await createOrder(order2);
+    await createOrder(order3);
+    await createOrder(order4);
+    console.log(loadAllOrders());
 }
