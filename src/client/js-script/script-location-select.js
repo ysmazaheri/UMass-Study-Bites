@@ -1,5 +1,5 @@
 import { mapKey } from '../secrets.js'
-
+import {} from "../js-models/OrderStorage"
 // UI components
 const searchBarElement = document.getElementById('search-bar-text');
 let map;
@@ -298,15 +298,15 @@ function initializeOptionsInteractions() {
     // Clicking option filters search bar, options, and map
     locationOptionsArr.forEach(option => {
         option.addEventListener("click", () => {
-            // If the item is selected, unselect
-            if (option.style.color === "white") {
-              searchBarElement.value = "";
-              infoWindow.close()
+            // If the item isn't selected, select
+            if (option.style.color === "black") {
+              searchBarElement.value = option.innerHTML;
               filterOptions();
               filterMap();
           } else {
-              // If the item isn't selected, select
-              searchBarElement.value = option.innerHTML;
+              // If the item is selected, unselect
+              searchBarElement.value = "";
+              infoWindow.close()
               filterOptions();
               filterMap();
           }
@@ -321,6 +321,11 @@ document.getElementById('nextBtn').addEventListener('click', function() {
       alert("Please Select a Valid Drop-Off Location")
       return;
     }
+
+    /* Save for menu buttons */
+    const firstLocation = selectedLocations[0];
+    OrderStorage.savePickUp(firstLocation);
+
     // Navigate to order.html
     window.location.href = 'order.html';
   });
@@ -363,48 +368,26 @@ function filterOptions() {
         let locationName = String(locationOption.innerHTML).toLowerCase();
         // Remove/show items by toggling 'hiding'
         if (locationName.includes(query)) {
-          // Show if matches query
-          locationOption.style.display = 'list-item';
-          
-          //add listener for hovering
-          locationOption.addEventListener('mouseover', () => {
-              locationOption.style.background = "gray";
-          });
-
-          // If it is an exact match, select the option
-          if (locationName === query) {
+            // Show if matches query
+            locationOption.style.display = 'list-item';
+            // If it is an exact match, select the option
+            if (locationName === query) {
               locationOption.style.background = "black";
               locationOption.style.color = "white";
               selectedLocations.push(locationName);
-
-              locationOption.addEventListener('mouseout', () => {
-                  locationOption.style.background = "black";
-                  locationOption.style.color = "white";
-              });
-          } 
-          // Otherwise, unselect it
-          else {
+            } 
+            // Otherwise, unselect it
+            else {
               locationOption.style.background = "white";
               locationOption.style.color = "black";
-
-              locationOption.addEventListener('mouseout', () => {
-                  locationOption.style.background = "white";
-                  locationOption.style.color = "black";
-              });
-              
               selectedLocations = selectedLocations.filter(e => e !== locationName);
-          }
-      } else {
-          // Hide if doesn't match the query
-          locationOption.style.display = 'none';
-          // Unselect it
-          locationOption.style.background = "white";
-          locationOption.style.color = "black";
-
-          locationOption.addEventListener('mouseout', () => {
-              locationOption.style.background = "white";
-              locationOption.style.color = "black";
-          });
+            }
+        } else {
+            // Hide if doesn't match the query
+            locationOption.style.display = 'none';
+            // Unselect it
+            locationOption.style.background = "white";
+            locationOption.style.color = "black";
             selectedLocations = selectedLocations.filter(e => e !== locationName);
         }
     });
