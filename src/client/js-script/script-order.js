@@ -78,6 +78,8 @@ backButton.addEventListener('click', () => {
     window.location.href = 'location-select.html';
 });
 
+
+// Loading menus
 loadMenus();
 async function loadMenus(){
     let menus = await loadAllMenus();
@@ -103,7 +105,6 @@ async function loadMenus(){
             foodOptionList.appendChild(listItem);
         });
         container.appendChild(foodOptionList);
-
 
         menuElement.appendChild(container);
 
