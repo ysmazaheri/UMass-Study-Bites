@@ -235,6 +235,19 @@ order4.setTime('12:00 AM');
 //addMenusToPouch(); //Un-comment this line to populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
 //addOrdersToPouch(); //Un-comment this line to populate the local PouchDB with the above orders
 
+//fills pouch with local menus and orders if local instance is empty
+fillPouchIfEmpty();
+async function fillPouchIfEmpty(){
+    let numMenus = (await loadAllMenus()).length;
+    let numOrders = (await loadAllOrders()).length;
+    if(numMenus === 0){
+        addMenusToPouch();
+    }
+    if(numOrders === 0){
+        addOrdersToPouch();
+    }
+}
+
 async function addMenusToPouch(){
     let frankBreak = new Menu("Franklin Dining Commons", "Breakfast", frankBreakfastMenu);
     let res = await createMenu(frankBreak);
