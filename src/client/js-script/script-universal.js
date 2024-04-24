@@ -222,6 +222,179 @@ let wooDinnerMenu = {
     }],
 };
 
+let hampBreakfastMenu = {
+    "Entrees": [{
+        name: "Apple Fritters",
+        tags: ["Vegetarian","Sustainable","A carbon rating"]
+    },
+    {
+        name: "Canadian Bacon",
+        tags: ["E carbon rating"]
+    },
+    {
+        name: "Hot Oatmeal",
+        tags: ["Vegetarian","Sustainable","A carbon rating"]
+    }],
+    "Pastries": [{
+        name: "Muffins",
+        tags: ["Vegetarian","Sustainable","B carbon rating"]
+    },
+    {
+        name: "Mini Cheese Danish",
+        tags: ["E carbon rating"]
+    }],
+    "Gluten Free": [{
+        name: "Gluten Free Waffles",
+        tags: ["Vegetarian","Sustainable","A carbon rating"]
+    },
+    {
+        name: "Scrambled Eggs",
+        tags: ["E carbon rating"]
+    },
+    {
+        name: "Sour Cream & Green Onion Potato Casserole",
+        tags: ["Vegetarian","Sustainable","A carbon rating"]
+    }],
+};
+let hampLunchMenu = {
+    "Entrees": [{
+        name: "Hampshire Honey Glazed Chicken Leg",
+        tags: ["Sustainable","B carbon rating"]
+    }],
+    "Soups": [{
+        name: "Chicken Noodle Soup",
+        tags: ["Sustainable","B carbon rating"]
+    },
+    {
+        name: "Tomato Bisque",
+        tags: ["Vegetarian","Sustainable","B carbon rating"]
+    }],
+    "Grill": [{
+        name: "Halal Burger Patty",
+        tags: ["Halal","Sustainable","A carbon rating"]
+    },
+    {
+        name: "French Fries",
+        tags: ["C carbon rating"]
+    },
+    {
+        name: "Grilled Chicken Breast",
+        tags: ["Sustainable","A carbon rating"]
+    }],
+};
+
+let hampDinnerMenu = {
+    "Entrees": [{
+        name: "Chicken Cattiatore",
+        tags: ["Sustainable","B carbon rating"]
+    },
+    {
+        name: "Norwegian Salmon Schwarma",
+        tags: []
+    }],
+    "Soups": [{
+        name: "Chicken Noodle Soup",
+        tags: ["Sustainable","B carbon rating"]
+    },
+    {
+        name: "Tomato Bisque",
+        tags: ["Vegetarian","Sustainable","B carbon rating"]
+    }],
+    "Grill": [{
+        name: "Halal Burger Patty",
+        tags: ["Halal","Sustainable","A carbon rating"]
+    },
+    {
+        name: "French Fries",
+        tags: ["C carbon rating"]
+    },
+    {
+        name: "Grilled Chicken Breast",
+        tags: ["Sustainable","A carbon rating"]
+    }],
+};
+
+let berkBreakfastMenu = {
+    "Entrees": [{
+        name: "French Toast Sticks",
+        tags: ["Vegetarian","Sustainable","A carbon rating"]
+    },
+    {
+        name: "Canadian Bacon",
+        tags: ["E carbon rating"]
+    },
+    {
+        name: "Hot Oatmeal",
+        tags: ["Vegetarian","Sustainable","A carbon rating"]
+    }],
+    "Pastries": [
+    {
+        name: "Mini Cheese Danish",
+        tags: ["E carbon rating"]
+    }],
+    "Gluten Free": [{
+        name: "Gluten Free Waffles",
+        tags: ["Vegetarian","Sustainable","A carbon rating"]
+    },
+    {
+        name: "Scrambled Eggs",
+        tags: ["E carbon rating"]
+    }],
+};
+let berkLunchMenu = {
+    "Grill": [{
+        name: "Halal Burger Patty",
+        tags: ["Halal","Sustainable","A carbon rating"]
+    },
+    {
+        name: "French Fries",
+        tags: ["C carbon rating"]
+    },
+    {
+        name: "Grilled Chicken Breast",
+        tags: ["Sustainable","A carbon rating"]
+    }],
+    "Street Food": [{
+        name: "Korean BBQ Chicken",
+        tags: ["Sustainable","B carbon rating"]
+    }],
+    "Soups": [{
+        name: "Chicken Noodle Soup",
+        tags: ["Sustainable","B carbon rating"]
+    },
+    {
+        name: "Tomato Bisque",
+        tags: ["Vegetarian","Sustainable","B carbon rating"]
+    }],
+};
+
+let berkDinnerMenu = {
+    "Grill": [{
+        name: "Berkshire Burger Patty",
+        tags: ["Halal","Sustainable","A carbon rating"]
+    },
+    {
+        name: "French Fries",
+        tags: ["C carbon rating"]
+    },
+    {
+        name: "Grilled Chicken Breast",
+        tags: ["Sustainable","A carbon rating"]
+    }],
+    "Sushi": [{
+        name: "Teriyaki Chicken Roll",
+        tags: ["Sustainable","B carbon rating"]
+    }],
+    "Soups": [{
+        name: "Chicken Noodle Soup",
+        tags: ["Sustainable","B carbon rating"]
+    },
+    {
+        name: "Tomato Bisque",
+        tags: ["Vegetarian","Sustainable","B carbon rating"]
+    }],
+};
+
 let order1 = new Order('Ian McGregor', 'Franklin Dining Commons', 'JQA Hall', {});
 order1.setTime('12:00 AM');
 //don't worry guys, I know your last names, they're just not needed for this
@@ -250,8 +423,7 @@ async function fillPouchIfEmpty(){
 
 async function addMenusToPouch(){
     let frankBreak = new Menu("Franklin Dining Commons", "Breakfast", frankBreakfastMenu);
-    let res = await createMenu(frankBreak);
-    //console.log(res);
+    await createMenu(frankBreak);
     let frankLunch = new Menu("Franklin Dining Commons", "Lunch", frankLunchMenu);
     await createMenu(frankLunch);
     let frankDinner = new Menu("Franklin Dining Commons", "Dinner", frankDinnerMenu);
@@ -263,6 +435,20 @@ async function addMenusToPouch(){
     await createMenu(wooLunch);
     let wooDinner = new Menu("Worcester Dining Commons", "Dinner", wooDinnerMenu);
     await createMenu(wooDinner);
+
+    let hampBreak = new Menu("Hampshire Dining Commons", "Breakfast", hampBreakfastMenu);
+    await createMenu(hampBreak);
+    let hampLunch = new Menu("Hampshire Dining Commons", "Lunch", hampLunchMenu);
+    await createMenu(hampLunch);
+    let hampDinner = new Menu("Hampshire Dining Commons", "Dinner", hampDinnerMenu);
+    await createMenu(hampDinner);
+
+    let berkBreak = new Menu("Berkshire Dining Commons", "Breakfast", berkBreakfastMenu);
+    await createMenu(berkBreak);
+    let berkLunch = new Menu("Berkshire Dining Commons", "Lunch", berkLunchMenu);
+    await createMenu(berkLunch);
+    let berkDinner = new Menu("Berkshire Dining Commons", "Dinner", berkDinnerMenu);
+    await createMenu(berkDinner);
 
 }
 
