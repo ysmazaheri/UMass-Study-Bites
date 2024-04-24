@@ -38,8 +38,10 @@ function filterOptions() {
 }
 
 loadOrders();
+//loads all existing orders from PouchDB and populates the list on screen
 async function loadOrders(){
     let orders = await loadAllOrders();
+    //adding the header content into the div
     orderListElement.innerHTML = `
                             <div id="order-list-header">
                                 <div id="name-header" class="order-header">
@@ -55,6 +57,9 @@ async function loadOrders(){
                                     Time Placed
                                 </div>
                             </div>`;
+
+    //orders is a list of objects, so we can sort it
+    //TODO: not needed for this milestone, but should default to sorting by most recent
     orders.forEach(order => {
         let listItem = document.createElement('li');
         listItem.classList.add('order');

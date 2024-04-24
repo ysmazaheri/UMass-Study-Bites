@@ -33,6 +33,9 @@ function filterOptions() {
 }
 
 loadMenus();
+//loads all menus, then chooses the first breakfast menu from Franklin to populate the menus page
+//This is purely placeholder functionality
+//In live version (milestone 3/4), we will need to keep only 1 menu per meal per hall per day, and pull the relevant menu
 async function loadMenus(){
     let menus = await loadAllMenus();
     menus = menus.filter(x => x.diningHall === "Franklin Dining Commons");
