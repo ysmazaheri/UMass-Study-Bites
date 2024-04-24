@@ -1,10 +1,14 @@
 import { OrderCart } from "../js-models/OrderCart.js";
+import { loadAllMenus } from "../js-databases/db-menu.js";
 
 const orderCart = new OrderCart();
 
 const searchBarElement = document.getElementsByClassName('search-bar')[0];
 const foodOptions = document.getElementsByClassName('food-option');
 const foodOptionsArr = [].slice.call(foodOptions);
+//let diningHallTitles = document.getElementsByClassName('dining-hall-title');
+let menuElement = document.getElementById('menu');
+
 
 function filterOptions() {
 
@@ -73,3 +77,35 @@ backButton.addEventListener('click', () => {
     // Navigate to location-select.html
     window.location.href = 'location-select.html';
 });
+
+loadMenus();
+async function loadMenus(){
+    let menus = await loadAllMenus();
+    menus = menus.filter(x => x.diningHall === "Franklin Dining Commons");
+    let breakfastMenu = menus.filter(x => x.meal === "Breakfast")[0];
+    let food = breakfastMenu.food;
+    menuElement.innerHTML = '';
+    let categories = Object.keys(food);
+    categories.forEach(category => {
+        let container = document.createElement('div');
+        container.classList.add('food-type-container'); 
+        let foodTypeHeader = document.createElement('div');
+        foodTypeHeader.classList.add('food-type-title');
+        foodTypeHeader.textContent = category;
+        container.appendChild(foodTypeHeader);
+
+        let foodOptionList = document.createElement('div');
+        foodOptionList.classList.add('food-option-list');
+        food[category].forEach(foodType => {
+            let listItem = document.createElement('div');
+            listItem.classList.add('food-option');
+            listItem.textContent = foodType.name;
+            foodOptionList.appendChild(listItem);
+        });
+        container.appendChild(foodOptionList);
+
+
+        menuElement.appendChild(container);
+
+    });
+}

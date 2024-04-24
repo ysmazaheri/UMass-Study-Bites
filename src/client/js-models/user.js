@@ -1,9 +1,9 @@
-export class User {
+export default class User {
     constructor(name,password){
         this.name = name;
         this.password = password;
         this.tokenCount = 0;
-        this.id = undefined;
+        this._id = undefined;
         this.residence = "";
         this.favoriteLocation = "";
 

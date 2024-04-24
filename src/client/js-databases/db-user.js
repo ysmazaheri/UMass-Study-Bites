@@ -1,8 +1,4 @@
-import PouchDB from "pouchdb";
-import User from "../js-models/user.js";
-
-/*instantiating our PouchDB and filling with dummy data*/
-let userDB = new PouchDB("users");
+const userDB = new PouchDB("users");
 
 /**
  * Asynchronously adds a new user to the database, generating a random id in the process

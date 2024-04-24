@@ -1,7 +1,4 @@
-import PouchDB from "pouchdb";
-import Order from "../js-models/order.js";
-/*instantiating our PouchDB and filling with dummy data*/
-let orderDB = new PouchDB("orders");
+const orderDB = new PouchDB("orders");
 
 /**
  * Asynchronously adds a new user to the database, generating a random id in the process
@@ -67,6 +64,6 @@ export async function removeOrder(orderId) {
  * database.
  */
 export async function loadAllOrders() {
-    const result = await db.allDocs({ include_docs: true });
+    const result = await orderDB.allDocs({ include_docs: true });
     return result.rows.map((row) => row.doc);
-  }
+}

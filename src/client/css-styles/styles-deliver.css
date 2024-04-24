@@ -62,7 +62,7 @@
 
 }
 
-.order-list {
+#order-list {
     width: auto; /* matches with inverse of search-bar-plus-map */
     height: auto;
     max-height: 450px;
