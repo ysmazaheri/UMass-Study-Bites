@@ -4,13 +4,15 @@ import { loadAllMenus } from "../js-databases/db-menu.js";
 const orderCart = new OrderCart();
 
 const searchBarElement = document.getElementsByClassName('search-bar')[0];
-const foodOptions = document.getElementsByClassName('food-option');
-const foodOptionsArr = [].slice.call(foodOptions);
-//let diningHallTitles = document.getElementsByClassName('dining-hall-title');
-let menuElement = document.getElementById('menu');
-
+const backButton = document.getElementById('backBtn');
+const menuElement = document.getElementById('menu');
+const nextButton = document.getElementById('next-button');
+const showOI = document.getElementsByClassName('order-item-added')[0];
 
 function filterOptions() {
+
+    let foodOptions = document.getElementsByClassName('food-option');
+    let foodOptionsArr = [].slice.call(foodOptions);
 
     // Get the search query
     let query = String(searchBarElement.value).toLowerCase();
@@ -31,31 +33,6 @@ function filterOptions() {
 
 searchBarElement.addEventListener('input', filterOptions);
 
-const showOI = document.getElementsByClassName('order-item-added')[0];
-
-// Checking which food items were selected
-for (let i = 0; i < foodOptions.length; i++) {
-
-    foodOptions[i].addEventListener("click", () => {
-
-        let foodName = String(foodOptionsArr[i].innerHTML);
-        orderCart.addOI(foodName);
-
-        showOI.classList.toggle('order-item-added-tag');
-        showOI.innerHTML = "1 order of " + foodName + " added";
-        setTimeout(() => {
-
-            showOI.classList.toggle('order-item-added-tag');
-            console.log("hello");
-
-        }, 1500)
-
-    });
-
-}
-
-const nextButton = document.getElementById('next-button');
-
 // NEXT BUTTON
 nextButton.addEventListener('click', () => {
     // If no valid location is selected, alert
@@ -69,9 +46,6 @@ nextButton.addEventListener('click', () => {
 });
 
 // Back Button
-
-const backButton = document.getElementById('backBtn');
-
 backButton.addEventListener('click', () => {
 
     // Navigate to location-select.html
@@ -102,6 +76,22 @@ async function loadMenus(){
             let listItem = document.createElement('div');
             listItem.classList.add('food-option');
             listItem.textContent = foodType.name;
+
+            listItem.addEventListener("click", () => {
+
+                let foodName = foodType.name;
+                orderCart.addOI(foodName);
+        
+                showOI.classList.toggle('order-item-added-tag');
+                showOI.innerHTML = "1 order of " + foodName + " added";
+                setTimeout(() => {
+        
+                    showOI.classList.toggle('order-item-added-tag');
+        
+                }, 1500)
+        
+            });
+
             foodOptionList.appendChild(listItem);
         });
         container.appendChild(foodOptionList);
