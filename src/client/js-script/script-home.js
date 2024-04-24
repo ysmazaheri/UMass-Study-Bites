@@ -109,15 +109,16 @@ function initializeOptionsInteractions() {
     // Clicking option filters search bar, options, and map
     locationOptionsArr.forEach(option => {
         option.addEventListener("click", () => {
-            // If the item isn't selected, select
-            if (option.style.color === "black") {
-                searchBarElement.value = option.innerHTML;
+            // If the item is selected, unselect
+            if (option.style.background === "black") {
+                searchBarElement.value = "";
+                infoWindow.close()
                 filterOptions();
                 filterMap();
             } else {
-                // If the item is selected, unselect
-                searchBarElement.value = "";
-                infoWindow.close()
+                // If the item isn't selected, select
+                searchBarElement.value = option.innerHTML;
+                console.log(option.innerHTML);
                 filterOptions();
                 filterMap();
             }
