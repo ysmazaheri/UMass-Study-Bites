@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
 //Setup for placeholder data in PouchDB. 
 
 let frankBreakfastMenu = {
-    "entrees": [{
+    "Entrees": [{
         name: "Apple Fritters",
         tags: ["Vegetarian","Sustainable","A carbon rating"]
     },
@@ -62,7 +62,7 @@ let frankBreakfastMenu = {
         name: "Hot Oatmeal",
         tags: ["Vegetarian","Sustainable","A carbon rating"]
     }],
-    "pastries": [{
+    "Pastries": [{
         name: "Muffins",
         tags: ["Vegetarian","Sustainable","B carbon rating"]
     },
@@ -84,11 +84,11 @@ let frankBreakfastMenu = {
     }],
 };
 let frankLunchMenu = {
-    "entrees": [{
+    "Entrees": [{
         name: "Siracha Honey Glazed Chicken Leg",
         tags: ["Sustainable","B carbon rating"]
     }],
-    "soups": [{
+    "Soups": [{
         name: "Chicken Noodle Soup",
         tags: ["Sustainable","B carbon rating"]
     },
@@ -96,7 +96,7 @@ let frankLunchMenu = {
         name: "Tomato Bisque",
         tags: ["Vegetarian","Sustainable","B carbon rating"]
     }],
-    "grill": [{
+    "Grill": [{
         name: "Halal Burger Patty",
         tags: ["Halal","Sustainable","A carbon rating"]
     },
@@ -111,7 +111,7 @@ let frankLunchMenu = {
 };
 
 let frankDinnerMenu = {
-    "entrees": [{
+    "Entrees": [{
         name: "Chicken Cattiatore",
         tags: ["Sustainable","B carbon rating"]
     },
@@ -119,7 +119,7 @@ let frankDinnerMenu = {
         name: "Norwegian Salmon Schwarma",
         tags: []
     }],
-    "soups": [{
+    "Soups": [{
         name: "Chicken Noodle Soup",
         tags: ["Sustainable","B carbon rating"]
     },
@@ -127,7 +127,7 @@ let frankDinnerMenu = {
         name: "Tomato Bisque",
         tags: ["Vegetarian","Sustainable","B carbon rating"]
     }],
-    "grill": [{
+    "Grill": [{
         name: "Halal Burger Patty",
         tags: ["Halal","Sustainable","A carbon rating"]
     },
@@ -227,7 +227,7 @@ order1.setTime('12:00 AM');
 //don't worry guys, I know your last names, they're just not needed for this
 let order2 = new Order('Said', 'Worcester Dining Commons', 'Wheeler Hall', {});
 order2.setTime('9:00 AM');
-let order3 = new Order('Vishrabh', 'Franklin Dining Commons', 'IDK Hall', {});
+let order3 = new Order('Vrishabh', 'Franklin Dining Commons', 'IDK Hall', {});
 order3.setTime('12:00 PM');
 let order4 = new Order('Drew', 'Berkshire Dining Commons', 'W.E.B. Du Bois Library', {});
 order4.setTime('12:00 AM');
