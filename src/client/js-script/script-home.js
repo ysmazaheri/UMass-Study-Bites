@@ -110,7 +110,7 @@ function initializeOptionsInteractions() {
     locationOptionsArr.forEach(option => {
         option.addEventListener("click", () => {
             // If the item is selected, unselect
-            if (option.style.background === "black") {
+            if (option.style.color === "white") {
                 searchBarElement.value = "";
                 infoWindow.close()
                 filterOptions();
@@ -118,7 +118,6 @@ function initializeOptionsInteractions() {
             } else {
                 // If the item isn't selected, select
                 searchBarElement.value = option.innerHTML;
-                console.log(option.innerHTML);
                 filterOptions();
                 filterMap();
             }
@@ -171,16 +170,33 @@ function filterOptions() {
         if (locationName.includes(query)) {
             // Show if matches query
             locationOption.style.display = 'list-item';
+            
+            //add listener for hovering
+            locationOption.addEventListener('mouseover', () => {
+                locationOption.style.background = "gray";
+            });
+
             // If it is an exact match, select the option
             if (locationName === query) {
                 locationOption.style.background = "black";
                 locationOption.style.color = "white";
                 selectedLocations.push(locationName);
+
+                locationOption.addEventListener('mouseout', () => {
+                    locationOption.style.background = "black";
+                    locationOption.style.color = "white";
+                });
             } 
             // Otherwise, unselect it
             else {
                 locationOption.style.background = "white";
                 locationOption.style.color = "black";
+
+                locationOption.addEventListener('mouseout', () => {
+                    locationOption.style.background = "white";
+                    locationOption.style.color = "black";
+                });
+                
                 selectedLocations = selectedLocations.filter(e => e !== locationName);
             }
         } else {
@@ -189,6 +205,12 @@ function filterOptions() {
             // Unselect it
             locationOption.style.background = "white";
             locationOption.style.color = "black";
+
+            locationOption.addEventListener('mouseout', () => {
+                locationOption.style.background = "white";
+                locationOption.style.color = "black";
+            });
+
             selectedLocations = selectedLocations.filter(e => e !== locationName);
         }
     });

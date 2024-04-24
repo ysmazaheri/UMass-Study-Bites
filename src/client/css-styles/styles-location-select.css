@@ -76,6 +76,6 @@
 
 }
 .location:hover {
-    background-color: black;
-    color: white;
+    background-color: gray;
+    color: black;
 }
