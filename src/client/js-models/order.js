@@ -1,6 +1,6 @@
 const ls = window.localStorage;
 
-export class Order {
+export default class Order {
 
     constructor(orderer,diningHall,residence,food){ //food can be JSON or string, idk
 
@@ -11,6 +11,7 @@ export class Order {
         this.deliverer = "";
         this.isCompleted = false;
         this.time = undefined;
+        this._id = undefined;
         
     }
 

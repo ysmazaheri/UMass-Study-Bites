@@ -1,20 +1,16 @@
-import PouchDB from "pouchdb";
-import Menu from "../js-models/menu.js";
-let menuDB = new PouchDB("menu");
+const menuDB = new PouchDB("menu");
 
 
 /**
  * Asynchronously adds a new menu to the database, generating a random id in the process
  * @async
  * @param {object} menu - JSON object representing a menu
- * @param {string} date - Date of relevance of the menu (format to be decided)
- * @param {string} meal - Type of meal the menu represents (breakfast, lunch, dinner, late-night)
  * @returns {Promise<void>} - A promise that resolves when the menu has been saved.
  * @throws {Error} - Throws an error if the operation fails, e.g., due to
  * database connectivity issues.
  */
-export async function createMenu(menu,date,meals) {
-    await menuDB.post({ menu,date,meals });
+export async function createMenu(menu) {
+    await menuDB.post(menu);
 }
 
 /**
@@ -57,4 +53,9 @@ export async function loadMenu(menuId) {
  */
 export async function removeMenu(menuId) {
     menuDB.remove(menuId);
+}
+
+export async function loadAllMenus() {
+    const result = await menuDB.allDocs({ include_docs: true });
+    return result.rows.map((row) => row.doc);
 }
