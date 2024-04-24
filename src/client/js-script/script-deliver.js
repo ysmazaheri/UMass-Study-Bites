@@ -1,5 +1,5 @@
 import { loadAllOrders } from "../js-databases/db-order.js";
-import { OrderStorage } from "../js-models/orderStorage";
+import { OrderStorage } from "../js-models/OrderStorage.js";
 
 const pickupFilerElement = document.getElementById('pickup-search');
 const dropoffFilerElement = document.getElementById('delivery-search');
