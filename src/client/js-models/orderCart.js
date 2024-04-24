@@ -1,4 +1,5 @@
 const ls = window.localStorage;
+const orderCartDB = new PouchDB("orderCart");
 
 export class OrderCart {
 
