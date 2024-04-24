@@ -4,6 +4,7 @@ import { OrderStorage } from "../js-models/OrderStorage.js";
 const searchBarElement = document.getElementById('search-bar');
 let foodOptions = document.getElementsByClassName('food-option');
 let diningHallTitles = document.getElementsByClassName('dining-hall-title');
+let mealTitle = document.getElementsByClassName('meal-title')[0];
 let menuElement = document.getElementById('menu');
 
 // Refine search every time the input value changes
@@ -33,16 +34,29 @@ function filterOptions() {
     });
 }
 
-loadMenus();
-//loads all menus, then chooses the first breakfast menu from Franklin to populate the menus page
+loadMenu("Breakfast", "Franklin Dining Commons");
+let currLoc = "";
+let currMeal = "";
+//loads all menus, then chooses the first matching breakfast menu from PouchDB to populate the menus page
 //This is purely placeholder functionality
 //In live version (milestone 3/4), we will need to keep only 1 menu per meal per hall per day, and pull the relevant menu
-async function loadMenus(){
+async function loadMenu(meal, diningHall){
+    searchBarElement.value = "";
     let menus = await loadAllMenus();
-    menus = menus.filter(x => x.diningHall === "Franklin Dining Commons");
-    let breakfastMenu = menus.filter(x => x.meal === "Breakfast")[0];
-    let food = breakfastMenu.food;
-    diningHallTitles[0].textContent = breakfastMenu.diningHall;
+    menus = menus.filter(x => x.diningHall === diningHall);
+    menus = menus.filter(x => x.meal === meal);
+    currLoc = diningHall;
+    currMeal = meal;
+    if(menus.length === 0){
+        diningHallTitles[0].textContent = diningHall;
+        mealTitle.textContent = meal;
+        menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time.</p>`;
+        return;
+    }
+    let currMenu = menus[0];
+    let food = currMenu.food;
+    diningHallTitles[0].textContent = currMenu.diningHall;
+    mealTitle.textContent = currMenu.meal;
     menuElement.innerHTML = '';
     let categories = Object.keys(food);
     categories.forEach(category => {
@@ -76,23 +90,39 @@ async function loadMenus(){
 
 
 
-let diningHallLoc = String(OrderStorage.getPickUp());
+let diningHallLoc = "Franklin Dining Commons";
 
 /* Event Listeners*/
-document.getElementById("breakfast-button").addEventListener("click", function() {
-    displayMenu("Breakfast", diningHallLoc);
+document.getElementById("breakfast").addEventListener("click", async function() {
+    await loadMenu("Breakfast", currLoc);
 });
 
-document.getElementById("lunch-button").addEventListener("click", function() {
-    displayMenu("Lunch", diningHallLoc);
+document.getElementById("lunch").addEventListener("click", async function() {
+    await loadMenu("Lunch", currLoc);
 });
 
-document.getElementById("dinner-button").addEventListener("click", function() {
-    displayMenu("Dinner", diningHallLoc);
+document.getElementById("dinner").addEventListener("click", async function() {
+    await loadMenu("Dinner", currLoc);
 });
 
-document.getElementById("late-night-button").addEventListener("click", function() {
-    displayMenu("Latenight", diningHallLoc);
+document.getElementById("late-night").addEventListener("click", async function() {
+    await loadMenu("Latenight", currLoc);
+});
+
+document.getElementById("franklin").addEventListener("click", async function() {
+    await loadMenu(currMeal, "Franklin Dining Commons");
+});
+
+document.getElementById("worcester").addEventListener("click", async function() {
+    await loadMenu(currMeal, "Worcester Dining Commons");
+});
+
+document.getElementById("berkshire").addEventListener("click", async function() {
+    await loadMenu(currMeal, "Berkshire Dining Commons");
+});
+
+document.getElementById("hampshire").addEventListener("click", async function() {
+    await loadMenu(currMeal, "Hampshire Dining Commons");
 });
 
 /*Meal Button Helper - Get Meal Menu*/
@@ -101,7 +131,7 @@ async function displayMenu(mealType, diningHallLocation) {
     menus = menus.filter(x => x.diningHall === diningHallLocation);
 
     let menu = getMenuByMealType(menus, mealType);
-
+    console.log(mealType + " " + diningHallLocation)
     let food = menu.food;
     diningHallTitles[0].textContent = menu.diningHall;
     menuElement.innerHTML = '';
