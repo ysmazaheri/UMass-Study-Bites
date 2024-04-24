@@ -219,7 +219,7 @@ let wooDinnerMenu = {
     }],
 };
 
-//addDataToPouch();
+//addDataToPouch(); //Un-comment this line to populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
     
 //let list = await loadAllMenus();
 //console.log(list);
