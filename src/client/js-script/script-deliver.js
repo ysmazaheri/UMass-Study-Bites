@@ -1,10 +1,13 @@
 import { loadAllOrders } from "../js-databases/db-order.js";
+import { OrderStorage } from "../js-models/orderStorage";
 
 const pickupFilerElement = document.getElementById('pickup-search');
 const dropoffFilerElement = document.getElementById('delivery-search');
 const orderListElement = document.getElementById('order-list');
 
 let orderOptions = document.getElementsByClassName('order');
+
+const orderStorage = new OrderStorage();
 
 // Refine search every time the input value changes
 pickupFilerElement.addEventListener('input', filterOptions);
@@ -88,3 +91,7 @@ async function loadOrders(){
 
     });
 }
+
+// Adding orders to delivery page
+
+

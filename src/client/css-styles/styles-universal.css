@@ -127,3 +127,24 @@ a:active {
 .test {
     border: 1px solid black;
 }
+
+/* Token */
+
+.token-container {
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    background-image: radial-gradient( circle farthest-corner at 17.1% 22.8%,  rgba(226,24,24,1) 0%, rgba(160,6,6,1) 90% );
+}
+
+.token-balance {
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 5px; 
+}

@@ -1,14 +1,14 @@
 export class OrderStorage {
-    static saveDiningHall(diningHall) {
-        localStorage.setItem('selectedDiningHall', diningHall);
+    static savePickUp(pickUp) {
+        localStorage.setItem('selectedPickUpLocation', pickUp);
     }
 
     static saveDropOff(dropOffLocation) {
         localStorage.setItem('selectedDropOffLocation', dropOffLocation);
     }
 
-    static getDiningHall() {
-        return localStorage.getItem('selectedDiningHall');
+    static getPickUp() {
+        return localStorage.getItem('selectedPickUpLocation');
     }
 
     static getDelivery() {
@@ -16,8 +16,8 @@ export class OrderStorage {
     }
 
     static getSelections() {
-        const diningHall = localStorage.getItem('selectedDiningHall');
+        const pickUpLocation = localStorage.getItem('selectedPickUpLocation');
         const dropOffLocation = localStorage.getItem('selectedDropOffLocation');
-        return { diningHall, dropOffLocation };
+        return { pickUpLocation, dropOffLocation };
     }
 }
