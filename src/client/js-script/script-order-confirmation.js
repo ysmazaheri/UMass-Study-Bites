@@ -87,3 +87,13 @@ backButton.addEventListener('click', () => {
   // Navigate to location-select.html
   window.location.href = 'order.html';
 });
+
+// Continue button 
+
+const continueButton = document.getElementById('continue-button');
+
+continueButton.addEventListener('click', () => {
+
+  window.location.href = 'thank-you.html';
+
+});
