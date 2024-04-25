@@ -5,8 +5,11 @@ import { createOrder, loadAllOrders } from "../js-databases/db-order.js";
 import Menu from "../js-models/menu.js";
 import Order from "../js-models/order.js";
 
-//addMenusToPouch(); //Un-comment this line to populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
-//addOrdersToPouch(); //Un-comment this line to populate the local PouchDB with the above orders
+//await addMenusToPouch(); //Un-comment this line to force populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
+//await addOrdersToPouch(); //Un-comment this line to force populate the local PouchDB with the above orders
+
+//fills pouch with local menus and orders if local instance is empty
+await fillPouchIfEmpty();
 
 let toggleButton = document.getElementById("sidebar-toggle");
 toggleButton.addEventListener("click", toggleSidebar);
@@ -408,8 +411,6 @@ order3.setTime('12:00 PM');
 let order4 = new Order('Drew', 'Berkshire Dining Commons', 'W.E.B. Du Bois Library', {});
 order4.setTime('12:00 AM');
 
-//fills pouch with local menus and orders if local instance is empty
-fillPouchIfEmpty();
 async function fillPouchIfEmpty(){
     let numMenus = (await loadAllMenus()).length;
     let numOrders = (await loadAllOrders()).length;
