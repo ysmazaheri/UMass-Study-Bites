@@ -1,13 +1,15 @@
 import { loadAllOrders } from "../js-databases/db-order.js";
 import { OrderStorage } from "../js-models/OrderStorage.js";
+import { OrderCart } from "../js-models/OrderCart.js";
 
 const pickupFilerElement = document.getElementById('pickup-search');
 const dropoffFilerElement = document.getElementById('delivery-search');
 const orderListElement = document.getElementById('order-list');
 
-let orderOptions = document.getElementsByClassName('order');
-
 const orderStorage = new OrderStorage();
+const ls = window.localStorage;
+
+let orderOptions = document.getElementsByClassName('order');
 
 // Refine search every time the input value changes
 pickupFilerElement.addEventListener('input', filterOptions);
@@ -64,30 +66,56 @@ async function loadOrders(){
     //orders is a list of objects, so we can sort it
     //TODO: not needed for this milestone, but should default to sorting by most recent
     orders.forEach(order => {
-        let listItem = document.createElement('li');
-        listItem.classList.add('order');
 
-        let name = document.createElement('div');
-        name.classList.add('order-info','order-name');
-        name.textContent = order.orderer.split(' ')[0]; //sets text to first name of orderer
-        listItem.appendChild(name);
+        if (Object.keys(order).length !== 0) {
+            let listItem = document.createElement('div');
+            listItem.classList.add('order');
 
-        let pickup = document.createElement('div');
-        pickup.classList.add('order-info','order-pickup');
-        pickup.textContent = order.diningHall;
-        listItem.appendChild(pickup);
+            let name = document.createElement('div');
+            name.classList.add('order-info','order-name');
+            name.textContent = order.orderer.split(' ')[0]; //sets text to first name of orderer
+            listItem.appendChild(name);
 
-        let delivery = document.createElement('div');
-        delivery.classList.add('order-info','order-delivery');
-        delivery.textContent = order.residence;
-        listItem.appendChild(delivery);
+            let pickup = document.createElement('div');
+            pickup.classList.add('order-info','order-pickup');
+            pickup.textContent = order.diningHall;
+            listItem.appendChild(pickup);
 
-        let time = document.createElement('div');
-        time.classList.add('order-info','order-time');
-        time.textContent = order.time;
-        listItem.appendChild(time);
+            let delivery = document.createElement('div');
+            delivery.classList.add('order-info','order-delivery');
+            delivery.textContent = order.residence;
+            listItem.appendChild(delivery);
 
-        orderListElement.appendChild(listItem);
+            let time = document.createElement('div');
+            time.classList.add('order-info','order-time');
+            time.textContent = order.time;
+            listItem.appendChild(time);
+
+            listItem.addEventListener("click", () => {
+
+                ls.removeItem('OIList');
+
+                let orderCart = new OrderCart();
+                for (const [name, amount] of Object.entries(order.food)) {
+
+                    for (let i = 0; i < amount; i++) {
+
+                        orderCart.addOI(name);
+
+                    }
+
+                }
+
+                orderStorage.savePickUp(order.diningHall);
+                orderStorage.saveDropOff(order.residence);
+                orderStorage.saveName(order.orderer.split(' ')[0]);
+
+                window.location.href = 'order-confirmation-for-delivery.html';
+
+            });
+
+            orderListElement.appendChild(listItem);
+        }
 
     });
 }

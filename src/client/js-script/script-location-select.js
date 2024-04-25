@@ -324,7 +324,8 @@ document.getElementById('nextBtn').addEventListener('click', function() {
 
     /* Save for menu buttons */
     const firstLocation = selectedLocations[0];
-    OrderStorage.savePickUp(firstLocation);
+    // MILESTONE 03 TODO: Wire the saving of location selection for db query
+    // OrderStorage.savePickUp(firstLocation);
 
     // Navigate to order.html
     window.location.href = 'order.html';

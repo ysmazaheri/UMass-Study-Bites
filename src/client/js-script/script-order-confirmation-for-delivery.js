@@ -1,6 +1,9 @@
 import { OrderCart } from "../js-models/OrderCart.js";
+import { loadAllOrders } from "../js-databases/db-order.js";
+import { OrderStorage } from "../js-models/OrderStorage.js";
 
 const orderCart = new OrderCart();
+const orderStorage = new OrderStorage();
 const orderListElement = document.getElementById('order-preview-list');
 
 const orderKeys = orderCart.getOINames();
@@ -27,38 +30,9 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
   // Assigning quantity and adding plus and minus buttons for cart editing
   let OIQuanCont = document.createElement('div');
   OIQuanCont.classList.add('order-item-quantity-container');
-  let minusQuan = document.createElement('button');
-  minusQuan.classList.add('minus-quantity-button');
-  minusQuan.innerHTML = "-";
-  minusQuan.addEventListener("click", () => {
-  
-    let newCount = orderCart.removeOI(orderKeys[i]);
-
-    if (newCount === 0) {
-      OI.remove();
-    }
-    else OIQuan.innerHTML = newCount;
-
-    pointTotal -= 1;
-    totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
-
-  });
   let OIQuan = document.createElement('div');
   OIQuan.classList.add('order-item-quantity');
   OIQuan.innerHTML = orderCart.getIOValueByName(orderKeys[i]);
-  let plusQuan = document.createElement('button');
-  plusQuan.classList.add('plus-quantity-button');
-  plusQuan.innerHTML = "+";
-  plusQuan.addEventListener("click", () => {
-  
-    let newCount = orderCart.addOI(orderKeys[i]);
-
-    OIQuan.innerHTML = newCount;
-
-    pointTotal += 1;
-    totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
-
-  });
 
   OI.appendChild(titlePriceCont);
   OI.appendChild(OIQuanCont);
@@ -66,9 +40,7 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
   titlePriceCont.appendChild(OITitle);
   titlePriceCont.appendChild(OIPrice);
 
-  OIQuanCont.appendChild(minusQuan);
   OIQuanCont.appendChild(OIQuan);
-  OIQuanCont.appendChild(plusQuan);
 
   orderListElement.appendChild(OI);
 
@@ -85,8 +57,18 @@ const backButton = document.getElementById('backBtn');
 
 backButton.addEventListener('click', () => {
   // Navigate to location-select.html
-  window.location.href = 'order.html';
+  window.location.href = 'deliver.html';
 });
+
+// Setting the input fields
+
+const nameInput = document.getElementById('name-input');
+const pickUpInput = document.getElementById('pick-up-input');
+const deliveryInput = document.getElementById('delivery-input');
+
+nameInput.value = orderStorage.getName();
+pickUpInput.value = orderStorage.getDelivery();
+deliveryInput.value = orderStorage.getPickUp();
 
 // Continue button 
 
