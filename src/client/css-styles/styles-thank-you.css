@@ -31,5 +31,12 @@
     color: white;
     font-size: 1rem;
     margin: 10px 0px 0px 0px;
+    transition-duration: 0.2s;
+
+}
+
+#back-to-home:hover {
+
+    transform: scale(1.05);
 
 }
