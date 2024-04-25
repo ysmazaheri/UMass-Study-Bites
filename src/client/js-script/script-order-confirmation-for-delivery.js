@@ -69,3 +69,13 @@ const deliveryInput = document.getElementById('delivery-input');
 nameInput.value = orderStorage.getName();
 pickUpInput.value = orderStorage.getDelivery();
 deliveryInput.value = orderStorage.getPickUp();
+
+// Continue button 
+
+const continueButton = document.getElementById('continue-button');
+
+continueButton.addEventListener('click', () => {
+
+  window.location.href = 'thank-you.html';
+
+});
