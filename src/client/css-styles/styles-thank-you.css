@@ -1,0 +1,19 @@
+#thank-you-container {
+
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid black;
+
+}
+
+#thank-you-message {
+
+    font-size: 3rem;
+    display: inline-block;
+
+    border: 2px solid black;
+
+}
