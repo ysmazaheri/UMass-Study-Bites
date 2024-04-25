@@ -5,11 +5,11 @@ import { createOrder, loadAllOrders } from "../js-databases/db-order.js";
 import Menu from "../js-models/menu.js";
 import Order from "../js-models/order.js";
 
-//await addMenusToPouch(); //Un-comment this line to force populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
-//await addOrdersToPouch(); //Un-comment this line to force populate the local PouchDB with the above orders
+//addMenusToPouch(); //Un-comment this line to force populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
+//addOrdersToPouch(); //Un-comment this line to force populate the local PouchDB with the above orders
 
 //fills pouch with local menus and orders if local instance is empty
-await fillPouchIfEmpty();
+fillPouchIfEmpty();
 
 let toggleButton = document.getElementById("sidebar-toggle");
 toggleButton.addEventListener("click", toggleSidebar);
