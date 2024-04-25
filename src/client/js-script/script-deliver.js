@@ -68,7 +68,7 @@ async function loadOrders(){
     orders.forEach(order => {
 
         if (Object.keys(order).length !== 0) {
-            let listItem = document.createElement('li');
+            let listItem = document.createElement('div');
             listItem.classList.add('order');
 
             let name = document.createElement('div');
