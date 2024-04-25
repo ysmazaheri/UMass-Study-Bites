@@ -5,6 +5,9 @@ import { createOrder, loadAllOrders } from "../js-databases/db-order.js";
 import Menu from "../js-models/menu.js";
 import Order from "../js-models/order.js";
 
+//addMenusToPouch(); //Un-comment this line to populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
+//addOrdersToPouch(); //Un-comment this line to populate the local PouchDB with the above orders
+
 let toggleButton = document.getElementById("sidebar-toggle");
 toggleButton.addEventListener("click", toggleSidebar);
 
@@ -404,9 +407,6 @@ let order3 = new Order('Vrishabh', 'Franklin Dining Commons', 'IDK Hall', {});
 order3.setTime('12:00 PM');
 let order4 = new Order('Drew', 'Berkshire Dining Commons', 'W.E.B. Du Bois Library', {});
 order4.setTime('12:00 AM');
-
-//addMenusToPouch(); //Un-comment this line to populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
-//addOrdersToPouch(); //Un-comment this line to populate the local PouchDB with the above orders
 
 //fills pouch with local menus and orders if local instance is empty
 fillPouchIfEmpty();

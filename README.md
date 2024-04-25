@@ -8,7 +8,8 @@ Campus Food Delivery Service:
 run "npm run milestone-02" to view the application starting from the homepage.
 
 **IMPORTANT**
-If no orders, deliveries, menus are appearing on the page, un-comment addMenusToPouch() and addOrdersToPouch() functions in js-script/script-universal.js, and refresh the page. This will populate the local PouchDB instance with our placeholder data (to be changed at later milestones). **do not leave these uncommented**
+If no orders, deliveries, menus are appearing on the page, first try refreshing the page.
+If nothing changes, un-comment addMenusToPouch() and addOrdersToPouch() functions in js-script/script-universal.js (lines 8-9), and refresh the page. This will populate the local PouchDB instance with our placeholder data (to be changed at later milestones). **do not leave these uncommented**
 
 
 Our project is a campus food delivery students intended to be used between students. It allows students to order dining hall food at the cost of 1 token. Each token is earned by delivering a meal from a dining hall to another student.
