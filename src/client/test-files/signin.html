@@ -12,7 +12,6 @@
     <!-- JavaScript Files -->
     <script type="module" src="../js-script/script-signin.js" defer></script>
     <script type="module" src="../js-script/script-universal.js" defer></script>
-    
 </head>
 <body>
 
@@ -20,7 +19,7 @@
 
     <div class="topbar">
 
-        <i id="sidebar-toggle" class="fa fa-bars" style="font-size:40px;color:#FFFFFF"></i>
+        <i id="sidebar-toggle" class="fa fa-bars"></i>
 
     </div>
 
@@ -47,52 +46,52 @@
             <div class="container">
                 <div class="forms-container">
                   <div class="signin-signup">
-                    <form action="" class="sign-in-form">
+                    <div action="" class="sign-in-form">
                       <h2 class="title">Sign In</h2>
                       <div class="input-field">
-                        <input type="text" placeholder="Username" />
+                        <input type="text" placeholder="Username">
                       </div>
                       <div class="input-field">
-                        <input type="password" placeholder="Password" />
+                        <input type="password" placeholder="Password">
                       </div>
-                      <input type="submit" value="Login" class="btn solid" />
-                    </form>
-          
-                    <form action="" class="sign-up-form">
+                      <button type="submit" class="btn solid">Login</button>
+                    </div>
+
+                    <div action="" class="sign-up-form">
                       <h2 class="title">Sign Up</h2>
                       <div class="input-field">
-                        <input type="text" placeholder="Username" />
+                        <input type="text" placeholder="Username">
                       </div>
                       <div class="input-field">
-                        <input type="email" placeholder="Email" />
+                        <input type="email" placeholder="Email">
                       </div>
                       <div class="input-field">
-                        <input type="password" placeholder="Password" />
+                        <input type="password" placeholder="Password">
                       </div>
-                      <input type="submit" value="Sign Up" class="btn solid" />
-                    </form>
+                      <button type="submit" class="btn solid">Sign Up</button>
+                    </div>
                   </div>
                 </div>
                 <div class="panels-container">
-          
+
                   <div class="panel left-panel">
                       <div class="content">
                           <h3>New here?</h3>
                           <p>Sign up for fast, safe, and efficient delivery services. Open to all UMass students and faculty.</p>
-                          <button class="btn transparent" id="sign-up-btn">Sign Up</button>
+                          <button class="btn transparent" id="sign-up-btn" type="button">Sign Up</button>
                       </div>
                   </div>
-          
+
                   <div class="panel right-panel">
                       <div class="content">
                           <h3>Registered?</h3>
                           <p>Sign in to start ordering today!</p>
-                          <button class="btn transparent" id="sign-in-btn">Sign In</button>
+                          <button class="btn transparent" id="sign-in-btn" type="button">Sign In</button>
                       </div>
                   </div>
                 </div>
               </div>
-          
+
         </div>
 
     </div>
