@@ -13,7 +13,7 @@
     <script type="module" src="../js-script/script-menus.js" defer></script>
     <script type="module" src="../js-script/script-universal.js" defer></script>
     <script src="//cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
-     
+
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 
     <div class="topbar">
 
-        <i id="sidebar-toggle" class="fa fa-bars" style="font-size:40px;color:#FFFFFF"></i>
+        <i id="sidebar-toggle" class="fa fa-bars"></i>
 
         <div class="token-container">
             Token Balance: <span class="token-balance">5</span>
@@ -51,34 +51,34 @@
             <div id="menu-wrapper">
                 <div id="dining-hall-container">
                     <div id="franklin" class="dining-hall">
-                        <input type="button" id="franklin-button" class="dining-hall-button" value="Franklin Dining Commons">
+                        <button type="button" id="franklin-button" class="dining-hall-button">Franklin Dining Commons</button>
                     </div>
                     <div id="worcester" class="dining-hall">
-                        <input type="button" id="worcester-button" class="dining-hall-button" value="Worcester Dining Commons">
+                        <button type="button" id="worcester-button" class="dining-hall-button">Worcester Dining Commons</button>
                     </div>
                     <div id="berkshire" class="dining-hall">
-                        <input type="button" id="berkshire-button" class="dining-hall-button" value="Berkshire Dining Commons">
+                        <button type="button" id="berkshire-button" class="dining-hall-button">Berkshire Dining Commons</button>
                     </div>
                     <div id="hampshire" class="dining-hall">
-                        <input type="button" id="hampshire-button" class="dining-hall-button" value="Hampshire Dining Commons">
+                        <button type="button" id="hampshire-button" class="dining-hall-button">Hampshire Dining Commons</button>
                     </div>
                 </div>
                 <div id="meal-container">
                     <div id="breakfast" class="meal">
-                        <input type="button" id="breakfast-button" class="meal-button" value="Breakfast">
+                        <button type="button" id="breakfast-button" class="meal-button">Breakfast</button>
                     </div>
                     <div id="lunch" class="meal">
-                        <input type="button" id="lunch-button" class="meal-button" value="Lunch">
+                        <button type="button" id="lunch-button" class="meal-button">Lunch</button>
                     </div>
                     <div id="dinner" class="meal">
-                        <input type="button" id="dinner-button" class="meal-button" value="Dinner">
+                        <button type="button" id="dinner-button" class="meal-button">Dinner</button>
                     </div>
                     <div id="late-night" class="meal">
-                        <input type="button" id="late-night-button" class="meal-button" value="Late Night">
+                        <button type="button" id="late-night-button" class="meal-button">Late Night</button>
                     </div>
                 </div>
                 <div id="search-bar-container">
-                    <input type="text" id="search-bar" placeholder="Enter Food Item (or click below)"/>
+                    <input type="text" id="search-bar" placeholder="Enter Food Item (or click below)">
                 </div>
 
                 <div class="dining-hall-title"></div>
@@ -88,58 +88,58 @@
 
 
                     <!--These lists will be procedurally generated as we fetch from the database-->
-                    <div class="food-type-container"> 
+                    <div class="food-type-container">
                         <div class="food-type">
                             Entree (test)
                         </div>
                         <ul class="food-option-list">
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Pizza (test)">
+                                <button type="button" class="food-button">Pizza (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Burger (test)">
+                                <button type="button" class="food-button">Burger (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Fries (test)">
+                                <button type="button" class="food-button">Fries (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Fries 2 (test)">
+                                <button type="button" class="food-button">Fries 2 (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Fries 3 (test)">
+                                <button type="button" class="food-button">Fries 3 (test)</button>
                             </li>
                         </ul>
                     </div>
 
 
-                    <div class="food-type-container"> 
+                    <div class="food-type-container">
                         <div class="food-type">
                             Snacks (test)
                         </div>
                         <ul class="food-option-list">
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Pizza (test)">
+                                <button type="button" class="food-button">Pizza (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Burger (test)">
+                                <button type="button" class="food-button">Burger (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Fries (test)">
+                                <button type="button" class="food-button">Fries (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Fries 2 (test)">
+                                <button type="button" class="food-button">Fries 2 (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Pizza (test)">
+                                <button type="button" class="food-button">Pizza (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Burger (test)">
+                                <button type="button" class="food-button">Burger (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Fries (test)">
+                                <button type="button" class="food-button">Fries (test)</button>
                             </li>
                             <li class="food-option">
-                                <input type="button" class="food-button" value="Fries 2 (test)">
+                                <button type="button" class="food-button">Fries 2 (test)</button>
                             </li>
                         </ul>
                     </div>
