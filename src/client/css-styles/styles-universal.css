@@ -148,3 +148,9 @@ a:active {
     font-weight: bold;
     margin-left: 5px; 
 }
+
+
+#sidebar-toggle {
+    font-size:40px;
+    color:#FFFFFF;
+}
