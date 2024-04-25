@@ -2,6 +2,7 @@ import { OrderCart } from "../js-models/OrderCart.js";
 import { loadAllMenus } from "../js-databases/db-menu.js";
 
 const orderCart = new OrderCart();
+const ls = window.localStorage;
 
 const searchBarElement = document.getElementsByClassName('search-bar')[0];
 const backButton = document.getElementById('backBtn');
@@ -47,6 +48,8 @@ nextButton.addEventListener('click', () => {
 
 // Back Button
 backButton.addEventListener('click', () => {
+
+    ls.removeItem('OIList');
 
     // Navigate to location-select.html
     window.location.href = 'location-select.html';
