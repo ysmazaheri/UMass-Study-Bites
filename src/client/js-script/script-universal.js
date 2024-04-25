@@ -401,14 +401,14 @@ let berkDinnerMenu = {
     }],
 };
 
-let order1 = new Order('Ian McGregor', 'Franklin Dining Commons', 'JQA Hall', {});
+let order1 = new Order('Ian McGregor', 'Franklin Dining Commons', 'JQA Hall', {"Tomato Bisque": 2, "Teriyaki Chicken Roll": 1});
 order1.setTime('12:00 AM');
 //don't worry guys, I know your last names, they're just not needed for this
-let order2 = new Order('Said', 'Worcester Dining Commons', 'Wheeler Hall', {});
+let order2 = new Order('Said', 'Worcester Dining Commons', 'Wheeler Hall', {"Grilled Chicken Breast": 1, "French Fries": 3, "Berkshire Burger Patty": 1});
 order2.setTime('9:00 AM');
-let order3 = new Order('Vrishabh', 'Franklin Dining Commons', 'IDK Hall', {});
+let order3 = new Order('Vrishabh', 'Franklin Dining Commons', 'IDK Hall', {"Chicken Noodle Soup": 5, "French Fries": 3});
 order3.setTime('12:00 PM');
-let order4 = new Order('Drew', 'Berkshire Dining Commons', 'W.E.B. Du Bois Library', {});
+let order4 = new Order('Drew', 'Berkshire Dining Commons', 'W.E.B. Du Bois Library', {"Scrambled Eggs": 2, "Teriyaki Chicken Roll": 2});
 order4.setTime('12:00 AM');
 
 async function fillPouchIfEmpty(){

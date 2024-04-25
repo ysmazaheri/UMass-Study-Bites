@@ -1,21 +1,39 @@
 export class OrderStorage {
-    static savePickUp(pickUp) {
+
+    constructor () {
+
+    }
+
+    savePickUp(pickUp) {
         localStorage.setItem('selectedPickUpLocation', pickUp);
     }
 
-    static saveDropOff(dropOffLocation) {
+    saveDropOff(dropOffLocation) {
         localStorage.setItem('selectedDropOffLocation', dropOffLocation);
     }
 
-    static getPickUp() {
+    getPickUp() {
         return localStorage.getItem('selectedPickUpLocation');
     }
 
-    static getDelivery() {
+    getDelivery() {
         return localStorage.getItem('selectedDropOffLocation');
     }
 
-    static getSelections() {
+    saveName(name) {
+
+        localStorage.setItem('ordererName', name);
+
+    }
+
+    getName() {
+
+        return localStorage.getItem('ordererName');
+
+    }
+
+
+    getSelections() {
         const pickUpLocation = localStorage.getItem('selectedPickUpLocation');
         const dropOffLocation = localStorage.getItem('selectedDropOffLocation');
         return { pickUpLocation, dropOffLocation };

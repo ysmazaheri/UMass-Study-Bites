@@ -14,12 +14,14 @@ export class OrderCart {
 
     }
 
+    // Returns list of OIList
     OIListLength() {
 
         return Object.keys(this.#OIList).length;
 
     }
 
+    // Return number of items in cart after adding the OI item
     addOI(name) {
 
         let currentCount = this.#OIList[name];
@@ -33,6 +35,7 @@ export class OrderCart {
 
     }
 
+    // Return number of items in cart after removing the OI item
     removeOI(name) {
 
         let currentCount = this.#OIList[name];
