@@ -72,9 +72,9 @@ async function loadMenu(meal, diningHall){
         food[category].forEach(foodType => {
             let listItem = document.createElement('li');
             listItem.classList.add('food-option');
-            let itemButton = document.createElement('input');
+            let itemButton = document.createElement('button');
             itemButton.type = 'button';
-            itemButton.value = foodType.name;
+            itemButton.textContent = foodType.name;
             itemButton.classList.add('food-button');
 
             listItem.appendChild(itemButton);
@@ -89,8 +89,6 @@ async function loadMenu(meal, diningHall){
 }
 
 
-
-let diningHallLoc = "Franklin Dining Commons";
 
 /* Event Listeners*/
 document.getElementById("breakfast").addEventListener("click", async function() {
@@ -124,46 +122,3 @@ document.getElementById("berkshire").addEventListener("click", async function() 
 document.getElementById("hampshire").addEventListener("click", async function() {
     await loadMenu(currMeal, "Hampshire Dining Commons");
 });
-
-/*Meal Button Helper - Get Meal Menu*/
-async function displayMenu(mealType, diningHallLocation) {
-    let menus = await loadAllMenus();
-    menus = menus.filter(x => x.diningHall === diningHallLocation);
-
-    let menu = getMenuByMealType(menus, mealType);
-    console.log(mealType + " " + diningHallLocation)
-    let food = menu.food;
-    diningHallTitles[0].textContent = menu.diningHall;
-    menuElement.innerHTML = '';
-    let categories = Object.keys(food);
-    categories.forEach(category => {
-        let container = document.createElement('div');
-        container.classList.add('food-type-container'); 
-        let foodTypeHeader = document.createElement('div');
-        foodTypeHeader.classList.add('food-type');
-        foodTypeHeader.textContent = category;
-        container.appendChild(foodTypeHeader);
-
-        let foodOptionList = document.createElement('ul');
-        foodOptionList.classList.add('food-option-list');
-        food[category].forEach(foodType => {
-            let listItem = document.createElement('li');
-            listItem.classList.add('food-option');
-            let itemButton = document.createElement('input');
-            itemButton.type = 'button';
-            itemButton.value = foodType.name;
-            itemButton.classList.add('food-button');
-
-            listItem.appendChild(itemButton);
-            foodOptionList.appendChild(listItem);
-        });
-        container.appendChild(foodOptionList);
-
-        menuElement.appendChild(container);
-    });
-}
-
-/*Helper for displayMenu*/
-function getMenuByMealType(menus, mealType) {
-    return menus.find(menu => menu.meal.toLowerCase() === mealType.toLowerCase());
-}
