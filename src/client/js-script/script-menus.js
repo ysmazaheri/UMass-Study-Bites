@@ -1,4 +1,4 @@
-import { loadAllMenus } from "../js-databases/db-menu.js";
+import { loadAllMenus } from "../../server/js-databases/db-menu.js";
 import { OrderStorage } from "../js-models/OrderStorage.js";
 
 const searchBarElement = document.getElementById('search-bar');
