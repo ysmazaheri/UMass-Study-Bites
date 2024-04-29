@@ -1,7 +1,7 @@
 /* JS that applies to all pages */
 
-import { createMenu, loadAllMenus } from "../js-databases/db-menu.js";
-import { createOrder, loadAllOrders } from "../js-databases/db-order.js";
+import { createMenu, loadAllMenus } from "../../server/js-databases/db-menu.js";
+import { createOrder, loadAllOrders } from "../../server/js-databases/db-order.js";
 import Menu from "../js-models/menu.js";
 import Order from "../js-models/order.js";
 

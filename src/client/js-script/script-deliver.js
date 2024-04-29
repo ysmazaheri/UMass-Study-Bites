@@ -1,4 +1,4 @@
-import { loadAllOrders } from "../js-databases/db-order.js";
+import { loadAllOrders } from "../../server/js-databases/db-order.js";
 import { OrderStorage } from "../js-models/OrderStorage.js";
 import { OrderCart } from "../js-models/OrderCart.js";
 
