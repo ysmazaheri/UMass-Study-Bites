@@ -1,5 +1,5 @@
 import { OrderCart } from "../js-models/OrderCart.js";
-import { loadAllMenus } from "../js-databases/db-menu.js";
+import { loadAllMenus } from "../../server/js-databases/db-menu.js";
 
 const orderCart = new OrderCart();
 const ls = window.localStorage;
