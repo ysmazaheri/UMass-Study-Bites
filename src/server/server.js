@@ -4,6 +4,7 @@ import * as userDB from "./js-databases/db-user.js";
 import * as orderDB from "./js-databases/db-order.js";
 
 const headerFields = { "Content-Type": "text/plain" };
+const jsonFields = { "Content-Type": "application/json" }
 
 const express = require('express');
 const app = express();
@@ -38,6 +39,320 @@ async function createMenu(response, menu) {
   }
 }
 
+/**
+ * Asynchronously reads the value of a specified menu by its dining hall and meal. If the
+ * menu is found, it responds with a 200 status code and the menu's food JSON object.
+ * If the menu is not found, it catches the error and responds with a 404
+ * status code indicating that the menu could not be found.
+ *
+ * @async
+ * @param {object} response - The HTTP response object used to send data back to
+ * the client. It must support `writeHead`, `write`, and `end` methods.
+ * @param {string} diningHall - The dining hall of the menu to be read.
+ * @param {string} meal - The meal of the menu to be read.
+ * @throws {Error} - If there is an issue loading the meal (e.g., the meal
+ * does not exist), an error is thrown and caught within the function. The
+ * client is then informed that the meal was not found.
+ */
+async function readMenu(response, diningHall, meal) {
+  try {
+    const menu = await menuDB.loadAllMenus().filter(x => x.diningHall === diningHall && x.meal === meal)[0];
+    response.writeHead(200, jsonFields);
+    response.write(menu.food);
+    response.end();
+  } catch (err) {
+    response.writeHead(404, headerFields);
+    response.write('Error: Applicable Menu Not Found');
+    response.end();
+  }
+}
+
+/**
+ * Asynchronously updates the food value of a specified menu. 
+ * It first tries to load the menu from the database using the
+ * provided information. If the menu cannot be found, it responds with a 404 status
+ * code, indicating that the menu does not exist.
+ *
+ * @async
+ * @param {object} response - The HTTP response object for sending data back to
+ * the client. It is expected to have `writeHead`, `write`, and `end` methods.
+ * @param {string} diningHall - The dining hall of the menu to be read.
+ * @param {string} meal - The meal of the menu to be read.
+ * @param {Object} food - JSON object representing the new food on the menu
+ * @throws {Error} - If the menu cannot be found or if there is a problem
+ * updating the menu in the database, an error is thrown and caught within
+ * the function. The client is then notified that the menu was not found.
+ */
+async function updateMenu(response, diningHall, meal, food) {
+  try {
+    const menu = await menuDB.loadAllMenus().filter(x => x.diningHall === diningHall && x.meal === meal)[0];
+    menu.food = food;
+    await menuDB.modifyMenu(menu);
+    response.writeHead(200, headerFields);
+    response.write('Menu Updated');
+    response.end();
+  } catch (err) {
+    response.writeHead(404, headerFields);
+    response.write('Error: Applicable Menu Not Found');
+    response.end();
+  }
+}
+
+
+/**
+ * Asynchronously deletes a specified menu by its dining hall and meal. The function attempts
+ * to find the menu in the database. If the menu cannot be found, it
+ * responds with a 404 status code, indicating that the menu does not exist.
+ *
+ * It's important to note that the removal from the database happens after
+ * sending the response to the client. This means the client is informed of the
+ * deletion before the deletion process completes in the database.
+ *
+ * @async
+ * @param {object} response - The HTTP response object for sending back data to
+ * the client. This object must include `writeHead`, `write`, and `end` methods
+ * to properly send the response.
+ * @param {string} diningHall - The dining hall of the menu to be read.
+ * @param {string} meal - The meal of the menu to be read.
+ * @throws {Error} - If there is an issue loading the menu (e.g., the menu
+ * does not exist), an error is thrown and caught within the function. The
+ * client is then informed that the menu was not found with a 404 response.
+ */
+async function deleteMenu(response, id) {
+  try {
+    const menu = await menuDB.loadAllMenus().filter(x => x.diningHall === diningHall && x.meal === meal)[0];
+    response.writeHead(200, headerFields);
+    response.write('Menu Deleted');
+    response.end();
+    menuDB.removeMenu(id);
+  } catch (err) {
+    response.writeHead(404, headerFields);
+    response.write('Error: Applicable Menu Not Found');
+    response.end();
+  }
+}
+
+/**
+ * Asynchronously retrieves and sends a list of all menus stored in the
+ * database to the client. On success, it formats the menus into an array
+ * and responds with a 200 status code. If an error occurs (e.g., the database
+ * cannot be accessed), it responds with a 500 status code indicating an
+ * internal server error and provides a message detailing the issue.
+ *
+ * This function encapsulates the entire process of fetching menus,
+ * formatting them into a readable HTML response, and handling potential errors
+ * that may arise during the process, ensuring the client is appropriately
+ * informed of the outcome.
+ *
+ * @async
+ * @param {object} response - The HTTP response object for sending back data to
+ * the client. This object should include `writeHead`, `write`, and `end`
+ * methods to facilitate sending HTTP responses.
+ * @throws {Error} - Encounters and handles internal errors by responding with a
+ * 500 status code and details of the error. This catch block ensures that the
+ * client receives a meaningful error message rather than the request hanging or
+ * terminating unexpectedly.
+ */
+async function dumpMenus(response) {
+  try {
+    const menus = await menuDB.loadAllMenus();
+    let responseBody = {"menus":menus};
+
+    response.writeHead(200, jsonFields);
+    response.write(responseBody);
+    response.end();
+  } catch (err) {
+    response.writeHead(500, headerFields);
+    response.write('Internal Server Error: Could Not Get Menus');
+    response.end();
+  }
+}
+
+
+
+/**
+ * Asynchronously creates an order using provided order object. If the order is not
+ * provided, it responds with a 400 status code indicating a bad request.
+ *
+ * @async
+ * @param {object} response - The HTTP response object used to send back data to
+ * the client. It must have `writeHead`, `write`, and `end` methods available.
+ * @param {string} [order] - The order to be created. If not
+ * provided, the function will respond with an error message.
+ */
+async function createOrder(response, order) {
+  if (order === undefined) {
+    response.writeHead(400, headerFields);
+    response.write("Error: Order Object Required");
+    response.end();
+  } else {
+    try {
+      await orderDB.createOrder(order);
+      response.writeHead(200, headerFields);
+      response.write("Order Created");
+      response.end();
+    } catch (err) {
+      response.writeHead(500, headerFields);
+      response.write("Internal Server Error: Could Not Create Order");
+      response.end();
+    }
+  }
+}
+
+/**
+ * Asynchronously reads the value of a specified order by its id. If the
+ * order is found, it responds with a 200 status code and the order's JSON object.
+ * If the order is not found, it catches the error and responds with a 404
+ * status code indicating that the order could not be found.
+ *
+ * @async
+ * @param {object} response - The HTTP response object used to send data back to
+ * the client. It must support `writeHead`, `write`, and `end` methods.
+ * @param {string} id - The id of the order to be read.
+ * @throws {Error} - If there is an issue loading the order (e.g., the order
+ * does not exist), an error is thrown and caught within the function. The
+ * client is then informed that the order was not found.
+ */
+async function readOrder(response, id) {
+  try {
+    const order = await orderDB.loadOrder(id);
+    response.writeHead(200, jsonFields);
+    response.write(order);
+    response.end();
+  } catch (err) {
+    response.writeHead(404, headerFields);
+    response.write('Error: Order Not Found');
+    response.end();
+  }
+}
+
+/**
+ * Asynchronously updates the values of a specified order. 
+ * It first tries to load the order from the database using the
+ * provided information. If the order cannot be found, it responds with a 404 status
+ * code, indicating that the order does not exist.
+ *
+ * @async
+ * @param {object} response - The HTTP response object for sending data back to
+ * the client. It is expected to have `writeHead`, `write`, and `end` methods.
+ * @param {string} id - The id of the order to be read.
+ * @param {string} deliverer - The deliverer of the order to be assigned.
+ * @throws {Error} - If the order cannot be found or if there is a problem
+ * updating the order in the database, an error is thrown and caught within
+ * the function. The client is then notified that the order was not found.
+ */
+async function updateOrder(response, id, deliverer) {
+  try {
+    const order = await orderDB.loadOrder(id);
+    order.setDeliverer(deliverer);
+    await orderDB.modifyOrder(order);
+    response.writeHead(200, headerFields);
+    response.write('Order Updated');
+    response.end();
+  } catch (err) {
+    response.writeHead(404, headerFields);
+    response.write('Error: Order Not Found');
+    response.end();
+  }
+}
+
+/**
+ * Asynchronously updates the values of a specified order. 
+ * It first tries to load the order from the database using the
+ * provided information. If the order cannot be found, it responds with a 404 status
+ * code, indicating that the order does not exist.
+ *
+ * @async
+ * @param {object} response - The HTTP response object for sending data back to
+ * the client. It is expected to have `writeHead`, `write`, and `end` methods.
+ * @param {string} id - The id of the order to be completed.
+ * @throws {Error} - If the order cannot be found or if there is a problem
+ * updating the order in the database, an error is thrown and caught within
+ * the function. The client is then notified that the order was not found.
+ */
+async function completeOrder(response, id, deliverer) {
+  try {
+    const order = await orderDB.loadOrder(id);
+    order.completeOrder();
+    await orderDB.modifyOrder(order);
+    response.writeHead(200, headerFields);
+    response.write('Order Completed');
+    response.end();
+  } catch (err) {
+    response.writeHead(404, headerFields);
+    response.write('Error: Order Not Found');
+    response.end();
+  }
+}
+
+
+/**
+ * Asynchronously deletes a specified order by its id. The function attempts
+ * to find the order in the database. If the order cannot be found, it
+ * responds with a 404 status code, indicating that the order does not exist.
+ *
+ * It's important to note that the removal from the database happens after
+ * sending the response to the client. This means the client is informed of the
+ * deletion before the deletion process completes in the database.
+ *
+ * @async
+ * @param {object} response - The HTTP response object for sending back data to
+ * the client. This object must include `writeHead`, `write`, and `end` methods
+ * to properly send the response.
+ * @param {string} id - The id of the order to be read.
+ * @throws {Error} - If there is an issue loading the order (e.g., the order
+ * does not exist), an error is thrown and caught within the function. The
+ * client is then informed that the order was not found with a 404 response.
+ */
+async function deleteOrder(response, id) {
+  try {
+    const order = await orderDB.loadOrder(id);
+    response.writeHead(200, headerFields);
+    response.write('Order Deleted');
+    response.end();
+    orderDB.removeOrder(id);
+  } catch (err) {
+    response.writeHead(404, headerFields);
+    response.write('Error: Order Not Found');
+    response.end();
+  }
+}
+
+/**
+ * Asynchronously retrieves and sends a list of all orders stored in the
+ * database to the client. On success, it formats the orders into an array
+ * and responds with a 200 status code. If an error occurs (e.g., the database
+ * cannot be accessed), it responds with a 500 status code indicating an
+ * internal server error and provides a message detailing the issue.
+ *
+ * This function encapsulates the entire process of fetching orders,
+ * formatting them into a readable HTML response, and handling potential errors
+ * that may arise during the process, ensuring the client is appropriately
+ * informed of the outcome.
+ *
+ * @async
+ * @param {object} response - The HTTP response object for sending back data to
+ * the client. This object should include `writeHead`, `write`, and `end`
+ * methods to facilitate sending HTTP responses.
+ * @throws {Error} - Encounters and handles internal errors by responding with a
+ * 500 status code and details of the error. This catch block ensures that the
+ * client receives a meaningful error message rather than the request hanging or
+ * terminating unexpectedly.
+ */
+async function dumpOrders(response) {
+  try {
+    const orders = await orderDB.loadAllOrders();
+    let responseBody = {"orders":orders};
+
+    response.writeHead(200, jsonFields);
+    response.write(responseBody);
+    response.end();
+  } catch (err) {
+    response.writeHead(500, headerFields);
+    response.write('Internal Server Error: Could Not Get Orders');
+    response.end();
+  }
+}
 
 
 
@@ -70,36 +385,10 @@ async function createUser(response, user) {
   }
 }
 
+/*************************/
+//SAVING THE REST OF USER DB MANAGEMENT FOR LATER
+/*************************/
 
 
-
-/**
- * Asynchronously creates a order using provided order object. If the order is not
- * provided, it responds with a 400 status code indicating a bad request.
- *
- * @async
- * @param {object} response - The HTTP response object used to send back data to
- * the client. It must have `writeHead`, `write`, and `end` methods available.
- * @param {string} [order] - The order to be created. If not
- * provided, the function will respond with an error message.
- */
-async function createOrder(response, order) {
-  if (order === undefined) {
-    response.writeHead(400, headerFields);
-    response.write("Error: Order Object Required");
-    response.end();
-  } else {
-    try {
-      await orderDB.createOrder(order);
-      response.writeHead(200, headerFields);
-      response.write("Order Created");
-      response.end();
-    } catch (err) {
-      response.writeHead(500, headerFields);
-      response.write("Internal Server Error: Could Not Create Order");
-      response.end();
-    }
-  }
-}
 
 app.listen(3000);
