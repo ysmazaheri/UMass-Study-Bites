@@ -7,8 +7,6 @@ const headerFields = { "Content-Type": "text/plain" };
 const jsonFields = { "Content-Type": "application/json" }
 
 const express = require('express');
-const app = express();
-
 
 /**
  * Asynchronously creates a menu using provided menu object. If the menu is not
@@ -270,7 +268,7 @@ async function updateOrder(response, id, deliverer) {
  * updating the order in the database, an error is thrown and caught within
  * the function. The client is then notified that the order was not found.
  */
-async function completeOrder(response, id, deliverer) {
+async function completeOrder(response, id) {
   try {
     const order = await orderDB.loadOrder(id);
     order.completeOrder();
@@ -390,5 +388,114 @@ async function createUser(response, user) {
 /*************************/
 
 
+const app = express();
+const port = 3260;
 
-//app.listen(3000);
+//This is from exercise 8, unsure if it is the settings we want
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static("src/client"));
+
+const MethodNotAllowedHandler = async (request, response) => {
+  response.status(405).type('text/plain').send('Method Not Allowed');
+};
+
+//menu routes
+app
+  .route("/menu/read")
+  .get(async (request, response) => {
+    const options = request.query;
+    readMenu(response, options.diningHall, options.meal);
+  })
+  .all(MethodNotAllowedHandler);
+
+app
+  .route("/menu/create")
+  .post(async (request, response) => {
+    const options = request.query;
+    createMenu(response, options.menu);
+  })
+  .all(MethodNotAllowedHandler);
+
+  app
+  .route("/menu/update")
+  .put(async (request, response) => {
+    const options = request.query;
+    updateMenu(response, options.diningHall, options.meal, options.food);
+  })
+  .all(MethodNotAllowedHandler);
+
+  app
+  .route("/menu/delete")
+  .delete(async (request, response) => {
+    const options = request.query;
+    deleteMenu(response, options.id);
+  })
+  .all(MethodNotAllowedHandler);
+
+  app
+  .route("/menu/all")
+  .get(async (request, response) => {
+    dumpMenus(response);
+  })
+  .all(MethodNotAllowedHandler);
+
+  //orders
+  app
+  .route("/order/read")
+  .get(async (request, response) => {
+    const options = request.query;
+    readOrder(response, options.id);
+  })
+  .all(MethodNotAllowedHandler);
+
+app
+  .route("/order/create")
+  .post(async (request, response) => {
+    const options = request.query;
+    createOrder(response, options.order);
+  })
+  .all(MethodNotAllowedHandler);
+
+  app
+  .route("/order/update")
+  .put(async (request, response) => {
+    const options = request.query;
+    updateOrder(response, options.id, options.deliverer);
+  })
+  .all(MethodNotAllowedHandler);
+
+  app
+  .route("/order/complete")
+  .put(async (request, response) => {
+    const options = request.query;
+    completeOrder(response, options.id);
+  })
+  .all(MethodNotAllowedHandler);
+
+  app
+  .route("/order/delete")
+  .delete(async (request, response) => {
+    const options = request.query;
+    deleteOrder(response, options.id);
+  })
+  .all(MethodNotAllowedHandler);
+
+  app
+  .route("/order/all")
+  .get(async (request, response) => {
+    dumpOrders(response);
+  })
+  .all(MethodNotAllowedHandler);
+
+  //USER ROUTES NOT DONE
+
+// this should always be the last route
+app.route("*").all(async (request, response) => {
+  response.status(404).send(`Not found: ${request.path}`);
+});
+
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
