@@ -56,350 +56,321 @@ document.addEventListener("DOMContentLoaded", function() {
 //Setup for placeholder data in PouchDB. 
 
 let frankBreakfastMenu = {
-    "Entrees": [{
-        name: "Apple Fritters",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    },
-    {
-        name: "Canadian Bacon",
-        tags: ["E carbon rating"]
-    },
-    {
-        name: "Hot Oatmeal",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    }],
-    "Pastries": [{
-        name: "Muffins",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    },
-    {
-        name: "Mini Cheese Danish",
-        tags: ["E carbon rating"]
-    }],
-    "Gluten Free": [{
-        name: "Gluten Free Waffles",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    },
-    {
-        name: "Scrambled Eggs",
-        tags: ["E carbon rating"]
-    },
-    {
-        name: "Sour Cream & Green Onion Potato Casserole",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    }],
+    "Hot Breakfast Items": [
+      {name: "Scrambled Eggs", tags: ["vegetarian"]},
+      {name: "Bacon Strips", tags: []},
+      {name: "Sausage Links", tags: []},
+      {name: "Breakfast Potatoes", tags: ["vegetarian"]},
+      {name: "French Toast Sticks", tags: ["vegetarian"]},
+      {name: "Omelette Station", tags: []}
+    ],
+    "Beverages": [
+      {name: "Coffee", tags: ["sustainable"]},
+      {name: "Tea", tags: ["sustainable"]},
+      {name: "Orange Juice", tags: ["A carbon rating"]},
+      {name: "Apple Juice", tags: ["A carbon rating"]},
+      {name: "Milk", tags: ["sustainable"]},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Toast Bar": [
+        {name: "White Bread", tags: ["vegetarian"]},
+        {name: "Everything Bagel", tags: ["vegetarian"]},
+        {name: "Rye Bread", tags: ["vegetarian"]},
+        {name: "Peanut Butter", tags: ["vegetarian"]},
+        {name: "Butter", tags: ["vegetarian"]},
+        {name: "Cream Cheese", tags: ["vegetarian"]},
+        {name: "Strawberry Jelly", tags: ["vegetarian"]},
+      ]
 };
+  
 let frankLunchMenu = {
-    "Entrees": [{
-        name: "Siracha Honey Glazed Chicken Leg",
-        tags: ["Sustainable","B carbon rating"]
-    }],
-    "Soups": [{
-        name: "Chicken Noodle Soup",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Tomato Bisque",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    }],
-    "Grill": [{
-        name: "Halal Burger Patty",
-        tags: ["Halal","Sustainable","A carbon rating"]
-    },
-    {
-        name: "French Fries",
-        tags: ["C carbon rating"]
-    },
-    {
-        name: "Grilled Chicken Breast",
-        tags: ["Sustainable","A carbon rating"]
-    }],
-};
+    "Entrees": [
+      {name: "Grilled Chicken Breast", tags: []},
+      {name: "Beef Lasagna", tags: []},
+      {name: "Fried Rice", tags: []},
+      {name: "Grilled Salmon", tags: []},
+      {name: "Stuffed Bell Peppers", tags: ["vegetarian"]}
+    ],
+    "Latino food": [
+      {name: "Vegetarian Stir-Fry", tags: ["vegetarian"]},
+      {name: "Fried Rice", tags: []}
+    ],
+    "Vegetarian": [
+      {name: "Vegetarian Stir-Fry", tags: ["vegetarian"]},
+      {name: "Stuffed Bell Peppers", tags: ["vegetarian"]},
+      {name: "Mango Salad", tags: ["vegetarian"]},
+    ],
+    "Beverages": [
+      {name: "Iced Tea", tags: []},
+      {name: "Lemonade", tags: []},
+      {name: "Coca-Cola", tags: []},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Desserts": [
+      {name: "Chocolate Chip Cookies", tags: ["vegetarian"]},
+      {name: "Brownies", tags: ["vegetarian"]},
+      {name: "Ice Cream", tags: ["vegetarian"]}
+    ]
+  };
+  
+  let frankDinnerMenu = {
+    "Entrees": [
+      {name: "Fried Rice", tags: []},
+      {name: "Grilled Salmon", tags: []},
+      {name: "Roast Pork", tags: []},
+    ],
+    "Express": [
+      {name: "Vegetarian Stir-Fry", tags: ["vegetarian"]},
+      {name: "Fried Rice", tags: []}
+    ],
+    "Vegetarian": [
+      {name: "Vegetable Lasagna", tags: ["vegetarian"]},
+      {name: "Stuffed Bell Peppers", tags: ["vegetarian"]},
+      {name: "Mango Salad", tags: ["vegetarian"]},
+    ],
+    "Beverages": [
+      {name: "Iced Tea", tags: []},
+      {name: "Lemonade", tags: []},
+      {name: "Coca-Cola", tags: []},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Desserts": [
+      {name: "Cheesecake", tags: ["vegetarian"]},
+      {name: "Apple Pie", tags: ["vegetarian"]},
+    ]
+  };
 
-let frankDinnerMenu = {
-    "Entrees": [{
-        name: "Chicken Cattiatore",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Norwegian Salmon Schwarma",
-        tags: []
-    }],
-    "Soups": [{
-        name: "Chicken Noodle Soup",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Tomato Bisque",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    }],
-    "Grill": [{
-        name: "Halal Burger Patty",
-        tags: ["Halal","Sustainable","A carbon rating"]
-    },
-    {
-        name: "French Fries",
-        tags: ["C carbon rating"]
-    },
-    {
-        name: "Grilled Chicken Breast",
-        tags: ["Sustainable","A carbon rating"]
-    }],
-};
+  let wooBreakfastMenu = {
+    "Hot Breakfast Items": [
+      {name: "Scrambled Eggs", tags: ["vegetarian"]},
+      {name: "Bacon Strips", tags: []},
+      {name: "Breakfast Potatoes", tags: ["vegetarian"]},
+      {name: "Pancakes with Maple Syrup", tags: ["vegetarian"]},
+      {name: "French Toast Sticks", tags: ["vegetarian"]}
+    ],
+    "Cold Breakfast Items": [
+      {name: "Greek Yogurt with Granola", tags: ["vegetarian"]},
+      {name: "Assorted Cereal Bar with Milk", tags: ["vegetarian"]},
+    ],
+    "Beverages": [
+      {name: "Coffee", tags: ["sustainable"]},
+      {name: "Tea", tags: ["sustainable"]},
+      {name: "Orange Juice", tags: ["A carbon rating"]},
+      {name: "Apple Juice", tags: ["A carbon rating"]},
+      {name: "Milk", tags: ["sustainable"]},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Extras": [
+      {name: "Toast Bar", tags: ["vegetarian"]},
+    ]
+  };
+  
+  let wooLunchMenu = {
+    "Entrees": [
+      {name: "Grilled Chicken Breast", tags: []},
+      {name: "Stir-Fry", tags: ["vegetarian"]},
+      {name: "Beef Lasagna", tags: []},
+      {name: "Pasta with Marinara Sauce", tags: ["vegetarian"]},
+    ],
+    "Latino Food": [
+      {name: "Spicy Mango Salad", tags: ["vegetarian"]},
+      {name: "Beef Fajitas", tags: []},
+    ],
+    "Beverages": [
+      {name: "Iced Tea", tags: []},
+      {name: "Coca-Cola", tags: []},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Desserts": [
+      {name: "Chocolate Chip Cookies", tags: ["vegetarian"]}
+    ]
+  };
+  
+  let wooDinnerMenu = {
+    "Grill": [
+      {name: "Burger", tags: []},
+      {name: "French Fries", tags: ["vegetarian"]},
+      {name: "Grilled Chicken", tags: []},
+      {name: "Jerk Chicken", tags: []}
+    ],
+    "Salad Bar": [
+      {name: "Mixed Green Salad", tags: ["vegetarian"]}
+    ],
+    "Beverages": [
+      {name: "Iced Tea", tags: []},
+      {name: "Lemonade", tags: []},
+      {name: "Coca-Cola", tags: []},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Desserts": [
+      {name: "Brownies", tags: ["vegetarian"]}
+    ]
+  };
 
-let wooBreakfastMenu = {
-    "Entrees": [{
-        name: "French Toast Sticks",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    },
-    {
-        name: "Canadian Bacon",
-        tags: ["E carbon rating"]
-    },
-    {
-        name: "Hot Oatmeal",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    }],
-    "Pastries": [
-    {
-        name: "Mini Cheese Danish",
-        tags: ["E carbon rating"]
-    }],
-    "Gluten Free": [{
-        name: "Gluten Free Waffles",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    },
-    {
-        name: "Scrambled Eggs",
-        tags: ["E carbon rating"]
-    }],
+  let hampBreakfastMenu = {
+    "Hot Breakfast Items": [
+      {name: "Scrambled Eggs", tags: ["vegetarian"]},
+      {name: "Bacon Strips", tags: []},
+      {name: "Sausage Links", tags: []},
+      {name: "Breakfast Potatoes", tags: ["vegetarian"]},
+      {name: "French Toast Sticks", tags: ["vegetarian"]},
+    ],
+    "Cold Breakfast Items": [
+        {name: "Vanilla Yogurt", tags: ["vegetarian"]},
+        {name: "Strawberry Yogurt", tags: ["vegetarian"]},
+        {name: "Granola", tags: ["vegetarian"]},
+        {name: "Strawberries", tags: ["vegetarian"]},
+        {name: "Blackberries", tags: ["vegetarian"]},
+    ],
+    "Beverages": [
+      {name: "Coffee", tags: ["sustainable"]},
+      {name: "Tea", tags: ["sustainable"]},
+      {name: "Orange Juice", tags: ["A carbon rating"]},
+      {name: "Apple Juice", tags: ["A carbon rating"]},
+      {name: "Milk", tags: ["sustainable"]},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Toast Bar": [
+      {name: "White Bread", tags: ["vegetarian"]},
+      {name: "Everything Bagel", tags: ["vegetarian"]},
+      {name: "Rye Bread", tags: ["vegetarian"]},
+      {name: "Peanut Butter", tags: ["vegetarian"]},
+      {name: "Butter", tags: ["vegetarian"]},
+      {name: "Cream Cheese", tags: ["vegetarian"]},
+      {name: "Strawberry Jelly", tags: ["vegetarian"]},
+    ],
 };
-let wooLunchMenu = {
-    "Grill": [{
-        name: "Halal Burger Patty",
-        tags: ["Halal","Sustainable","A carbon rating"]
-    },
-    {
-        name: "French Fries",
-        tags: ["C carbon rating"]
-    },
-    {
-        name: "Grilled Chicken Breast",
-        tags: ["Sustainable","A carbon rating"]
-    }],
-    "Street Food": [{
-        name: "Korean BBQ Chicken",
-        tags: ["Sustainable","B carbon rating"]
-    }],
-    "Soups": [{
-        name: "Chicken Noodle Soup",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Tomato Bisque",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    }],
-};
-
-let wooDinnerMenu = {
-    "Grill": [{
-        name: "Halal Burger Patty",
-        tags: ["Halal","Sustainable","A carbon rating"]
-    },
-    {
-        name: "French Fries",
-        tags: ["C carbon rating"]
-    },
-    {
-        name: "Grilled Chicken Breast",
-        tags: ["Sustainable","A carbon rating"]
-    }],
-    "Sushi": [{
-        name: "Teriyaki Chicken Roll",
-        tags: ["Sustainable","B carbon rating"]
-    }],
-    "Soups": [{
-        name: "Chicken Noodle Soup",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Tomato Bisque",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    }],
-};
-
-let hampBreakfastMenu = {
-    "Entrees": [{
-        name: "Apple Fritters",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    },
-    {
-        name: "Canadian Bacon",
-        tags: ["E carbon rating"]
-    },
-    {
-        name: "Hot Oatmeal",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    }],
-    "Pastries": [{
-        name: "Muffins",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    },
-    {
-        name: "Mini Cheese Danish",
-        tags: ["E carbon rating"]
-    }],
-    "Gluten Free": [{
-        name: "Gluten Free Waffles",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    },
-    {
-        name: "Scrambled Eggs",
-        tags: ["E carbon rating"]
-    },
-    {
-        name: "Sour Cream & Green Onion Potato Casserole",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    }],
-};
+  
 let hampLunchMenu = {
-    "Entrees": [{
-        name: "Hampshire Honey Glazed Chicken Leg",
-        tags: ["Sustainable","B carbon rating"]
-    }],
-    "Soups": [{
-        name: "Chicken Noodle Soup",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Tomato Bisque",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    }],
-    "Grill": [{
-        name: "Halal Burger Patty",
-        tags: ["Halal","Sustainable","A carbon rating"]
-    },
-    {
-        name: "French Fries",
-        tags: ["C carbon rating"]
-    },
-    {
-        name: "Grilled Chicken Breast",
-        tags: ["Sustainable","A carbon rating"]
-    }],
-};
+    "Entrees": [
+      {name: "Hampshire Chicken Breast", tags: []},
+      {name: "Beef Lasagna", tags: []},
+      {name: "Fried Rice", tags: []},
+      {name: "Grilled Salmon", tags: []},
+      {name: "Stuffed Bell Peppers", tags: ["vegetarian"]}
+    ],
+    "Latino food": [
+      {name: "Vegetarian Stir-Fry", tags: ["vegetarian"]},
+      {name: "Fried Rice", tags: []}
+    ],
+    "Vegetarian": [
+      {name: "Vegetarian Stir-Fry", tags: ["vegetarian"]},
+      {name: "Stuffed Bell Peppers", tags: ["vegetarian"]},
+      {name: "Baked Beans", tags: ["vegetarian"]},
+    ],
+    "Beverages": [
+      {name: "Iced Tea", tags: []},
+      {name: "Lemonade", tags: []},
+      {name: "Coca-Cola", tags: []},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Desserts": [
+      {name: "Chocolate Chip Cookies", tags: ["vegetarian"]},
+      {name: "Brownies", tags: ["vegetarian"]},
+      {name: "Ice Cream", tags: ["vegetarian"]}
+    ]
+  };
+  
+  let hampDinnerMenu = {
+    "Entrees": [
+      {name: "Grilled Salmon", tags: []},
+      {name: "Roast Pork", tags: []},
+    ],
+    "Express": [
+      {name: "Vegetarian Stir-Fry", tags: ["vegetarian"]},
+      {name: "Fried Rice", tags: []}
+    ],
+    "Vegetarian": [
+      {name: "Vegetable Lasagna", tags: ["vegetarian"]},
+      {name: "Stuffed Bell Peppers", tags: ["vegetarian"]},
+      {name: "Baked Beans", tags: ["vegetarian"]},
+    ],
+    "Beverages": [
+      {name: "Iced Tea", tags: []},
+      {name: "Lemonade", tags: []},
+      {name: "Coca-Cola", tags: []},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Desserts": [
+      {name: "Cheesecake", tags: ["vegetarian"]},
+      {name: "Apple Pie", tags: ["vegetarian"]},
+    ]
+  };
 
-let hampDinnerMenu = {
-    "Entrees": [{
-        name: "Chicken Cattiatore",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Norwegian Salmon Schwarma",
-        tags: []
-    }],
-    "Soups": [{
-        name: "Chicken Noodle Soup",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Tomato Bisque",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    }],
-    "Grill": [{
-        name: "Halal Burger Patty",
-        tags: ["Halal","Sustainable","A carbon rating"]
-    },
-    {
-        name: "French Fries",
-        tags: ["C carbon rating"]
-    },
-    {
-        name: "Grilled Chicken Breast",
-        tags: ["Sustainable","A carbon rating"]
-    }],
-};
-
-let berkBreakfastMenu = {
-    "Entrees": [{
-        name: "French Toast Sticks",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    },
-    {
-        name: "Canadian Bacon",
-        tags: ["E carbon rating"]
-    },
-    {
-        name: "Hot Oatmeal",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    }],
-    "Pastries": [
-    {
-        name: "Mini Cheese Danish",
-        tags: ["E carbon rating"]
-    }],
-    "Gluten Free": [{
-        name: "Gluten Free Waffles",
-        tags: ["Vegetarian","Sustainable","A carbon rating"]
-    },
-    {
-        name: "Scrambled Eggs",
-        tags: ["E carbon rating"]
-    }],
-};
-let berkLunchMenu = {
-    "Grill": [{
-        name: "Halal Burger Patty",
-        tags: ["Halal","Sustainable","A carbon rating"]
-    },
-    {
-        name: "French Fries",
-        tags: ["C carbon rating"]
-    },
-    {
-        name: "Grilled Chicken Breast",
-        tags: ["Sustainable","A carbon rating"]
-    }],
-    "Street Food": [{
-        name: "Korean BBQ Chicken",
-        tags: ["Sustainable","B carbon rating"]
-    }],
-    "Soups": [{
-        name: "Chicken Noodle Soup",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Tomato Bisque",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    }],
-};
-
-let berkDinnerMenu = {
-    "Grill": [{
-        name: "Berkshire Burger Patty",
-        tags: ["Halal","Sustainable","A carbon rating"]
-    },
-    {
-        name: "French Fries",
-        tags: ["C carbon rating"]
-    },
-    {
-        name: "Grilled Chicken Breast",
-        tags: ["Sustainable","A carbon rating"]
-    }],
-    "Sushi": [{
-        name: "Teriyaki Chicken Roll",
-        tags: ["Sustainable","B carbon rating"]
-    }],
-    "Soups": [{
-        name: "Chicken Noodle Soup",
-        tags: ["Sustainable","B carbon rating"]
-    },
-    {
-        name: "Tomato Bisque",
-        tags: ["Vegetarian","Sustainable","B carbon rating"]
-    }],
-};
+  let berkBreakfastMenu = {
+    "Hot Breakfast Items": [
+      {name: "Scrambled Eggs", tags: ["vegetarian"]},
+      {name: "Bacon Strips", tags: []},
+      {name: "Breakfast Potatoes", tags: ["vegetarian"]},
+      {name: "Pancakes with Maple Syrup", tags: ["vegetarian"]},
+      {name: "French Toast Sticks", tags: ["vegetarian"]}
+    ],
+    "Cold Breakfast Items": [
+      {name: "Greek Yogurt with Granola", tags: ["vegetarian"]},
+      {name: "Assorted Cereal Bar with Milk", tags: ["vegetarian"]},
+    ],
+    "Beverages": [
+      {name: "Coffee", tags: ["sustainable"]},
+      {name: "Tea", tags: ["sustainable"]},
+      {name: "Orange Juice", tags: ["A carbon rating"]},
+      {name: "Apple Juice", tags: ["A carbon rating"]},
+      {name: "Milk", tags: ["sustainable"]},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Extras": [
+      {name: "Toast Bar", tags: ["vegetarian"]},
+    ]
+  };
+  
+  let berkLunchMenu = {
+    "Entrees": [
+      {name: "Grilled Chicken Breast", tags: []},
+      {name: "Stir-Fry", tags: ["vegetarian"]},
+      {name: "Beef Lasagna", tags: []},
+      {name: "Pasta with Marinara Sauce", tags: ["vegetarian"]},
+    ],
+    "Latino Food": [
+      {name: "Spicy Mango Salad", tags: ["vegetarian"]},
+      {name: "Beef Fajitas", tags: []},
+    ],
+    "Express": [
+        {name: "Vegetarian Stir-Fry", tags: ["vegetarian"]},
+        {name: "Fried Rice", tags: []}
+    ],
+    "Beverages": [
+      {name: "Iced Tea", tags: []},
+      {name: "Coca-Cola", tags: []},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Desserts": [
+      {name: "Chocolate Chip Cookies", tags: ["vegetarian"]}
+    ]
+  };
+  
+  let berkDinnerMenu = {
+    "Grill": [
+      {name: "Berkshire Burger", tags: []},
+      {name: "French Fries", tags: ["vegetarian"]},
+      {name: "Grilled Chicken", tags: []},
+      {name: "Jerk Chicken", tags: []}
+    ],
+    "Express": [
+        {name: "Vegetarian Stir-Fry", tags: ["vegetarian"]},
+        {name: "Fried Rice", tags: []}
+    ],
+    "Salad Bar": [
+      {name: "Mixed Green Salad", tags: ["vegetarian"]}
+    ],
+    "Beverages": [
+      {name: "Iced Tea", tags: []},
+      {name: "Lemonade", tags: []},
+      {name: "Coca-Cola", tags: []},
+      {name: "Water", tags: ["sustainable"]}
+    ],
+    "Desserts": [
+      {name: "Brownies", tags: ["vegetarian"]}
+    ]
+  };
 
 let order1 = new Order('Ian McGregor', 'Franklin Dining Commons', 'JQA Hall', {"Tomato Bisque": 2, "Teriyaki Chicken Roll": 1});
 order1.setTime('12:00 AM');
