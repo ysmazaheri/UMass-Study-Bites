@@ -12,6 +12,7 @@
     <!-- JavaScript Files -->
     <script type="module" src="../js-script/script-menus.js" defer></script>
     <script type="module" src="../js-script/script-universal.js" defer></script>
+    <script type="module" src="../js-script/script-menu-management.js" defer></script>
     <script src="//cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
 
 </head>
@@ -78,73 +79,17 @@
                     </div>
                 </div>
                 <div id="search-bar-container">
-                    <input type="text" id="search-bar" placeholder="Enter Food Item (or click below)">
+                    <input type="text" id="search-bar" placeholder="Enter Food Item">
+                    <button id="refresh-button">
+                        Refresh Menus
+                    </button>
                 </div>
 
                 <div class="dining-hall-title"></div>
                 <div class="meal-title"></div>
 
                 <div id="menu">
-
-
-                    <!--These lists will be procedurally generated as we fetch from the database-->
-                    <div class="food-type-container">
-                        <div class="food-type">
-                            Entree (test)
-                        </div>
-                        <ul class="food-option-list">
-                            <li class="food-option">
-                                <button type="button" class="food-button">Pizza (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Burger (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Fries (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Fries 2 (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Fries 3 (test)</button>
-                            </li>
-                        </ul>
-                    </div>
-
-
-                    <div class="food-type-container">
-                        <div class="food-type">
-                            Snacks (test)
-                        </div>
-                        <ul class="food-option-list">
-                            <li class="food-option">
-                                <button type="button" class="food-button">Pizza (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Burger (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Fries (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Fries 2 (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Pizza (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Burger (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Fries (test)</button>
-                            </li>
-                            <li class="food-option">
-                                <button type="button" class="food-button">Fries 2 (test)</button>
-                            </li>
-                        </ul>
-                    </div>
-
-
+                    <!--Menus are procedurally generated-->
 
                 </div>
 

@@ -16,11 +16,12 @@ function filterOptions() {
     let foodOptionsArr = [].slice.call(foodOptions);
     // Get the search query
     let query = String(searchBarElement.value).toLowerCase();
+    console.log(query);
     // Filter via contains
     foodOptionsArr.forEach(foodOption => {
         // Food options are list items. The contents are children HTML elements, buttons
         let foodLabel = foodOption.children[0];
-        let foodName = String(foodLabel.value).toLowerCase();
+        let foodName = String(foodLabel.textContent).toLowerCase();
         // Remove/show items by toggling 'hiding'
         if (foodName.includes(query)) {
             // Show if matches query
