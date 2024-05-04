@@ -114,7 +114,6 @@ async function loadOrders(){
             // Append completed order object to the HTML structure
             orderListElement.appendChild(listItem);
         }
-
     });
 }
 

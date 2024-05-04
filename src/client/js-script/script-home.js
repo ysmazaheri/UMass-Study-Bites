@@ -8,7 +8,7 @@ let infoWindow;
 let selectedLocations = [];
 
 
-// Data
+// Data: Name and location of each pick-up option
 const diningHalls = [ {
     position: { lat: 42.39316, lng: -72.52515 },
     title: "Worcester Dining Commons",
@@ -57,9 +57,11 @@ async function initMap() {
     // Default map markers for each DC
     markers = [];
     diningHalls.forEach(({ position, title }, i) => {
+        // Create map pin icon
         const pin = new PinElement({
           glyph: `${i + 1}`,
         });
+        // Create map marker to associate with pin icon
         const marker = new AdvancedMarkerElement({
           position,
           map,
