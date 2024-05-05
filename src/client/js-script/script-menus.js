@@ -37,18 +37,16 @@ function filterOptions() {
 loadMenu("Breakfast", "Franklin Dining Commons");
 let currLoc = "";
 let currMeal = "";
-// Loads all menus, then chooses the first matching breakfast menu from PouchDB to populate the menus page
-// Placeholder functionality
-// TODO: In live version (milestone 3/4), we will need to keep only 1 menu per meal per hall per day, and pull the relevant menu
+//loads all menus, then chooses the first matching breakfast menu from PouchDB to populate the menus page
+//This is purely placeholder functionality
+//In live version (milestone 3/4), we will need to keep only 1 menu per meal per hall per day, and pull the relevant menu
 async function loadMenu(meal, diningHall){
-    // Load and filter menus
     searchBarElement.value = "";
     let menus = await loadAllMenus();
     menus = menus.filter(x => x.diningHall === diningHall);
     menus = menus.filter(x => x.meal === meal);
     currLoc = diningHall;
     currMeal = meal;
-    // Edge case: No menu items
     if(menus.length === 0){
         diningHallTitles[0].textContent = diningHall;
         mealTitle.textContent = meal;
@@ -61,16 +59,14 @@ async function loadMenu(meal, diningHall){
     mealTitle.textContent = currMenu.meal;
     menuElement.innerHTML = '';
     let categories = Object.keys(food);
-    // Populate each food category
     categories.forEach(category => {
-        // Add HTML element for the category
         let container = document.createElement('div');
         container.classList.add('food-type-container'); 
         let foodTypeHeader = document.createElement('div');
         foodTypeHeader.classList.add('food-type');
         foodTypeHeader.textContent = category;
         container.appendChild(foodTypeHeader);
-        // Populate each food item under the category
+
         let foodOptionList = document.createElement('ul');
         foodOptionList.classList.add('food-option-list');
         food[category].forEach(foodType => {
@@ -84,8 +80,9 @@ async function loadMenu(meal, diningHall){
             listItem.appendChild(itemButton);
             foodOptionList.appendChild(listItem);
         });
-        // Add the menu container to the HTML
         container.appendChild(foodOptionList);
+
+
         menuElement.appendChild(container);
 
     });
@@ -94,8 +91,6 @@ async function loadMenu(meal, diningHall){
 
 
 /* Event Listeners*/
-
-// Functionality for the selection of meal types
 document.getElementById("breakfast").addEventListener("click", async function() {
     await loadMenu("Breakfast", currLoc);
 });
@@ -111,8 +106,6 @@ document.getElementById("dinner").addEventListener("click", async function() {
 document.getElementById("late-night").addEventListener("click", async function() {
     await loadMenu("Latenight", currLoc);
 });
-
-// Functionality for the selection of dining commons
 
 document.getElementById("franklin").addEventListener("click", async function() {
     await loadMenu(currMeal, "Franklin Dining Commons");
