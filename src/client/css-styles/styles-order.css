@@ -69,7 +69,7 @@ input.search-bar, textarea {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 320px;
+    height: fit-content;
     margin: 20px 0px 0px 0px;
 
 }
@@ -90,7 +90,7 @@ input.search-bar, textarea {
 
     margin: 10px 0px 0px 0px;
     width: 90%;
-    height: 230px;
+    height: fit-content;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: repeat();
