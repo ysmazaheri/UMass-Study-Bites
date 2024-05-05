@@ -105,6 +105,7 @@ input.search-bar, textarea {
 
     width: 200px;
     height: 60px;
+    background-color: white;
     overflow-y: scroll;
     border: 2px solid black;
     border-radius: 15px;

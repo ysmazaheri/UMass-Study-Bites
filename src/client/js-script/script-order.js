@@ -40,7 +40,7 @@ nextButton.addEventListener('click', () => {
     window.location.href = 'order-confirmation.html';
 });
 
-// Hardcoded ack Button
+// Hardcoded back Button
 backButton.addEventListener('click', () => {
     // Undo order progress
     ls.removeItem('OIList');
@@ -68,7 +68,8 @@ async function loadMenus(){
         container.classList.add('food-type-container'); 
         let foodTypeHeader = document.createElement('div');
         foodTypeHeader.classList.add('food-type-title');
-        foodTypeHeader.textContent = category;
+        // Capitalize the first letter of each word in the category
+        foodTypeHeader.textContent = capitalizeEveryWord(category);
         container.appendChild(foodTypeHeader);
         // Add each food under the category to the container div
         let foodOptionList = document.createElement('div');
@@ -76,18 +77,22 @@ async function loadMenus(){
         food[category].forEach(foodType => {
             let listItem = document.createElement('div');
             listItem.classList.add('food-option');
-            listItem.textContent = foodType.name;
+            // Capitalize the first letter of each word in the food name
+            listItem.textContent = capitalizeEveryWord(foodType.name);
             // Make each food item clickable to add to cart
             listItem.addEventListener("click", () => {
-                
-                let foodName = foodType.name;
+                let foodName = capitalizeEveryWord(foodType.name);
+                // When clicked, add to cart
                 orderCart.addOI(foodName);
-
                 showOI.classList.toggle('order-item-added-tag');
-                showOI.innerHTML = "1 order of " + foodName + " added";
+                // Get the total number now in the cart
+                let totalCount = orderCart.getIOValueByName(foodName);
+                // When clicked, notify the user that it has been added to cart, displaying the total
+                showOI.innerHTML = `${totalCount} order(s) of ${foodName} total`;
                 setTimeout(() => {
                     showOI.classList.toggle('order-item-added-tag');
                 }, 1500)
+                
         
             });
 
@@ -98,4 +103,13 @@ async function loadMenus(){
         menuElement.appendChild(container);
 
     });
+}
+
+// Split up a sentence into each word, and capitalize the first letter of each word and decapitalize all others
+// Reduces the reliance on database-level formatting, which is useful for webscraping
+function capitalizeEveryWord(sentence) {
+    let words = sentence.split(" ");
+    let capitalizedWords = words.map((word => word[0].toUpperCase() + word.substring(1).toLowerCase()));
+    let capitalizedSentence = capitalizedWords.join(" ");
+    return capitalizedSentence;
 }
