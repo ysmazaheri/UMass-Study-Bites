@@ -10,13 +10,14 @@ const orderKeys = orderCart.getOINames();
 
 let pointTotal = 0;
 
+// Conduct order-item-specific operations
 for (let i = 0; i < orderCart.OIListLength(); i++) {
 
   // Creating div elements for each part of OI (Order Item) and assigning respective values
   let OI = document.createElement('div');
   OI.classList.add('order-item');
 
-  // Assigning name and price
+  // Assigning name and price to the div elements
   let titlePriceCont = document.createElement('div');
   titlePriceCont.classList.add('title-price-container');
   let OITitle = document.createElement('div');
@@ -27,7 +28,7 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
   // OIPrice.innerHTML = orderCart.getIOValueByName(orderKeys[i]) + " point(s)";
   OIPrice.innerHTML = 1 + " point(s)";
 
-  // Assigning quantity and adding plus and minus buttons for cart editing
+  // Creating & assigning "quantity" and "plus" and "minus? buttons for cart editing
   let OIQuanCont = document.createElement('div');
   OIQuanCont.classList.add('order-item-quantity-container');
   let OIQuan = document.createElement('div');
@@ -48,34 +49,29 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
 
 }
 
+// Display points for user
 const totalPoints = document.getElementById('total');
 totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
 
-// Back Button
-
+// Hardwired back button
 const backButton = document.getElementById('backBtn');
-
 backButton.addEventListener('click', () => {
   // Navigate to location-select.html
   window.location.href = 'deliver.html';
 });
 
-// Setting the input fields
-
+// Input fields for showing and displaying order information
 const nameInput = document.getElementById('name-input');
 const pickUpInput = document.getElementById('pick-up-input');
 const deliveryInput = document.getElementById('delivery-input');
-
+// Populate input fields
 nameInput.value = orderStorage.getName();
 pickUpInput.value = orderStorage.getDelivery();
 deliveryInput.value = orderStorage.getPickUp();
 
-// Continue button 
-
+// Hardwired continue button 
 const continueButton = document.getElementById('continue-button');
-
 continueButton.addEventListener('click', () => {
-
+  // Navigate to thank-you.html
   window.location.href = 'thank-you.html';
-
 });

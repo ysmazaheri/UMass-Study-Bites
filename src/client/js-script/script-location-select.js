@@ -7,7 +7,7 @@ let markers = [];
 let infoWindow;
 let selectedLocations = [];
 
-// Data
+// Data: Name and location of each drop-off option
 const dorms = [
     {
       position: { lat: 42.3895, lng: -72.5198 },
@@ -246,9 +246,11 @@ async function initMap() {
     // Default map markers for each DC
     markers = [];
     dorms.forEach(({ position, title }, i) => {
+        // Create map pin icon
         const pin = new PinElement({
           glyph: `${i + 1}`,
         });
+        // Create map marker to associate with pin icon
         const marker = new AdvancedMarkerElement({
           position,
           map,

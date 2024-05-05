@@ -14,21 +14,27 @@ fillPouchIfEmpty();
 let toggleButton = document.getElementById("sidebar-toggle");
 toggleButton.addEventListener("click", toggleSidebar);
 
+// Implement sidebar toggle button for all pages
 function toggleSidebar() {
     let sidebar = document.getElementsByClassName("sidebar").item(0);
     let topbar = document.getElementsByClassName("topbar").item(0);
     let main = document.getElementsByClassName("main").item(0);
-
+    // If the sidebar is currently open, close it
     if (sidebar.style.width !== "0px") {
+        // Close by changing width and visibility
         sidebar.style.width = "0px";
         sidebar.style.display = "none";
+        // Adjust main div width to compensate
         main.style.width = "100vw";
         topbar.style.minWidth = "835px";
         localStorage.setItem('sidebarState', 'hidden');
     }
+    // if the sidebar is currently closed, open it
     else {
+        // Close by changing width and visibility
         sidebar.style.width = "165px";
         sidebar.style.display = "block";
+        // Adjust main div width to compensate
         main.style.width = "calc(100vw - 165px)";
         topbar.style.minWidth = "1000px";
         localStorage.setItem('sidebarState', 'visible'); 
@@ -38,11 +44,12 @@ function toggleSidebar() {
 // check the initial state of the sidebar from LS
 document.addEventListener("DOMContentLoaded", function() {
     const sidebarState = localStorage.getItem('sidebarState');
+    // Make sidebar's close/open status be retained across webpages using local memory
     if (sidebarState === 'hidden') {
         let sidebar = document.getElementsByClassName("sidebar").item(0);
         let topbar = document.getElementsByClassName("topbar").item(0);
         let main = document.getElementsByClassName("main").item(0);
-
+        // Minimize if it was minimized before
         sidebar.style.width = "0px";
         sidebar.style.display = "none";
         main.style.width = "100vw";
@@ -374,7 +381,6 @@ let hampLunchMenu = {
 
 let order1 = new Order('Ian McGregor', 'Franklin Dining Commons', 'JQA Hall', {"Tomato Bisque": 2, "Teriyaki Chicken Roll": 1});
 order1.setTime('12:00 AM');
-//don't worry guys, I know your last names, they're just not needed for this
 let order2 = new Order('Said', 'Worcester Dining Commons', 'Wheeler Hall', {"Grilled Chicken Breast": 1, "French Fries": 3, "Berkshire Burger Patty": 1});
 order2.setTime('9:00 AM');
 let order3 = new Order('Vrishabh', 'Franklin Dining Commons', 'IDK Hall', {"Chicken Noodle Soup": 5, "French Fries": 3});

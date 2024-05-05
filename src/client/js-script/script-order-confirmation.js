@@ -7,6 +7,7 @@ const orderKeys = orderCart.getOINames();
 
 let pointTotal = 0;
 
+// Conduct order-item-specific operations
 for (let i = 0; i < orderCart.OIListLength(); i++) {
 
   // Creating div elements for each part of OI (Order Item) and assigning respective values
@@ -76,24 +77,20 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
 
 }
 
+// Display points for user
 const totalPoints = document.getElementById('total');
 totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
 
-// Back Button
-
+// Hardwired back button
 const backButton = document.getElementById('backBtn');
-
 backButton.addEventListener('click', () => {
-  // Navigate to location-select.html
+  // Navigate to order.html
   window.location.href = 'order.html';
 });
 
-// Continue button 
-
+// Hardwired continue button 
 const continueButton = document.getElementById('continue-button');
-
 continueButton.addEventListener('click', () => {
-
+  // Navigate to thank-you.html
   window.location.href = 'thank-you.html';
-
 });
