@@ -126,8 +126,8 @@ input.input-field, textarea {
 
 #order-preview-list {
 
-    /* border: 2px solid black; */
-
+    padding: 8px;
+    border: 1.5px solid grey;
     display: flex;
     flex-direction: column;
     max-height: 500px;
