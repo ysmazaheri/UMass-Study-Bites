@@ -42,6 +42,7 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
 
     pointTotal -= 1;
     totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
+    OIPrice.innerHTML = orderCart.getIOValueByName(orderKeys[i]) + " point(s)";
 
   });
   let OIQuan = document.createElement('div');
@@ -58,6 +59,7 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
 
     pointTotal += 1;
     totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
+    OIPrice.innerHTML = orderCart.getIOValueByName(orderKeys[i]) + " point(s)";
 
   });
 
