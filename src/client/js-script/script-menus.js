@@ -6,6 +6,7 @@ let foodOptions = document.getElementsByClassName('food-option');
 let diningHallTitles = document.getElementsByClassName('dining-hall-title');
 let mealTitle = document.getElementsByClassName('meal-title')[0];
 let menuElement = document.getElementById('menu');
+const URL = "http://localhost:3000";
 
 // Refine search every time the input value changes
 searchBarElement.addEventListener('input', filterOptions);
@@ -36,19 +37,20 @@ function filterOptions() {
 }
 
 //loadMenu("Breakfast", "Franklin Dining Commons");
-let currLoc = "";
-let currMeal = "";
+let currLoc = "Franklin Dining Commons";
+let currMeal = "Breakfast";
 
 //loads requested menu from PouchDB to populate the menus page
 async function loadMenu(meal, diningHall){
     searchBarElement.value = "";
 
     //Attempts to retrieve menu by meal and dining hall. If it fails, displays a message to the user
+    let currMenu = undefined;
     try{
-        let menuResponse = await fetch(`${URL}/menu-read?diningHall=${diningHall},meal=${meal}`, {
+        let menuResponse = await fetch(`${URL}/menu-read?diningHall=${diningHall}&meal=${meal}`, {
           method: "GET",
         });
-        let currMenu = menuResponse.json();
+        currMenu = await menuResponse.json();
     }catch(ex){
         console.log('Failed to retrieve menu');
         diningHallTitles[0].textContent = diningHall;
@@ -64,8 +66,11 @@ async function loadMenu(meal, diningHall){
         menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time.</p>`;
         return;
     }
+    console.log(currMenu);
 
     let food = currMenu.food;
+    food = JSON.parse(food);
+    if(food === undefined) return;
     diningHallTitles[0].textContent = currMenu.diningHall;
     mealTitle.textContent = currMenu.meal;
     menuElement.innerHTML = '';
@@ -80,6 +85,9 @@ async function loadMenu(meal, diningHall){
 
         let foodOptionList = document.createElement('ul');
         foodOptionList.classList.add('food-option-list');
+        console.log(category);
+        let fc = food[category];
+        console.log(fc);
         food[category].forEach(foodType => {
             let listItem = document.createElement('li');
             listItem.classList.add('food-option');
@@ -115,7 +123,7 @@ document.getElementById("dinner").addEventListener("click", async function() {
 });
 
 document.getElementById("late-night").addEventListener("click", async function() {
-    await loadMenu("Latenight", currLoc);
+    await loadMenu("Dinner", currLoc);
 });
 
 document.getElementById("franklin").addEventListener("click", async function() {

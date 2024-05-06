@@ -59,9 +59,11 @@ async function createMenu(response, menu) {
  */
 async function readMenu(response, diningHall, meal) {
   try {
-    const menu = await menuDB.loadAllMenus().filter(x => x.diningHall === diningHall && x.meal === meal)[0];
+    let menus = await menuDB.loadAllMenus();
+    let menu = menus.filter(x => x.diningHall === diningHall && x.meal === meal)[0];
+    let menuJson = JSON.stringify(menu);
     response.writeHead(200, jsonFields);
-    response.write(menu.food);
+    response.write(menuJson);
     response.end();
   } catch (err) {
     response.writeHead(404, headerFields);
@@ -423,6 +425,7 @@ app
   .route("/menu-read")
   .get(async (request, response) => {
     const options = request.query;
+    console.log(options);
     await readMenu(response, options.diningHall, options.meal);
   })
   .all(MethodNotAllowedHandler);
