@@ -1,7 +1,4 @@
 /* JS that applies to all pages */
-
-import { createMenu, loadAllMenus } from "../../server/js-databases/db-menu.js";
-import { createOrder, loadAllOrders } from "../../server/js-databases/db-order.js";
 import Menu from "../js-models/menu.js";
 import Order from "../js-models/order.js";
 
@@ -14,6 +11,7 @@ import Order from "../js-models/order.js";
 let toggleButton = document.getElementById("sidebar-toggle");
 toggleButton.addEventListener("click", toggleSidebar);
 
+//Allows sidebar to collapse and reopen
 function toggleSidebar() {
     let sidebar = document.getElementsByClassName("sidebar").item(0);
     let topbar = document.getElementsByClassName("topbar").item(0);
@@ -54,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
 //Put all other code above this point because it's super long
 
 //Setup for placeholder data in PouchDB. 
-
+/*
 let order1 = new Order('Ian McGregor', 'Franklin Dining Commons', 'JQA Hall', {"Tomato Bisque": 2, "Teriyaki Chicken Roll": 1});
 order1.setTime('12:00 AM');
 //don't worry guys, I know your last names, they're just not needed for this
@@ -113,4 +111,4 @@ async function addOrdersToPouch(){
     await createOrder(order3);
     await createOrder(order4);
     console.log(loadAllOrders());
-}
+}*/

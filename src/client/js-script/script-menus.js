@@ -1,4 +1,4 @@
-import { loadAllMenus } from "../../server/js-databases/db-menu.js";
+//import { loadAllMenus } from "../../server/js-databases/db-menu.js";
 import { OrderStorage } from "../js-models/OrderStorage.js";
 
 const searchBarElement = document.getElementById('search-bar');
@@ -35,26 +35,36 @@ function filterOptions() {
     });
 }
 
-loadMenu("Breakfast", "Franklin Dining Commons");
+//loadMenu("Breakfast", "Franklin Dining Commons");
 let currLoc = "";
 let currMeal = "";
-//loads all menus, then chooses the first matching breakfast menu from PouchDB to populate the menus page
-//This is purely placeholder functionality
-//In live version (milestone 3/4), we will need to keep only 1 menu per meal per hall per day, and pull the relevant menu
+
+//loads requested menu from PouchDB to populate the menus page
 async function loadMenu(meal, diningHall){
     searchBarElement.value = "";
-    let menus = await loadAllMenus();
-    menus = menus.filter(x => x.diningHall === diningHall);
-    menus = menus.filter(x => x.meal === meal);
-    currLoc = diningHall;
-    currMeal = meal;
-    if(menus.length === 0){
+
+    //Attempts to retrieve menu by meal and dining hall. If it fails, displays a message to the user
+    try{
+        let menuResponse = await fetch(`${URL}/menu-read?diningHall=${diningHall},meal=${meal}`, {
+          method: "GET",
+        });
+        let currMenu = menuResponse.json();
+    }catch(ex){
+        console.log('Failed to retrieve menu');
         diningHallTitles[0].textContent = diningHall;
         mealTitle.textContent = meal;
         menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time.</p>`;
         return;
     }
-    let currMenu = menus[0];
+    currLoc = diningHall;
+    currMeal = meal;
+    if(currMenu === undefined){
+        diningHallTitles[0].textContent = diningHall;
+        mealTitle.textContent = meal;
+        menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time.</p>`;
+        return;
+    }
+
     let food = currMenu.food;
     diningHallTitles[0].textContent = currMenu.diningHall;
     mealTitle.textContent = currMenu.meal;
@@ -91,7 +101,7 @@ async function loadMenu(meal, diningHall){
 
 
 
-/* Event Listeners*/
+/* Event Listeners, allows user to choose the displayed menu*/
 document.getElementById("breakfast").addEventListener("click", async function() {
     await loadMenu("Breakfast", currLoc);
 });
