@@ -32,17 +32,21 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
   minusQuan.classList.add('minus-quantity-button');
   minusQuan.innerHTML = "-";
   minusQuan.addEventListener("click", () => {
-  
-    let newCount = orderCart.removeOI(orderKeys[i]);
-
-    if (newCount === 0) {
-      OI.remove();
+    if (pointTotal == 1) {
+      alert("Cart must have at least 1 item.");
     }
-    else OIQuan.innerHTML = newCount;
+    else {
+      let newCount = orderCart.removeOI(orderKeys[i]);
 
-    pointTotal -= 1;
-    totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
+      if (newCount === 0) {
+        OI.remove();
+      }
+      else OIQuan.innerHTML = newCount;
 
+      pointTotal -= 1;
+      totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
+      OIPrice.innerHTML = orderCart.getIOValueByName(orderKeys[i]) + " point(s)";
+    }
   });
   let OIQuan = document.createElement('div');
   OIQuan.classList.add('order-item-quantity');
@@ -58,6 +62,7 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
 
     pointTotal += 1;
     totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
+    OIPrice.innerHTML = orderCart.getIOValueByName(orderKeys[i]) + " point(s)";
 
   });
 
