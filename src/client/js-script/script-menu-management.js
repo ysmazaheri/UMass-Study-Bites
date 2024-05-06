@@ -2,9 +2,14 @@ import { loadAllMenus } from "../../server/js-databases/db-menu.js";
 
 let refreshButton = document.getElementById("refresh-button");
 refreshButton.addEventListener('click', refreshMenus);
+const URL = "http://localhost:3260";
 
-function refreshMenus() {
-  
+async function refreshMenus() {
+  let menuResponse = await fetch(`${URL}/menu/all`, {
+    method: "GET",
+  });
+  let menuJson = await menuResponse.json();
+  console.log(menuJson);
 
   //console.log(frankBreakfastMenu['Hot Breakfast Items'][0].name);
 }

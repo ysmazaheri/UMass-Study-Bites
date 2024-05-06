@@ -1,3 +1,5 @@
+import PouchDB from "pouchdb";
+
 const menuDB = new PouchDB("menu");
 
 

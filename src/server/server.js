@@ -6,7 +6,7 @@ import * as orderDB from "./js-databases/db-order.js";
 const headerFields = { "Content-Type": "text/plain" };
 const jsonFields = { "Content-Type": "application/json" }
 
-const express = require('express');
+//const express = require('express');
 
 /**
  * Asynchronously creates a menu using provided menu object. If the menu is not
@@ -392,7 +392,6 @@ const app = express();
 const port = 3260;
 
 //This is from exercise 8, unsure if it is the settings we want
-app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("src/client"));
