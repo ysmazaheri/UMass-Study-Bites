@@ -7,6 +7,7 @@ const orderKeys = orderCart.getOINames();
 
 let pointTotal = 0;
 
+// Conduct order-item-specific operations
 for (let i = 0; i < orderCart.OIListLength(); i++) {
 
   // Creating div elements for each part of OI (Order Item) and assigning respective values
@@ -31,17 +32,21 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
   minusQuan.classList.add('minus-quantity-button');
   minusQuan.innerHTML = "-";
   minusQuan.addEventListener("click", () => {
-  
-    let newCount = orderCart.removeOI(orderKeys[i]);
-
-    if (newCount === 0) {
-      OI.remove();
+    if (pointTotal == 1) {
+      alert("Cart must have at least 1 item.");
     }
-    else OIQuan.innerHTML = newCount;
+    else {
+      let newCount = orderCart.removeOI(orderKeys[i]);
 
-    pointTotal -= 1;
-    totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
+      if (newCount === 0) {
+        OI.remove();
+      }
+      else OIQuan.innerHTML = newCount;
 
+      pointTotal -= 1;
+      totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
+      OIPrice.innerHTML = orderCart.getIOValueByName(orderKeys[i]) + " point(s)";
+    }
   });
   let OIQuan = document.createElement('div');
   OIQuan.classList.add('order-item-quantity');
@@ -57,6 +62,7 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
 
     pointTotal += 1;
     totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
+    OIPrice.innerHTML = orderCart.getIOValueByName(orderKeys[i]) + " point(s)";
 
   });
 
@@ -76,24 +82,20 @@ for (let i = 0; i < orderCart.OIListLength(); i++) {
 
 }
 
+// Display points for user
 const totalPoints = document.getElementById('total');
 totalPoints.innerHTML = "Total: " + pointTotal + " point(s)";
 
-// Back Button
-
+// Hardwired back button
 const backButton = document.getElementById('backBtn');
-
 backButton.addEventListener('click', () => {
-  // Navigate to location-select.html
+  // Navigate to order.html
   window.location.href = 'order.html';
 });
 
-// Continue button 
-
+// Hardwired continue button 
 const continueButton = document.getElementById('continue-button');
-
 continueButton.addEventListener('click', () => {
-
+  // Navigate to thank-you.html
   window.location.href = 'thank-you.html';
-
 });

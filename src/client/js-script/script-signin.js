@@ -22,56 +22,45 @@ const coverButtonValues = ["Sign Up",
 let idxCount = 0;
 
 function slide () {
-
     idxCount = (idxCount + 1) % 2;
-
     // Transition to fade cover text
     coverText.classList.toggle('fadeTextAndButton');
     coverButton.classList.toggle('fadeTextAndButton');
-
     // Sliding transitions
     setTimeout(() => {
-
         // Transition to slide cover over
         coverBox.classList.toggle('slideCover');
-
         // Transitino to slide form over
         formBox.classList.toggle('slideForm');
     }, 300);
-
     // Changing form during slide
     setTimeout(() => { 
         // Changin form text
         formTitle.innerHTML = titles[idxCount];
-
         // Adding confirm password input field
         if (idxCount) confirmPassInput.removeAttribute("hidden");
         else confirmPassInput.setAttribute("hidden", "");
     }, 500);
-
     // Fade in new text
     setTimeout(() => {
-
         coverTitle.innerHTML = coverTitles[idxCount];
         coverDesc.innerHTML = coverDescs[idxCount];
         coverButton.value = coverButtonValues[idxCount];
-
         // Fade in new button and text
         coverText.classList.toggle('fadeTextAndButton');
         coverButton.classList.toggle('fadeTextAndButton');
     }, 800);
-
 }
 
 coverButton.addEventListener("click", () => slide());
 
 // User sign in check
-
 const tokenBox = document.getElementsByClassName('token-container')[0];
 tokenBox.style.display = 'none';
 
 const ls = window.localStorage;
 
+// TODO: Implement
 function checkSignedIn() {
 
     
