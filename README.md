@@ -1,16 +1,18 @@
 # UMass-Study-Bites
 Campus Food Delivery Service:
 - for dining halls
-- scraping website menus
 - accessing API's for addresses
+- using express.js to host a server containing menus, orders, and users
 - using maps for coordinates
 
-run "npm run milestone-02" to view the application starting from the homepage.
+run "npm start" to begin the server, then visit 'localhost:3000' to view the homepage.
 
 **IMPORTANT**
-If no orders, deliveries, menus are appearing on the page, first try refreshing the page.
-If nothing changes, un-comment addMenusToPouch() and addOrdersToPouch() functions in js-script/script-universal.js (lines 8-9), and refresh the page. This will populate the local PouchDB instance with our placeholder data (to be changed at later milestones). **do not leave these uncommented**
+On pages containing menus, if your local database is empty, it is required to 'refresh menus' via the button.
+This will populate your database with our placeholder menus
 
+
+**Pages**
 
 Our project is a campus food delivery students intended to be used between students. It allows students to order dining hall food at the cost of 1 token. Each token is earned by delivering a meal from a dining hall to another student.
 
@@ -28,11 +30,43 @@ All of these pages can be filtered by text, so the user can find what they are l
 
 4) a sign-in page, which simply allows users to log in
 
-Our file structure is simple
-- assets contains the necessary images
-- css-styles contains all css files
-- html-pages contains all html files
-- js-databases contains our files for databases. This includes a database for menus, orders, and users
-- js-models contains files for the classes used. This includes menu, order, orderCart, orderStorage, and user classes
-- js-script contains script files for each page, as well as a universal script shared across the entire site
-- test-files can be ignored, and nothing contained in it is used in our live project
+**Workflow**
+In our app, the user experience is as follows
+- Sign up or sign in via the proper screen
+- Use the 'menus' page to browse the menus at all dining halls
+- Use the homepage to select a location to order from
+- Click next, then select your delivery location
+- Select desired foods from the menu
+- Place order
+
+Another user will deliver this order
+- Use the 'deliver' page to view available deiliveries
+- Click a delivery to assign the delivery to yourself
+- Upon the delivery's completion, complete the order 
+
+
+**File Structure**
+
+Our file structure is as follows:
+
+- client/ contains all client-side code
+  - all html pages are present in client/
+  - assets/ contains the necessary images
+  - css-styles/ contains all css files
+  - js-models/ contains files for the custom classes used. This includes menu, order, orderCart, orderStorage, and user classes
+  - js-script/ contains script files for each page, as well as a universal script shared across the entire site
+  - test-files/ can be ignored, and nothing contained in it is used in our live project
+
+
+- server/ contains all server-side code
+  - js-databases contains our files for databases. This includes a database for menus, orders, and users running on PouchDB
+  - server.js contains all code required for running our server on port 3000
+
+
+**Server Functionality**
+
+Our server uses http fetch() calls to create, remove, update, and delete the User, Menu, and Order objects present in PouchDB.
+It also contains custom URLs for more precise actions, such as refreshing all of the menus present in the database, and adding a deliverer to an order.
+These functions contain mutliple CRUD operations.
+
+Updating these structures via fetch() will create menu/ orders/ and users/ folders. If these are deleted, your local database will be emptied

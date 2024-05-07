@@ -43,17 +43,18 @@ export async function loadOrder(orderId) {
 }
 
 /**
- * Asynchronously removes an order from the database by its id.
+ * Asynchronously removes an order from the database by its id and revision.
  *
  * @async
  * @param {string} orderId - The id of the order to be removed.
+ * @param {string} rev - The revision of the menu to be removed.
  * @returns {Promise<void>} - A promise that resolves when the order has been
  * successfully removed.
  * @throws {Error} - Throws an error if the order cannot be removed, e.g., it
  * does not exist or due to database issues.
  */
-export async function removeOrder(orderId) {
-    orderDB.remove(orderId);
+export async function removeOrder(orderId, rev) {
+    orderDB.remove(orderId, rev);
 }
 
 /**

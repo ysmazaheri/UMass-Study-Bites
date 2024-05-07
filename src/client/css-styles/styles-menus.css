@@ -95,6 +95,10 @@
     background-color: rgb(161, 51, 51);
 }
 
+#refresh-button:hover {
+    background-color: rgb(148, 47, 47);
+}
+
 #menu {
     display: flex;
     flex-direction: column;

@@ -1,14 +1,17 @@
 import { OrderCart } from "../js-models/OrderCart.js";
-import { loadAllMenus } from "../../server/js-databases/db-menu.js";
 
 const orderCart = new OrderCart();
 const ls = window.localStorage;
+const URL = "http://localhost:3000";
 
 const searchBarElement = document.getElementsByClassName('search-bar')[0];
 const backButton = document.getElementById('backBtn');
 const menuElement = document.getElementById('menu');
 const nextButton = document.getElementById('next-button');
 const showOI = document.getElementsByClassName('order-item-added')[0];
+
+let refreshButton = document.getElementById("refresh-button");
+refreshButton.addEventListener('click', refreshMenus);
 
 // Filter food options using search bar query
 function filterOptions() {
@@ -48,19 +51,77 @@ backButton.addEventListener('click', () => {
     window.location.href = 'location-select.html';
 });
 
+//Removes current instances of menus from local PouchDB instance, then fills it with placeholder menus below
+//This ensures there are no duplicate entries, and lends itself to a more efficient full implementation
+
+async function refreshMenus() {
+
+    //refresh menus
+    try{
+      let menuResponse = await fetch(`${URL}/menu-refresh`, {
+        method: "GET",
+      });
+      console.log('Refreshed Menus');
+    }catch(ex){
+      console.log('Error refreshing menus');
+    }
+  
+  
+    //Retrieve all current menus from PouchDB
+    try{
+      let menuResponse = await fetch(`${URL}/menu-all`, {
+        method: "GET",
+      });
+      let menuJson = await menuResponse.json();
+      let menuArr = menuJson.menus;
+      console.log(menuArr);
+    }catch(ex){
+      console.log('Error retrieving menus');
+    }
+  
+    loadMenu();
+  
+  }
 
 // Loading menus
-loadMenus();
-async function loadMenus(){
-    // Load all menus
-    let menus = await loadAllMenus();
-    // Default to Franklin DC Breakfast
-    menus = menus.filter(x => x.diningHall === "Franklin Dining Commons");
-    let breakfastMenu = menus.filter(x => x.meal === "Breakfast")[0];
-    // Load content for default
-    let food = breakfastMenu.food;
-    menuElement.innerHTML = '';
+loadMenu();
+async function loadMenu(){
+    searchBarElement.value = "";
+
+    //Defaults to Frank breakfast
+    //TODO: Change this to use local storage
+    let diningHall = 'Franklin Dining Commons';
+    let meal = 'Breakfast';
+
+    //Attempts to retrieve menu by meal and dining hall. If it fails, displays a message to the user
+    let currMenu = undefined;
+    try{
+        let menuResponse = await fetch(`${URL}/menu-read?diningHall=${diningHall}&meal=${meal}`, {
+          method: "GET",
+        });
+        currMenu = await menuResponse.json();
+    }catch(ex){
+        console.log('Failed to retrieve menu');
+        menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location or Refresh Menus.</p>`;
+        return;
+    }
+
+    if(currMenu === undefined){
+        menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location or Refresh Menus.</p>`;
+        return;
+    }
+
+    //gets food from menu, returns if none exists
+    let food = undefined;
+    try{
+        food = currMenu.food;
+        food = JSON.parse(food);
+    }catch(ex){ return; }
+
+    if(food === undefined) return;
+
     let categories = Object.keys(food);
+    menuElement.innerHTML = '';
     // For each food category...
     categories.forEach(category => {
         // Create the div for the category that will contain the individual foods

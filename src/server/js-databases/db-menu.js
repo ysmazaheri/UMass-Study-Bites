@@ -45,17 +45,18 @@ export async function loadMenu(menuId) {
 }
 
 /**
- * Asynchronously removes a menu from the database by its id.
+ * Asynchronously removes a menu from the database by its id and revision.
  *
  * @async
  * @param {string} menuId - The id of the menu to be removed.
+ * @param {string} rev - The revision of the menu to be removed.
  * @returns {Promise<void>} - A promise that resolves when the menu has been
  * successfully removed.
  * @throws {Error} - Throws an error if the menu cannot be removed, e.g., it
  * does not exist or due to database issues.
  */
-export async function removeMenu(menuId) {
-    await menuDB.remove(menuId);
+export async function removeMenu(menuId, rev) {
+    await menuDB.remove(menuId, rev);
 }
 
 /**
