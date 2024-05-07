@@ -335,8 +335,8 @@ document.getElementById('nextBtn').addEventListener('click', function() {
 
 // BACK BUTTON
 document.getElementById('backBtn').addEventListener('click', function() {
-  // Navigate to home.html
-  window.location.href = 'home.html';
+  // Navigate to index.html
+  window.location.href = 'index.html';
 });
 
 // GOOGLE MAP MARKER FILTER

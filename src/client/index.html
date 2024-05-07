@@ -1,22 +1,25 @@
-<!-- Page for creating or signing into an account -->
+<!-- Home page for selecting where one would like the food delivered from -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign-in</title>
+    <title>Home</title>
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="../css-styles/styles-signin.css">
+    <link rel="stylesheet" href="../css-styles/styles-home.css">
     <link rel="stylesheet" href="../css-styles/styles-universal.css">
     <!-- JavaScript Files -->
-    <script type="module" src="../js-script/script-signin.js" defer></script>
+    <script type="module" src="../js-script/script-home.js" defer></script>
     <script type="module" src="../js-script/script-universal.js" defer></script>
     <script src="//cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+
 </head>
 <body>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Topbar -->
 
     <div class="topbar">
 
@@ -37,7 +40,7 @@
 
                 <!-- Links to different pages -->
 
-                <a href="home.html"><div class="site-nav-bar-link">Homepage</div></a>
+                <a href="index.html"><div class="site-nav-bar-link">Homepage</div></a>
                 <a href="menus.html"><div class="site-nav-bar-link">Menus</div></a>
                 <a href="deliver.html"><div class="site-nav-bar-link">Deliver</div></a>
                 <a href="signin.html"><div class="site-nav-bar-link">Sign in / Sign up</div></a>
@@ -48,28 +51,27 @@
 
         <div class="main">
 
-            <div id="sign-in-sign-up-container">
+            <div id="location-selection">
 
-                <div id="sign-in-sign-up-cover">
+                <div id="search-bar-plus-map">
 
-                    <div id="sign-in-sign-up-cover-text">
-                        <div id="sign-in-sign-up-cover-title">New here?</div>
-                        <div id="sign-in-sign-up-cover-desc">Sign up for fast, safe, and efficient delivery services. Open to all UMass students and faculty.</div>
+                    <div id="search-bar">
+                        <input type="text" id="search-bar-text" placeholder="Find Pick-Up Location">
+                        <button id="nextBtn" type="button">Next</button>
                     </div>
-                    <button type="button" id="sign-in-sign-up-cover-button">Sign Up</button>
+
+                    <div id="map">
+                    </div>
 
                 </div>
 
-                <div id="sign-in-sign-up-form">
-
-                    <div id="sign-in-sign-up-form-title">Sign In</div>
-                    <div id="sign-in-sign-up-form-fillout">
-                        <input class="input-field" type="text" placeholder="Username">
-                        <input class="input-field" type="password" placeholder="Password">
-                        <input id="confirm-pass" class="input-field" type="password" placeholder="Confirm Password" hidden>
-                    </div>
-                    <button type="button" id="sign-in-sign-up-form-button">Sign In</button>
-
+                <div id="dining-hall-selection">
+                    <ul id="location-list">
+                        <li class="location">Franklin Dining Commons</li>
+                        <li class="location">Worcester Dining Commons</li>
+                        <li class="location">Berkshire Dining Commons</li>
+                        <li class="location">Hampshire Dining Commons</li>
+                    </ul>
                 </div>
 
             </div>
