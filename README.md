@@ -12,6 +12,8 @@ On pages containing menus, if your local database is empty, it is required to 'r
 This will populate your database with our placeholder menus
 
 
+**Pages**
+
 Our project is a campus food delivery students intended to be used between students. It allows students to order dining hall food at the cost of 1 token. Each token is earned by delivering a meal from a dining hall to another student.
 
 Right now, we have 4 main pages accessible from a sidebar
@@ -28,7 +30,25 @@ All of these pages can be filtered by text, so the user can find what they are l
 
 4) a sign-in page, which simply allows users to log in
 
-Our file structure is simple
+**Workflow**
+In our app, the user experience is as follows
+- Sign up or sign in via the proper screen
+- Use the 'menus' page to browse the menus at all dining halls
+- Use the homepage to select a location to order from
+- Click next, then select your delivery location
+- Select desired foods from the menu
+- Place order
+
+Another user will deliver this order
+- Use the 'deliver' page to view available deiliveries
+- Click a delivery to assign the delivery to yourself
+- Upon the delivery's completion, complete the order 
+
+
+**File Structure**
+
+Our file structure is as follows:
+
 - client/ contains all client-side code
   - all html pages are present in client/
   - assets/ contains the necessary images
@@ -42,6 +62,8 @@ Our file structure is simple
   - js-databases contains our files for databases. This includes a database for menus, orders, and users running on PouchDB
   - server.js contains all code required for running our server on port 3000
 
+
+**Server Functionality**
 
 Our server uses http fetch() calls to create, remove, update, and delete the User, Menu, and Order objects present in PouchDB.
 It also contains custom URLs for more precise actions, such as refreshing all of the menus present in the database, and adding a deliverer to an order.
