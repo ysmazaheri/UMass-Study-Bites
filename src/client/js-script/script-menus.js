@@ -1,4 +1,4 @@
-import { loadAllMenus } from "../../server/js-databases/db-menu.js";
+//import { loadAllMenus } from "../../server/js-databases/db-menu.js";
 import { OrderStorage } from "../js-models/OrderStorage.js";
 
 const searchBarElement = document.getElementById('search-bar');
@@ -6,6 +6,7 @@ let foodOptions = document.getElementsByClassName('food-option');
 let diningHallTitles = document.getElementsByClassName('dining-hall-title');
 let mealTitle = document.getElementsByClassName('meal-title')[0];
 let menuElement = document.getElementById('menu');
+const URL = "http://localhost:3000";
 
 // Refine search every time the input value changes
 searchBarElement.addEventListener('input', filterOptions);
@@ -16,11 +17,12 @@ function filterOptions() {
     let foodOptionsArr = [].slice.call(foodOptions);
     // Get the search query
     let query = String(searchBarElement.value).toLowerCase();
+    console.log(query);
     // Filter via contains
     foodOptionsArr.forEach(foodOption => {
         // Food options are list items. The contents are children HTML elements, buttons
         let foodLabel = foodOption.children[0];
-        let foodName = String(foodLabel.value).toLowerCase();
+        let foodName = String(foodLabel.textContent).toLowerCase();
         // Remove/show items by toggling 'hiding'
         if (foodName.includes(query)) {
             // Show if matches query
@@ -34,27 +36,41 @@ function filterOptions() {
     });
 }
 
-loadMenu("Breakfast", "Franklin Dining Commons");
-let currLoc = "";
-let currMeal = "";
-//loads all menus, then chooses the first matching breakfast menu from PouchDB to populate the menus page
-//This is purely placeholder functionality
-//In live version (milestone 3/4), we will need to keep only 1 menu per meal per hall per day, and pull the relevant menu
+//loadMenu("Breakfast", "Franklin Dining Commons");
+let currLoc = "Franklin Dining Commons";
+let currMeal = "Breakfast";
+
+//loads requested menu from PouchDB to populate the menus page
 async function loadMenu(meal, diningHall){
     searchBarElement.value = "";
-    let menus = await loadAllMenus();
-    menus = menus.filter(x => x.diningHall === diningHall);
-    menus = menus.filter(x => x.meal === meal);
-    currLoc = diningHall;
-    currMeal = meal;
-    if(menus.length === 0){
+
+    //Attempts to retrieve menu by meal and dining hall. If it fails, displays a message to the user
+    let currMenu = undefined;
+    try{
+        let menuResponse = await fetch(`${URL}/menu-read?diningHall=${diningHall}&meal=${meal}`, {
+          method: "GET",
+        });
+        currMenu = await menuResponse.json();
+    }catch(ex){
+        console.log('Failed to retrieve menu');
         diningHallTitles[0].textContent = diningHall;
         mealTitle.textContent = meal;
         menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time.</p>`;
         return;
     }
-    let currMenu = menus[0];
+    currLoc = diningHall;
+    currMeal = meal;
+    if(currMenu === undefined){
+        diningHallTitles[0].textContent = diningHall;
+        mealTitle.textContent = meal;
+        menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time.</p>`;
+        return;
+    }
+    console.log(currMenu);
+
     let food = currMenu.food;
+    food = JSON.parse(food);
+    if(food === undefined) return;
     diningHallTitles[0].textContent = currMenu.diningHall;
     mealTitle.textContent = currMenu.meal;
     menuElement.innerHTML = '';
@@ -69,6 +85,9 @@ async function loadMenu(meal, diningHall){
 
         let foodOptionList = document.createElement('ul');
         foodOptionList.classList.add('food-option-list');
+        console.log(category);
+        let fc = food[category];
+        console.log(fc);
         food[category].forEach(foodType => {
             let listItem = document.createElement('li');
             listItem.classList.add('food-option');
@@ -90,7 +109,7 @@ async function loadMenu(meal, diningHall){
 
 
 
-/* Event Listeners*/
+/* Event Listeners, allows user to choose the displayed menu*/
 document.getElementById("breakfast").addEventListener("click", async function() {
     await loadMenu("Breakfast", currLoc);
 });
@@ -104,7 +123,7 @@ document.getElementById("dinner").addEventListener("click", async function() {
 });
 
 document.getElementById("late-night").addEventListener("click", async function() {
-    await loadMenu("Latenight", currLoc);
+    await loadMenu("Dinner", currLoc);
 });
 
 document.getElementById("franklin").addEventListener("click", async function() {

@@ -1,12 +1,17 @@
 import express from "express";
+import path from "path";
 import * as menuDB from "./js-databases/db-menu.js";
 import * as userDB from "./js-databases/db-user.js";
 import * as orderDB from "./js-databases/db-order.js";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const headerFields = { "Content-Type": "text/plain" };
 const jsonFields = { "Content-Type": "application/json" }
 
-const express = require('express');
+//const express = require('express');
 
 /**
  * Asynchronously creates a menu using provided menu object. If the menu is not
@@ -54,9 +59,11 @@ async function createMenu(response, menu) {
  */
 async function readMenu(response, diningHall, meal) {
   try {
-    const menu = await menuDB.loadAllMenus().filter(x => x.diningHall === diningHall && x.meal === meal)[0];
+    let menus = await menuDB.loadAllMenus();
+    let menu = menus.filter(x => x.diningHall === diningHall && x.meal === meal)[0];
+    let menuJson = JSON.stringify(menu);
     response.writeHead(200, jsonFields);
-    response.write(menu.food);
+    response.write(menuJson);
     response.end();
   } catch (err) {
     response.writeHead(404, headerFields);
@@ -118,11 +125,11 @@ async function updateMenu(response, diningHall, meal, food) {
  */
 async function deleteMenu(response, id) {
   try {
-    const menu = await menuDB.loadAllMenus().filter(x => x.diningHall === diningHall && x.meal === meal)[0];
+    //const menu = await menuDB.loadAllMenus().filter(x => x.diningHall === diningHall && x.meal === meal)[0];
+    await menuDB.removeMenu(id);
     response.writeHead(200, headerFields);
     response.write('Menu Deleted');
     response.end();
-    menuDB.removeMenu(id);
   } catch (err) {
     response.writeHead(404, headerFields);
     response.write('Error: Applicable Menu Not Found');
@@ -155,6 +162,7 @@ async function dumpMenus(response) {
   try {
     const menus = await menuDB.loadAllMenus();
     let responseBody = {"menus":menus};
+    responseBody = JSON.stringify(responseBody);
 
     response.writeHead(200, jsonFields);
     response.write(responseBody);
@@ -389,103 +397,113 @@ async function createUser(response, user) {
 
 
 const app = express();
-const port = 3260;
+const port = 3000;
 
 //This is from exercise 8, unsure if it is the settings we want
-app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("src/client"));
+app.use(express.static(path.join(__dirname, "../client/")));
+
+//This is to allow CORS 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 const MethodNotAllowedHandler = async (request, response) => {
   response.status(405).type('text/plain').send('Method Not Allowed');
 };
 
+
 //menu routes
+
 app
-  .route("/menu/read")
+  .route("/menu-read")
   .get(async (request, response) => {
     const options = request.query;
-    readMenu(response, options.diningHall, options.meal);
+    console.log(options);
+    await readMenu(response, options.diningHall, options.meal);
   })
   .all(MethodNotAllowedHandler);
 
 app
-  .route("/menu/create")
+  .route("/menu-create")
   .post(async (request, response) => {
     const options = request.query;
-    createMenu(response, options.menu);
+    let menuJSON = JSON.parse(options.menu);
+    await createMenu(response, menuJSON);
   })
   .all(MethodNotAllowedHandler);
 
   app
-  .route("/menu/update")
+  .route("/menu-update")
   .put(async (request, response) => {
     const options = request.query;
-    updateMenu(response, options.diningHall, options.meal, options.food);
+    await updateMenu(response, options.diningHall, options.meal, options.food);
   })
   .all(MethodNotAllowedHandler);
 
   app
-  .route("/menu/delete")
+  .route("/menu-delete")
   .delete(async (request, response) => {
     const options = request.query;
-    deleteMenu(response, options.id);
+    await deleteMenu(response, options.id);
   })
   .all(MethodNotAllowedHandler);
 
   app
-  .route("/menu/all")
+  .route("/menu-all")
   .get(async (request, response) => {
-    dumpMenus(response);
+    await dumpMenus(response);
   })
   .all(MethodNotAllowedHandler);
 
   //orders
   app
-  .route("/order/read")
+  .route("/order-read")
   .get(async (request, response) => {
     const options = request.query;
-    readOrder(response, options.id);
+    await readOrder(response, options.id);
   })
   .all(MethodNotAllowedHandler);
 
 app
-  .route("/order/create")
+  .route("/order-create")
   .post(async (request, response) => {
     const options = request.query;
-    createOrder(response, options.order);
+    await createOrder(response, options.order);
   })
   .all(MethodNotAllowedHandler);
 
   app
-  .route("/order/update")
+  .route("/order-update")
   .put(async (request, response) => {
     const options = request.query;
-    updateOrder(response, options.id, options.deliverer);
+    await updateOrder(response, options.id, options.deliverer);
   })
   .all(MethodNotAllowedHandler);
 
   app
-  .route("/order/complete")
+  .route("/order-complete")
   .put(async (request, response) => {
     const options = request.query;
-    completeOrder(response, options.id);
+    await completeOrder(response, options.id);
   })
   .all(MethodNotAllowedHandler);
 
   app
-  .route("/order/delete")
+  .route("/order-delete")
   .delete(async (request, response) => {
     const options = request.query;
-    deleteOrder(response, options.id);
+    await deleteOrder(response, options.id);
   })
   .all(MethodNotAllowedHandler);
 
   app
-  .route("/order/all")
+  .route("/order-all")
   .get(async (request, response) => {
-    dumpOrders(response);
+    await dumpOrders(response);
   })
   .all(MethodNotAllowedHandler);
 
@@ -496,6 +514,4 @@ app.route("*").all(async (request, response) => {
   response.status(404).send(`Not found: ${request.path}`);
 });
 
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
-});
+app.listen(port);
