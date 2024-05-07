@@ -40,6 +40,7 @@ function filterOptions() {
 let currLoc = "Franklin Dining Commons";
 let currMeal = "Breakfast";
 
+loadMenu(currMeal,currLoc);
 //loads requested menu from PouchDB to populate the menus page
 async function loadMenu(meal, diningHall){
     searchBarElement.value = "";
@@ -55,7 +56,7 @@ async function loadMenu(meal, diningHall){
         console.log('Failed to retrieve menu');
         diningHallTitles[0].textContent = diningHall;
         mealTitle.textContent = meal;
-        menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time.</p>`;
+        menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time or Refresh Menus.</p>`;
         return;
     }
     currLoc = diningHall;
@@ -63,14 +64,20 @@ async function loadMenu(meal, diningHall){
     if(currMenu === undefined){
         diningHallTitles[0].textContent = diningHall;
         mealTitle.textContent = meal;
-        menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time.</p>`;
+        menuElement.innerHTML = `<h1>There Is No Available Menu For the Selected Criteria.</h1><p>Please Choose a Different Location/Time or Refresh Menus.</p>`;
         return;
     }
     console.log(currMenu);
 
-    let food = currMenu.food;
-    food = JSON.parse(food);
+    //gets food property of menu, returns if none exists
+    let food = undefined;
+    try{
+        food = currMenu.food;
+        food = JSON.parse(food);
+    }catch(ex){ return; }
+
     if(food === undefined) return;
+    
     diningHallTitles[0].textContent = currMenu.diningHall;
     mealTitle.textContent = currMenu.meal;
     menuElement.innerHTML = '';

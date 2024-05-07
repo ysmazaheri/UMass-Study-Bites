@@ -63,7 +63,7 @@ async function readMenu(response, diningHall, meal) {
     let menu = menus.filter(x => x.diningHall === diningHall && x.meal === meal)[0];
     let menuJson = JSON.stringify(menu);
     response.writeHead(200, jsonFields);
-    response.write(menuJson);
+    response.write(menuJson || '{}');
     response.end();
   } catch (err) {
     response.writeHead(404, headerFields);

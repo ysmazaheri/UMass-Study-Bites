@@ -1,4 +1,3 @@
-//import { loadAllOrders } from "../../server/js-databases/db-order.js";
 import { OrderStorage } from "../js-models/OrderStorage.js";
 import { OrderCart } from "../js-models/OrderCart.js";
 
@@ -44,8 +43,7 @@ function filterOptions() {
 
 //loadOrders();
 
-//loads all existing orders from PouchDB and populates the list on screen
-//MUST SWITCH TO USING FETCH()
+//loads all existing orders via fetch() and populates the list on screen
 async function loadOrders(){
     let orders = await loadAllOrders();
     //adding the header content into the div

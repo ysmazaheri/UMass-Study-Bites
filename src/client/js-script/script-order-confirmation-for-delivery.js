@@ -1,5 +1,4 @@
 import { OrderCart } from "../js-models/OrderCart.js";
-import { loadAllOrders } from "../../server/js-databases/db-order.js";
 import { OrderStorage } from "../js-models/OrderStorage.js";
 
 const orderCart = new OrderCart();
