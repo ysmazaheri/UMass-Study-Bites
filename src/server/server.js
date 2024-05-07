@@ -402,7 +402,7 @@ const port = 3000;
 //This is from exercise 8, unsure if it is the settings we want
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("/src/client"));
+app.use(express.static(path.join(__dirname, "../client/")));
 
 //This is to allow CORS 
 app.use(function (req, res, next) {
@@ -417,9 +417,6 @@ const MethodNotAllowedHandler = async (request, response) => {
 
 
 //menu routes
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../client/html-pages/home.html'));
-});
 
 app
   .route("/menu-read")
