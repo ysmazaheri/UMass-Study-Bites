@@ -1,4 +1,4 @@
-//import { loadAllMenus } from "../../server/js-databases/db-menu.js";
+import Menu from '../js-models/menu.js';
 import { OrderStorage } from "../js-models/OrderStorage.js";
 
 const searchBarElement = document.getElementById('search-bar');
@@ -107,6 +107,39 @@ async function loadMenu(meal, diningHall){
     });
 }
 
+//Removes current instances of menus from local PouchDB instance, then fills it with placeholder menus below
+//This ensures there are no duplicate entries, and lends itself to a more efficient full implementation
+
+async function refreshMenus() {
+
+  //refresh menus
+  try{
+    let menuResponse = await fetch(`${URL}/menu-refresh`, {
+      method: "GET",
+    });
+    console.log('Refreshed Menus');
+  }catch(ex){
+    console.log('Error refreshing menus');
+  }
+
+
+  //Retrieve all current menus from PouchDB
+  try{
+    let menuResponse = await fetch(`${URL}/menu-all`, {
+      method: "GET",
+    });
+    let menuJson = await menuResponse.json();
+    let menuArr = menuJson.menus;
+    console.log(menuArr);
+  }catch(ex){
+    console.log('Error retrieving menus');
+  }
+
+  loadMenu(currMeal,currLoc);
+
+}
+
+
 
 
 /* Event Listeners, allows user to choose the displayed menu*/
@@ -141,3 +174,6 @@ document.getElementById("berkshire").addEventListener("click", async function() 
 document.getElementById("hampshire").addEventListener("click", async function() {
     await loadMenu(currMeal, "Hampshire Dining Commons");
 });
+
+let refreshButton = document.getElementById("refresh-button");
+refreshButton.addEventListener('click', refreshMenus);
