@@ -175,6 +175,42 @@ async function dumpMenus(response) {
 }
 
 
+/**
+ * Asynchronously refreshes the list of current menus in the database.
+ * On success, it formats the menus into an array
+ * and responds with a 200 status code. If an error occurs (e.g., the database
+ * cannot be accessed), it responds with a 500 status code indicating an
+ * internal server error and provides a message detailing the issue.
+ *
+ * This function encapsulates the entire process of deleting, creating, and fetching menus,
+ * formatting them into a readable HTML response, and handling potential errors
+ * that may arise during the process, ensuring the client is appropriately
+ * informed of the outcome.
+ *
+ * @async
+ * @param {object} response - The HTTP response object for sending back data to
+ * the client. This object should include `writeHead`, `write`, and `end`
+ * methods to facilitate sending HTTP responses.
+ * @throws {Error} - Encounters and handles internal errors by responding with a
+ * 500 status code and details of the error. This catch block ensures that the
+ * client receives a meaningful error message rather than the request hanging or
+ * terminating unexpectedly.
+ */
+async function refreshMenus(response) {
+  try {
+    await menuDB.refreshMenus();
+
+    response.writeHead(200, headerFields);
+    response.write('Successfully Refreshed Menus');
+    response.end();
+  } catch (err) {
+    response.writeHead(500, headerFields);
+    response.write('Internal Server Error: Could Not Get Menus');
+    response.end();
+  }
+}
+
+
 
 /**
  * Asynchronously creates an order using provided order object. If the order is not
@@ -456,6 +492,13 @@ app
   .route("/menu-all")
   .get(async (request, response) => {
     await dumpMenus(response);
+  })
+  .all(MethodNotAllowedHandler);
+
+  app
+  .route("/menu-refresh")
+  .get(async (request, response) => {
+    await refreshMenus(response);
   })
   .all(MethodNotAllowedHandler);
 
