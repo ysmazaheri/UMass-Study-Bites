@@ -117,16 +117,16 @@ async function updateMenu(response, diningHall, meal, food) {
  * @param {object} response - The HTTP response object for sending back data to
  * the client. This object must include `writeHead`, `write`, and `end` methods
  * to properly send the response.
- * @param {string} diningHall - The dining hall of the menu to be read.
- * @param {string} meal - The meal of the menu to be read.
- * @throws {Error} - If there is an issue loading the menu (e.g., the menu
+ * @param {string} id - The id of the menu to be deleted.
+ * @param {string} rev - The revision menu to be deleted.
+ * @throws {Error} - If there is an issue deleting the menu (e.g., the menu
  * does not exist), an error is thrown and caught within the function. The
  * client is then informed that the menu was not found with a 404 response.
  */
-async function deleteMenu(response, id) {
+async function deleteMenu(response, id, rev) {
   try {
     //const menu = await menuDB.loadAllMenus().filter(x => x.diningHall === diningHall && x.meal === meal)[0];
-    await menuDB.removeMenu(id);
+    await menuDB.removeMenu(id, rev);
     response.writeHead(200, headerFields);
     response.write('Menu Deleted');
     response.end();
@@ -341,14 +341,15 @@ async function completeOrder(response, id) {
  * @param {object} response - The HTTP response object for sending back data to
  * the client. This object must include `writeHead`, `write`, and `end` methods
  * to properly send the response.
- * @param {string} id - The id of the order to be read.
+ * @param {string} id - The id of the order to be removed.
+  * @param {string} rev - The revision of the order to be removed.
  * @throws {Error} - If there is an issue loading the order (e.g., the order
  * does not exist), an error is thrown and caught within the function. The
  * client is then informed that the order was not found with a 404 response.
  */
-async function deleteOrder(response, id) {
+async function deleteOrder(response, id, rev) {
   try {
-    const order = await orderDB.loadOrder(id);
+    const order = await orderDB.deleteOrder(id,rev);
     response.writeHead(200, headerFields);
     response.write('Order Deleted');
     response.end();
@@ -484,7 +485,7 @@ app
   .route("/menu-delete")
   .delete(async (request, response) => {
     const options = request.query;
-    await deleteMenu(response, options.id);
+    await deleteMenu(response, options.id, options.rev);
   })
   .all(MethodNotAllowedHandler);
 

@@ -41,16 +41,17 @@ export async function loadUser(userId) {
 }
 
 /**
- * Asynchronously removes a user from the database by its id.
+ * Asynchronously removes a user from the database by its id and revision.
  *
  * @async
  * @param {string} userId - The id of the user to be removed.
+ * @param {string} rev - The revision of the user to be removed.
  * @returns {Promise<void>} - A promise that resolves when the user has been
  * successfully removed.
  * @throws {Error} - Throws an error if the user cannot be removed, e.g., it
  * does not exist or due to database issues.
  */
-export async function removeUser(userId) {
-    userDB.remove(userId);
+export async function removeUser(userId,rev) {
+    userDB.remove(userId,rev);
 }
 
