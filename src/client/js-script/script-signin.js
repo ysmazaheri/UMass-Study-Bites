@@ -53,6 +53,8 @@ function slide () {
     setTimeout(() => { 
         // Changin form text
         formTitle.innerHTML = titles[idxCount];
+        formButton.innerHTML = coverButtonValues[(idxCount + 1) % 2];
+
         // Adding confirm password input field
         if (idxCount) confirmPassInput.removeAttribute("hidden");
         else confirmPassInput.setAttribute("hidden", "");
@@ -61,7 +63,7 @@ function slide () {
     setTimeout(() => {
         coverTitle.innerHTML = coverTitles[idxCount];
         coverDesc.innerHTML = coverDescs[idxCount];
-        coverButton.value = coverButtonValues[idxCount];
+        coverButton.innerHTML = coverButtonValues[idxCount];
         // Fade in new button and text
         coverText.classList.toggle('fadeTextAndButton');
         coverButton.classList.toggle('fadeTextAndButton');
