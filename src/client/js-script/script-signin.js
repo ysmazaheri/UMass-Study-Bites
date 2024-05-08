@@ -1,17 +1,26 @@
 import User from "../js-models/user.js";
 
+
+/**
+ * DOM elements for cover section
+ */
 const coverButton = document.getElementById('sign-in-sign-up-cover-button');
 const coverBox = document.getElementById('sign-in-sign-up-cover');
 const coverText = document.getElementById('sign-in-sign-up-cover-text');
 const coverTitle = document.getElementById('sign-in-sign-up-cover-title');
 const coverDesc = document.getElementById('sign-in-sign-up-cover-desc');
 
+/**
+ * DOM elements for form section
+ */
 const formButton = document.getElementById('sign-in-sign-up-form-button');
 const formBox = document.getElementById('sign-in-sign-up-form');
 const formTitle = document.getElementById('sign-in-sign-up-form-title');
-
 const confirmPassInput = document.getElementById('confirm-pass');
 
+/**
+ * Text content for cover section
+ */
 const titles = ["Sign In", "Sign Up"];
 const coverTitles = ["New here?",
                     "Sign In"];
@@ -20,9 +29,14 @@ const coverDescs = ["Sign up for fast, safe, and efficient delivery services. Op
 const coverButtonValues = ["Sign Up",
                             "Sign In"]
 
-// For getting info from forms, idxCount 0 = Sign in info, idxCount = 1 Sign up info
+/**
+ * Index count for switching between sign in and sign up
+ */
 let idxCount = 0;
 
+/**
+ * Slide the cover and form sections to switch between sign in and sign up
+ */
 function slide () {
     idxCount = (idxCount + 1) % 2;
     // Transition to fade cover text
@@ -62,9 +76,9 @@ tokenBox.style.display = 'none';
 
 const ls = window.localStorage;
 
-
-// For getting info from forms, idxCount 0 = Sign in info, idxCount = 1 Sign up info
-
+/**
+ * Handle form submission for sign in or sign up
+ */
 formButton.addEventListener("click", async () => {
     if (idxCount === 1) {
         // Sign up
@@ -82,6 +96,10 @@ formButton.addEventListener("click", async () => {
         } catch (e) {
             handleError(e);
         }
+
+        document.getElementById('pass').value = '';
+        document.getElementById('user').value = '';
+        document.getElementById('confirm-pass').value = '';
     } else {
         // Sign in
         try {
@@ -98,9 +116,16 @@ formButton.addEventListener("click", async () => {
         } catch (e) {
             handleError(e);
         }
+
+        document.getElementById('pass').value = '';
+        document.getElementById('user').value = '';
     }
 })
 
+/**
+ * Handle errors during sign in or sign up
+ * @param {Error} error - The error object
+ */
 function handleError(error) {
     console.error(error);
     alert("Incorrect Sign-in Attempt. Please try again.");
