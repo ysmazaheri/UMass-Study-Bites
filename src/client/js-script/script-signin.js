@@ -72,10 +72,6 @@ function slide () {
 
 coverButton.addEventListener("click", () => slide());
 
-// User sign in check
-const tokenBox = document.getElementsByClassName('token-container')[0];
-tokenBox.style.display = 'none';
-
 const ls = window.localStorage;
 
 /**
@@ -117,6 +113,7 @@ formButton.addEventListener("click", async () => {
             }
             
             localStorage.setItem('currentUser', JSON.stringify(loadedUser));
+            tokenBox.style.display = 'display';
             alert("Sign in successful.");
         } catch (e) {
             handleError(e);

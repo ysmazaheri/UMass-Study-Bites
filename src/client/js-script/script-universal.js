@@ -55,6 +55,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// User sign in check
+const tokenBox = document.getElementsByClassName('token-container')[0];
+tokenBox.style.display = 'none';
 
 //Put all other code above this point because it's super long
 
