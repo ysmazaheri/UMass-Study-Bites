@@ -1,3 +1,5 @@
+import User from "../js-models/user.js";
+
 const coverButton = document.getElementById('sign-in-sign-up-cover-button');
 const coverBox = document.getElementById('sign-in-sign-up-cover');
 const coverText = document.getElementById('sign-in-sign-up-cover-text');
@@ -60,9 +62,46 @@ tokenBox.style.display = 'none';
 
 const ls = window.localStorage;
 
-// TODO: Implement
-function checkSignedIn() {
 
-    
+// For getting info from forms, idxCount 0 = Sign in info, idxCount = 1 Sign up info
 
+formButton.addEventListener("click", async () => {
+    if (idxCount === 1) {
+        // Sign up
+        try {
+            const pass = document.getElementById('pass').value;
+            const user = document.getElementById('user').value;
+            const confpass = document.getElementById('confirm-pass').value;
+
+            if (pass !== confpass) {
+                alert("Passwords must match.");
+            }
+
+            const userNew = new User(user, pass);
+            localStorage.setItem('currentUser', JSON.stringify(userNew));
+        } catch (e) {
+            handleError(e);
+        }
+    } else {
+        // Sign in
+        try {
+            const pass = document.getElementById('pass');
+            const user = document.getElementById('user');
+            const loadedUser = await loadUser(user); 
+          
+            if (loadedUser.password !== pass || loadedUser === undefined) {
+                alert("Incorrect Username or Password");
+                return;
+            }
+            
+            localStorage.setItem('currentUser', JSON.stringify(loadedUser));
+        } catch (e) {
+            handleError(e);
+        }
+    }
+})
+
+function handleError(error) {
+    console.error(error);
+    alert("Incorrect Sign-in Attempt. Please try again.");
 }
