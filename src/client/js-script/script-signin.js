@@ -92,7 +92,9 @@ formButton.addEventListener("click", async () => {
             }
 
             const userNew = new User(user, pass);
+            //fetch user route from server.js. routes are not done.
             localStorage.setItem('currentUser', JSON.stringify(userNew));
+            alert("Sign up successful.");
         } catch (e) {
             handleError(e);
         }
@@ -113,6 +115,7 @@ formButton.addEventListener("click", async () => {
             }
             
             localStorage.setItem('currentUser', JSON.stringify(loadedUser));
+            alert("Sign in successful.");
         } catch (e) {
             handleError(e);
         }
@@ -130,3 +133,4 @@ function handleError(error) {
     console.error(error);
     alert("Incorrect Sign-in Attempt. Please try again.");
 }
+
