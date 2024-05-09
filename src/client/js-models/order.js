@@ -10,7 +10,7 @@ export default class Order {
         this.food = food;
         this.deliverer = "";
         this.isCompleted = false;
-        this.time = undefined;
+        this.time = new Date();
         this._id = undefined;
         
     }

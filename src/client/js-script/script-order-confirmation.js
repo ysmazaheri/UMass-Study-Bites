@@ -113,7 +113,14 @@ const continueButton = document.getElementById('continue-button');
 continueButton.addEventListener('click', () => {
   // Get the info for the order
   let orderer = document.getElementById("enter-name").value;
+  let phone = document.getElementById("enter-phone").value;
+  let email = document.getElementById("enter-email").value;
   let food = orderCart.getOINames();
+  // Ensure that all fields are populated
+  if (!orderer.trim() || !phone.trim() || !email.trim()) {
+    alert("You have forgotten to enter your name, phone, and/or email!");
+    return;
+  }
   // Save the order
   let newOrder = new Order(orderer, diningHall, residence, food);
   let storedOrder = createOrder(newOrder);
