@@ -124,14 +124,18 @@ async function addOrdersToPouch(){
  */
 
 //class User is for testing purposes only.
-class User {
+/*class User {
     constructor(deliverer) {
         this.deliverer = deliverer;
     }
 }
-
-const user = new User();
+let user = new User();
 user.deliverer = true;
+if (user.deliverer = true)
+*/
+
+let user = localStorage.getItem('currentUser');
+// the default is that user is not a deliverer.
 
 if (user.deliverer) {
     let deliveryDashboardLink = document.createElement("a");
@@ -156,7 +160,7 @@ import { OrderStorage } from "../js-models/OrderStorage.js";
 // get the order's user
 let order = new OrderStorage();
 let user1 = order.getName();
-if (localStorage.getItem('currentUser') === user1) {
+if (localStorage.getItem('currentUser').name === user1) {
     if (helperMethod()) {
         window.location.href = '../order-delivery-completion.html';
         setTimeout(function() {
