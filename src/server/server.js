@@ -413,6 +413,7 @@ async function dumpOrders(response) {
  * provided, the function will respond with an error message.
  */
 async function createUser(response, user) {
+
   if (user === undefined) {
     response.writeHead(400, headerFields);
     response.write("Error: User Object Required");
@@ -555,22 +556,22 @@ app
   .all(MethodNotAllowedHandler);
 
   //USER ROUTES NOT DONE
-  app
-  .route("/login")
-  .get(async (req, res) => {
+  // app
+  // .route("/login")
+  // .post(async (req, res) => {
 
-    const options = request.query;
-    await loadUser(options.id);
+  //   const options = request.query;
+  //   await loadUser(options.id);
 
-  })
-  .all(MethodNotAllowedHandler);
+  // })
+  // .all(MethodNotAllowedHandler);
 
   app
   .route("/register")
-  .get(async (req, res) => {
+  .post(async (req, res) => {
 
-    const options = request.query;
-    await loadUser(options.id);
+    const options = req.query;
+    await createUser(res, options.username);
 
   })
   .all(MethodNotAllowedHandler);
