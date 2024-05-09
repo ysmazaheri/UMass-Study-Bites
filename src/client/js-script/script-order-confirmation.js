@@ -5,8 +5,18 @@ import { OrderStorage } from "../js-models/OrderStorage.js"
 const URL = "http://localhost:3000";
 
 const orderStorage = new OrderStorage();
+let diningHall = orderStorage.getSelections().pickUpLocation;
+let residence = orderStorage.getSelections().dropOffLocation;
 const orderCart = new OrderCart();
+
 const orderListElement = document.getElementById('order-preview-list');
+const pickupLocElement = document.getElementById("show-pickup");
+const dropoffLocElement = document.getElementById("show-dropoff");
+
+pickupLocElement.value = diningHall;
+pickupLocElement.setAttribute("readonly", "readonly");
+dropoffLocElement.value = residence;
+dropoffLocElement.setAttribute("readonly", "readonly");
 
 const orderKeys = orderCart.getOINames();
 
@@ -103,7 +113,6 @@ const continueButton = document.getElementById('continue-button');
 continueButton.addEventListener('click', () => {
   // Get the info for the order
   let orderer = document.getElementById("enter-name").value;
-  let diningHall, residence = orderStorage.getSelections();
   let food = orderCart.getOINames();
   // Save the order
   // let newOrder = new Order(orderer, diningHall, residence, food);
