@@ -85,6 +85,7 @@
 }
 
 .order-info {
+    overflow: scroll;
     height: 35px;
     background-color: transparent;
     line-height: 35px;
