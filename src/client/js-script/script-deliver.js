@@ -7,6 +7,7 @@ const orderListElement = document.getElementById('order-list');
 
 const orderStorage = new OrderStorage();
 const ls = window.localStorage;
+const URL = "http://localhost:3000";
 
 let orderOptions = document.getElementsByClassName('order');
 
@@ -41,11 +42,23 @@ function filterOptions() {
     });
 }
 
-//loadOrders();
-
+loadOrders();
 //loads all existing orders via fetch() and populates the list on screen
 async function loadOrders(){
-    let orders = await loadAllOrders();
+    let orders = null;
+    try{
+        let allOrdersResp = await fetch(`${URL}/order-all`, {
+          method: "GET",
+        });
+        let ordersObj = await allOrdersResp.json();
+        orders = ordersObj.orders;
+    }catch(err){
+        console.log(err);
+        console.log("Failed to load orders!");
+        return;
+    }
+    
+    
     //adding the header content into the div
     orderListElement.innerHTML = `
                             <div id="order-list-header">
@@ -64,7 +77,6 @@ async function loadOrders(){
                             </div>`;
 
     // Orders is a list of objects, thus sortable
-    //TODO: not needed for this milestone, but should default to sorting by most recent
     orders.forEach(order => {
         // If the order is non-empty, add it to the HTML
         if (Object.keys(order).length !== 0) {
@@ -116,6 +128,5 @@ async function loadOrders(){
         }
     });
 }
-
 
 

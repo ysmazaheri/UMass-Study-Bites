@@ -10,7 +10,8 @@ export default class Order {
         this.food = food;
         this.deliverer = "";
         this.isCompleted = false;
-        this.time = new Date();
+        let currDate = new Date();
+        this.time = readableTime(currDate);
         this._id = undefined;
         
     }
@@ -39,4 +40,14 @@ export default class Order {
 
     }
 
+}
+
+function readableTime(date) {
+    if (typeof(date) != typeof(new Date())) {
+        console.log("Date/Time is of incorrect type!");
+        return("Error: Could Not Load Time");
+    }
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    return `${date.toDateString()} @ ${hour}:${minute}`;
 }

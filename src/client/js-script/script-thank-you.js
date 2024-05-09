@@ -13,8 +13,8 @@ try{
     let allOrdersResp = await fetch(`${URL}/order-all`, {
       method: "GET",
     });
-    let allMenus = await allOrdersResp.json();
-    console.log(allMenus);
+    let allOrders = await allOrdersResp.json();
+    console.log(allOrders);
 }catch(err){
     console.log(err);
 }
