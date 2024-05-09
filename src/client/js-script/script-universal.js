@@ -118,3 +118,15 @@ async function addOrdersToPouch(){
     await createOrder(order4);
     console.log(loadAllOrders());
 }*/
+
+const tokenContainer = document.getElementsByClassName('token-container')[0];
+tokenContainer.style.display = 'none';
+
+function tokenCountDisplay(value) {
+
+    if (value) tokenContainer.style.display = 'block';
+    else tokenContainer.style.display = 'none';
+
+}
+
+export { tokenContainer };

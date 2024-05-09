@@ -5,6 +5,7 @@ import * as userDB from "./js-databases/db-user.js";
 import * as orderDB from "./js-databases/db-order.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { tokenCountDisplay } from './js-script/script-universal.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -551,7 +552,18 @@ app
   })
   .all(MethodNotAllowedHandler);
 
-  //USER ROUTES NOT DONE
+  //TODO: USER ROUTES NOT DONE
+  // app.get('/', checkLoggedIn, (req, res) => {
+  //   res.send('hello world');
+  // });
+  app
+  .route('/signin.html')
+  .get(async (req, res) => {
+
+    checkLoggedIn(req, res);
+
+  })
+  .all(MethodNotAllowedHandler);
 
 // this should always be the last route
 app.route("*").all(async (request, response) => {
@@ -559,3 +571,12 @@ app.route("*").all(async (request, response) => {
 });
 
 app.listen(port);
+
+// Our own middleware to check if the user is authenticated
+function checkLoggedIn(req, res) {
+  if (req.isAuthenticated()) {
+    tokenCountDisplay(true);
+  } else {
+    tokenCountDisplay(false);
+  }
+}

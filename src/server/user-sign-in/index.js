@@ -6,6 +6,7 @@ import auth from './auth.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+
 // We will use __dirname later on to send files back to the client.
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(dirname(__filename));
@@ -121,3 +122,4 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
   console.log(`App now listening at http://localhost:${port}`);
 });
+
