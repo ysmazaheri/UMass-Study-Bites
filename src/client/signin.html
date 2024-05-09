@@ -63,7 +63,11 @@
                 <div id="sign-in-sign-up-form">
 
                     <div id="sign-in-sign-up-form-title">Sign In</div>
-                    <form action="/login" method="post" id="sign-in-sign-up-form-fillout">
+                    <form action="/login" method="post" id="sign-in-sign-up-form-fillout-login">
+                        <input class="input-field" type="text" placeholder="Username">
+                        <input class="input-field" type="password" placeholder="Password">
+                    </form>
+                    <form action="/register" method="post" id="sign-in-sign-up-form-fillout-register">
                         <input class="input-field" type="text" placeholder="Username">
                         <input class="input-field" type="password" placeholder="Password">
                         <input id="confirm-pass" class="input-field" type="password" placeholder="Confirm Password" hidden>
