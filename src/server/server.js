@@ -229,6 +229,7 @@ async function createOrder(response, order) {
     response.end();
   } else {
     try {
+      order = JSON.parse(order);
       await orderDB.createOrder(order);
       response.writeHead(200, headerFields);
       response.write("Order Created");

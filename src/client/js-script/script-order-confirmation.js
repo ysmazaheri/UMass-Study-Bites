@@ -118,17 +118,19 @@ continueButton.addEventListener('click', () => {
   let newOrder = new Order(orderer, diningHall, residence, food);
   let storedOrder = createOrder(newOrder);
   // Navigate to thank-you.html
-  window.location.href = 'thank-you.html';
+  //window.location.href = 'thank-you.html';
 });
 
 async function createOrder(order) {
+  console.log(order);
+  order = JSON.stringify(order);
   try{
     let orderResponse = await fetch(`${URL}/order-create?order=${order}`, {
       method: "POST",
     });
     // Return the data posted successfully
-    const orderContent = await orderResponse.json();
-    return orderContent;
+    console.log("Successfully created order");
+    
   } catch(ex) {
     console.log("Failed to create order");
     return null;
