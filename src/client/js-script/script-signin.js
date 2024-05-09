@@ -58,11 +58,23 @@ coverButton.addEventListener("click", () => slide());
 const tokenBox = document.getElementsByClassName('token-container')[0];
 tokenBox.style.display = 'none';
 
-const ls = window.localStorage;
+const URL = "http://localhost:3000";
 
 // TODO: Implement
-function checkSignedIn() {
+async function checkSignedIn() {
 
-    
+    // Check if user signed in
+    try{
+        let loginResponse = await fetch(`${URL}/login`, {
+        method: "GET",
+        });
+        let loginJSON = await loginResponse.json();
+        let username = loginJSON.__id;
+        console.log(username);
+    }catch(ex){
+        console.log('Error retrieving username');
+    }
 
 }
+
+checkSignedIn();

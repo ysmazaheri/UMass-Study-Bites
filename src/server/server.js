@@ -555,10 +555,33 @@ app
   .all(MethodNotAllowedHandler);
 
   //USER ROUTES NOT DONE
+  app
+  .route("/login")
+  .get(async (req, res) => {
+
+    const options = request.query;
+    await loadUser(options.id);
+
+  })
+  .all(MethodNotAllowedHandler);
+
+  app
+  .route("/register")
+  .get(async (req, res) => {
+
+    const options = request.query;
+    await loadUser(options.id);
+
+  })
+  .all(MethodNotAllowedHandler);
 
 // this should always be the last route
 app.route("*").all(async (request, response) => {
   response.status(404).send(`Not found: ${request.path}`);
 });
 
-app.listen(port);
+// app.listen(port);
+
+app.listen(port, () => {
+  console.log(`App now listening at http://localhost:${port}`);
+});
