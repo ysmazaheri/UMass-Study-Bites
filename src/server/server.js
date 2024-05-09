@@ -229,6 +229,7 @@ async function createOrder(response, order) {
     response.end();
   } else {
     try {
+      order = JSON.parse(order);
       await orderDB.createOrder(order);
       response.writeHead(200, headerFields);
       response.write("Order Created");
@@ -385,7 +386,9 @@ async function deleteOrder(response, id, rev) {
 async function dumpOrders(response) {
   try {
     const orders = await orderDB.loadAllOrders();
+    // TODO: MUST Stringify interior contents
     let responseBody = {"orders":orders};
+    responseBody = JSON.stringify(responseBody);
 
     response.writeHead(200, jsonFields);
     response.write(responseBody);

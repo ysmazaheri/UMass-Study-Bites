@@ -1,7 +1,22 @@
 import { OrderCart } from "../js-models/OrderCart.js";
+import { OrderStorage } from "../js-models/OrderStorage.js"
+import Order from "../js-models/order.js"
 
+const URL = "http://localhost:3000";
+
+const orderStorage = new OrderStorage();
+let diningHall = orderStorage.getSelections().pickUpLocation;
+let residence = orderStorage.getSelections().dropOffLocation;
 const orderCart = new OrderCart();
+
 const orderListElement = document.getElementById('order-preview-list');
+const pickupLocElement = document.getElementById("show-pickup");
+const dropoffLocElement = document.getElementById("show-dropoff");
+
+pickupLocElement.value = diningHall;
+pickupLocElement.setAttribute("readonly", "readonly");
+dropoffLocElement.value = residence;
+dropoffLocElement.setAttribute("readonly", "readonly");
 
 const orderKeys = orderCart.getOINames();
 
@@ -96,6 +111,28 @@ backButton.addEventListener('click', () => {
 // Hardwired continue button 
 const continueButton = document.getElementById('continue-button');
 continueButton.addEventListener('click', () => {
+  // Get the info for the order
+  let orderer = document.getElementById("enter-name").value;
+  let food = orderCart.getOINames();
+  // Save the order
+  let newOrder = new Order(orderer, diningHall, residence, food);
+  let storedOrder = createOrder(newOrder);
   // Navigate to thank-you.html
   window.location.href = 'thank-you.html';
 });
+
+async function createOrder(order) {
+  console.log(order);
+  order = JSON.stringify(order);
+  try{
+    let orderResponse = await fetch(`${URL}/order-create?order=${order}`, {
+      method: "POST",
+    });
+    // Return the data posted successfully
+    console.log("Successfully created order");
+    
+  } catch(ex) {
+    console.log("Failed to create order");
+    return null;
+  }
+}

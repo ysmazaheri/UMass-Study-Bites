@@ -4,3 +4,4 @@ users/
 orders/
 menu/
 .vscode/
+node_modules/
