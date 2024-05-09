@@ -21,7 +21,7 @@ btnOne.addEventListener('click', async function () {
       if (response.ok) {
         // Order completed successfully, 
         //show confirmation to the person who ordered (a different user).
-   
+        helperMethod(true);
       } else {
         console.error('Error completing order');
         alert('Error completing order');
@@ -32,6 +32,17 @@ btnOne.addEventListener('click', async function () {
     }
 });
 
+var boolean1 = false;
+export function helperMethod(x) {
+    boolean1 = x;
+    return boolean1;
+}
+
+//below is for testing the delivery-completion.html page pop-up
+/*var boolean1 = true;
+export function helperMethod(x) {
+    return boolean1;
+}*/
 
 btnTwo.addEventListener('click', async function () {
     const orderId = 2; //place holder for actual orderIDs
@@ -42,6 +53,7 @@ btnTwo.addEventListener('click', async function () {
       if (response.ok) {
         // Order completed successfully, 
         //show confirmation to the person who ordered (a different user).
+        helperMethod(true);
       } else {
         console.error('Error completing order');
         alert('Error completing order');
@@ -51,3 +63,4 @@ btnTwo.addEventListener('click', async function () {
       alert('Error completing order');
     }
 })
+

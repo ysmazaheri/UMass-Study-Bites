@@ -144,3 +144,15 @@ if (user.deliverer) {
     let lastSiteNavBarLink = siteNavBarLinks.lastElementChild;
     siteNavBarLinks.insertBefore(deliveryDashboardLink, lastSiteNavBarLink.nextSibling);
 }
+
+/**
+ * for user who ordered delivered. when global veriable has been set to true that the order is complete..
+ * we want to display the html page saying order is complete.
+ */
+import { helperMethod } from "./script-order-deliverer.js";
+
+//need to add if current user... then we can check the helperMethod. 
+//Don't want a pop up for deliverer for example
+if (helperMethod()) {
+    window.location.href = '../order-delivery-completion.html';
+}
