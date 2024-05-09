@@ -5,9 +5,13 @@ Campus Food Delivery Service:
 - using express.js to host a server containing menus, orders, and users
 - using maps for coordinates
 
-run "npm start" to begin the server, then visit 'localhost:3000' to view the homepage.
+run "npm i" or "npm install" to download all required packages
+run "npm start" to begin the server, then visit 'localhost:3000' to view the homepage and begin using the app.
 
 **IMPORTANT**
+If a 'node-modules' folder is present BEFORE running npm install (this is unlikely to ever occur), make sure to delete it before installing packages.
+Some packages are OS-specific, and may not be compatible with your machine.
+
 On pages containing menus, if your local database is empty, it is required to 'refresh menus' via the button.
 This will populate your database with our placeholder menus
 
