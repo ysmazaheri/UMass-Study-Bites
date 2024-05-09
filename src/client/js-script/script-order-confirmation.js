@@ -1,6 +1,6 @@
 import { OrderCart } from "../js-models/OrderCart.js";
 import { OrderStorage } from "../js-models/OrderStorage.js"
-// import { Order } from "../js-models/order.js"
+import Order from "../js-models/order.js"
 
 const URL = "http://localhost:3000";
 
@@ -115,9 +115,8 @@ continueButton.addEventListener('click', () => {
   let orderer = document.getElementById("enter-name").value;
   let food = orderCart.getOINames();
   // Save the order
-  // let newOrder = new Order(orderer, diningHall, residence, food);
-  // createOrder(newOrder);
-
+  let newOrder = new Order(orderer, diningHall, residence, food);
+  createOrder(newOrder);
   // Navigate to thank-you.html
   window.location.href = 'thank-you.html';
 });
@@ -127,9 +126,9 @@ async function createOrder(order) {
     let orderResponse = await fetch(`${URL}/order-create?order=${order}`, {
       method: "POST",
     });
-    // Return the data posted
-    const order = await orderResponse.json();
-    return order;
+    // Return the data posted successfully
+    const orderCont = await orderResponse.json();
+    return orderCont;
   } catch(ex) {
     console.log("Failed to create order");
     return null;
