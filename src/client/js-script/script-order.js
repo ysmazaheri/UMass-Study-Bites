@@ -1,5 +1,7 @@
 import { OrderCart } from "../js-models/OrderCart.js";
+import { OrderStorage } from "../js-models/OrderStorage.js"
 
+const orderStorage = new OrderStorage();
 const orderCart = new OrderCart();
 const ls = window.localStorage;
 const URL = "http://localhost:3000";
@@ -88,12 +90,12 @@ loadMenu();
 async function loadMenu(){
     searchBarElement.value = "";
 
-    //Defaults to Frank breakfast
-    //TODO: Change this to use local storage
-    let diningHall = 'Franklin Dining Commons';
+    let diningHall = orderStorage.getPickUp();
+    // Defaults to breakfast. Time-based menu display is not necessary for the scope of this project
+    // TODO: Optional point of future expansion
     let meal = 'Breakfast';
 
-    //Attempts to retrieve menu by meal and dining hall. If it fails, displays a message to the user
+    // Attempts to retrieve menu by meal and dining hall. If it fails, displays a message to the user
     let currMenu = undefined;
     try{
         let menuResponse = await fetch(`${URL}/menu-read?diningHall=${diningHall}&meal=${meal}`, {
