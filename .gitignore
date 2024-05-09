@@ -1,2 +1,6 @@
 **.DS_Store
 secrets.js
+users/
+orders/
+menu/
+.vscode/
