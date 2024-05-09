@@ -118,7 +118,7 @@ continueButton.addEventListener('click', () => {
   let newOrder = new Order(orderer, diningHall, residence, food);
   let storedOrder = createOrder(newOrder);
   // Navigate to thank-you.html
-  //window.location.href = 'thank-you.html';
+  window.location.href = 'thank-you.html';
 });
 
 async function createOrder(order) {
