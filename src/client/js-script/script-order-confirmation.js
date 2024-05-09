@@ -1,7 +1,10 @@
 import { OrderCart } from "../js-models/OrderCart.js";
+import { OrderStorage } from "../js-models/OrderStorage.js"
+// import { Order } from "../js-models/order.js"
 
 const URL = "http://localhost:3000";
 
+const orderStorage = new OrderStorage();
 const orderCart = new OrderCart();
 const orderListElement = document.getElementById('order-preview-list');
 
@@ -98,11 +101,16 @@ backButton.addEventListener('click', () => {
 // Hardwired continue button 
 const continueButton = document.getElementById('continue-button');
 continueButton.addEventListener('click', () => {
+  // Get the info for the order
+  let orderer = document.getElementById("enter-name").value;
+  let diningHall, residence = orderStorage.getSelections();
+  let food = orderCart.getOINames();
+  // Save the order
+  // let newOrder = new Order(orderer, diningHall, residence, food);
+  // createOrder(newOrder);
+
   // Navigate to thank-you.html
   window.location.href = 'thank-you.html';
-  // Submit the order
-  let orderer = document.getElementById("enter-name").value;
-  let diningHall = 
 });
 
 async function createOrder(order) {
