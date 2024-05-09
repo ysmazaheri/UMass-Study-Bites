@@ -32,6 +32,14 @@ export class OrderStorage {
 
     }
 
+    saveId(id) {
+        localStorage.setItem('orderId', id);
+    }
+
+    getId() {
+        return localStorage.getItem('orderId');
+    }
+
 
     getSelections() {
         const pickUpLocation = localStorage.getItem('selectedPickUpLocation');

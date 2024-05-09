@@ -3,6 +3,9 @@ import Order from "../js-models/order.js";
 import OrderCart from "../js-models/orderCart.js";
 */
 
+import { OrderStorage } from "../js-models/OrderStorage.js";
+const orderStorage = new OrderStorage();
+
 const URL = "http://localhost:3000";
 const buttonOne = document.getElementById("btnone");
 const buttonTwo = document.getElementById("btntwo");
@@ -13,10 +16,10 @@ const btnTwo = document.getElementById('btntwo');
 
 btnOne.addEventListener('click', async function () {
  
-    const orderId = 1; //place holder for actualy orderIDs
+    const orderId = orderStorage.getId();
     try {
       const response = await fetch(`${URL}/order-complete?id=${orderId}`, {
-        method: 'POST'
+        method: 'PUT'
       });
       if (response.ok) {
         // Order completed successfully, 
@@ -45,10 +48,11 @@ export function helperMethod(x) {
 }*/
 
 btnTwo.addEventListener('click', async function () {
-    const orderId = 2; //place holder for actual orderIDs
+    const orderId = orderStorage.getId();
+
     try {
-      const response = await fetch(`${URL}/complete-order/${orderId}`, {
-        method: 'POST'
+      const response = await fetch(`${URL}/order-complete?id=${orderId}`, {
+        method: 'PUT'
       });
       if (response.ok) {
         // Order completed successfully, 

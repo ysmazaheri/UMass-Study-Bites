@@ -102,12 +102,17 @@ async function loadOrders(){
                         orderCart.addOI(name);
                     }
                 }
+                
                 // Retrieve the pick up location
                 orderStorage.savePickUp(order.diningHall);
                 // Retrieve the drop off location
                 orderStorage.saveDropOff(order.residence);
                 // Retrieve the name of the recipeint
                 orderStorage.saveName(order.orderer.split(' ')[0]);
+                
+                //Need for delivery completion.
+                orderStorage.saveId(order._id);
+
                 // Go to delivery confirmation page, displaying the retrieved information for confirmation
                 window.location.href = 'order-confirmation-for-delivery.html';
             });
