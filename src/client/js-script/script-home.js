@@ -1,4 +1,7 @@
 import { mapKey } from '../secrets.js'
+import { OrderStorage } from "../js-models/OrderStorage.js"
+
+const orderStorage = new OrderStorage();
 
 // UI components
 const searchBarElement = document.getElementById('search-bar-text');
@@ -134,6 +137,8 @@ document.getElementById('nextBtn').addEventListener('click', function() {
         alert("Please Select a Valid Pick-Up Location")
         return;
     }
+    // Save the pickup location
+    orderStorage.savePickUp(selectedLocations[0]);
     // Navigate to location-select.html
     window.location.href = 'location-select.html';
   });
@@ -167,9 +172,10 @@ function filterOptions() {
     // Filter via contains
     locationOptionsArr.forEach(locationOption => {
         // Location options are list items
-        let locationName = String(locationOption.innerHTML).toLowerCase();
+        let locationName = String(locationOption.innerHTML);
+        let locationNameLow = locationName.toLowerCase();
         // Remove/show items by toggling 'hiding'
-        if (locationName.includes(query)) {
+        if (locationNameLow.includes(query)) {
             // Show if matches query
             locationOption.style.display = 'list-item';
             
@@ -179,7 +185,7 @@ function filterOptions() {
             });
 
             // If it is an exact match, select the option
-            if (locationName === query) {
+            if (locationNameLow === query) {
                 locationOption.style.background = "black";
                 locationOption.style.color = "white";
                 selectedLocations.push(locationName);
