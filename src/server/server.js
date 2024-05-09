@@ -557,9 +557,10 @@ app
   //   res.send('hello world');
   // });
   app
-  .route('/signin.html')
+  .route('/')
   .get(async (req, res) => {
 
+    console.log("hi");
     checkLoggedIn(req, res);
 
   })
