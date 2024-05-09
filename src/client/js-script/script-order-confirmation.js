@@ -116,7 +116,7 @@ continueButton.addEventListener('click', () => {
   let food = orderCart.getOINames();
   // Save the order
   let newOrder = new Order(orderer, diningHall, residence, food);
-  createOrder(newOrder);
+  let storedOrder = createOrder(newOrder);
   // Navigate to thank-you.html
   window.location.href = 'thank-you.html';
 });
@@ -127,8 +127,8 @@ async function createOrder(order) {
       method: "POST",
     });
     // Return the data posted successfully
-    const orderCont = await orderResponse.json();
-    return orderCont;
+    const orderContent = await orderResponse.json();
+    return orderContent;
   } catch(ex) {
     console.log("Failed to create order");
     return null;
