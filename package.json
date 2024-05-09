@@ -48,7 +48,6 @@
     "test": "",
     "start": "node src/server/server.js",
     "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
-    "client": "http-server src/client -p 3000 -c-1 -o /index.html -s",
     "validate-html": "html-validate 'src/**/*.html'",
     "prettier": "prettier src -write"
   },
