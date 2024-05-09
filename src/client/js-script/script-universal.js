@@ -150,9 +150,18 @@ if (user.deliverer) {
  * we want to display the html page saying order is complete.
  */
 import { helperMethod } from "./script-order-var.js";
+import { OrderStorage } from "../js-models/OrderStorage.js";
 
-//need to add if current user... then we can check the helperMethod. 
-//Don't want a pop up for deliverer for example
-if (helperMethod()) {
-    window.location.href = '../order-delivery-completion.html';
+// helper method has a global boolean that will show the delivery completion page
+// get the order's user
+let order = new OrderStorage();
+let user1 = order.getName();
+if (localStorage.getItem('currentUser') === user1) {
+    if (helperMethod()) {
+        window.location.href = '../order-delivery-completion.html';
+        setTimeout(function() {
+            window.location.href = '../index.html';
+        }, 10000); //10 seconds, user will go to home.
+    }
 }
+
