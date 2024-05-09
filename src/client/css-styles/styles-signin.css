@@ -94,6 +94,22 @@
 
 }
 
+#sign-in-sign-up-form-fillout-login {
+
+    margin: 30px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#sign-in-sign-up-form-fillout-register {
+
+    margin: 30px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+
+}
+
 #sign-in-sign-up-form-button {
 
     width: 150px;
