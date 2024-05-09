@@ -1,11 +1,11 @@
 export default class User {
-    constructor(name,password){
+    constructor(name,password) {
         this.password = password;
         this.tokenCount = 0;
         this._id = name;
         this.residence = "";
         this.favoriteLocation = "";
-        this.deliverer = false;
+        this.deliverer = false; //set to false. will have to change later for an account to be deliverer
     }
     addToken() {
         this.tokenCount += 1;
