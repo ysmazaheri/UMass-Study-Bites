@@ -15,6 +15,8 @@ const coverDesc = document.getElementById('sign-in-sign-up-cover-desc');
  */
 const formButton = document.getElementById('sign-in-sign-up-form-button');
 const formBox = document.getElementById('sign-in-sign-up-form');
+// const formLogin = document.getElementById('sign-in-sign-up-form-fillout-login');
+const formRegister = document.getElementById('sign-in-sign-up-form-fillout-register');
 const formTitle = document.getElementById('sign-in-sign-up-form-title');
 const confirmPassInput = document.getElementById('confirm-pass');
 
@@ -27,7 +29,11 @@ const coverTitles = ["New here?",
 const coverDescs = ["Sign up for fast, safe, and efficient delivery services. Open to all UMass students and faculty.",
                     "Sign in to start ordering today!"];
 const coverButtonValues = ["Sign Up",
-                            "Sign In"]
+                            "Sign In"];
+const formType = ["none", "block"];
+
+// formLogin.style.display = formType[0];
+formRegister.style.display = formType[1];
 
 /**
  * Index count for switching between sign in and sign up
@@ -54,6 +60,8 @@ function slide () {
         // Changin form text
         formTitle.innerHTML = titles[idxCount];
         formButton.innerHTML = coverButtonValues[(idxCount + 1) % 2];
+        formRegister.style.display = formType[idxCount];
+        // formLogin.style.display = formType[(idxCount + 1) % 2];
 
         // Adding confirm password input field
         if (idxCount) confirmPassInput.removeAttribute("hidden");
