@@ -149,7 +149,7 @@ if (user.deliverer) {
  * for user who ordered delivered. when global veriable has been set to true that the order is complete..
  * we want to display the html page saying order is complete.
  */
-import { helperMethod } from "./script-order-deliverer.js";
+import { helperMethod } from "./script-order-var.js";
 
 //need to add if current user... then we can check the helperMethod. 
 //Don't want a pop up for deliverer for example
