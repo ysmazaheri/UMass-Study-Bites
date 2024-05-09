@@ -1,26 +1,119 @@
-export default class User {
-    constructor(name,password){
-        this.password = password;
-        this.tokenCount = 0;
-        this._id = name;
-        this.residence = "";
-        this.favoriteLocation = "";
+// export default class User {
+//     constructor(name,password){
+//         this.password = password;
+//         this.tokenCount = 0;
+//         this._id = name;
+//         this.residence = "";
+//         this.favoriteLocation = "";
+
+//     }
+//     addToken() {
+//         this.tokenCount += 1;
+//     }
+//     removeToken() {
+//         if(this.tokenCount <= 0) return;
+//         this.tokenCount -= 1;
+//     }
+//     hasTokens() {
+//         return this.tokenCount > 0;
+//     }
+//     hasResidence() {
+//         return this.residence !== "";
+//     }
+//     hasFavoriteLocation() {
+//         return this.favoriteLocation !== "";
+//     }
+// }
+
+class Users {
+    constructor() {
+      // we use an in-memory "database"; this isn't persistent but is easy
+      // default user
+      this.users = { emery: 'compsci326' };
+      this.tokenCount = { emery: 1 };
 
     }
-    addToken() {
-        this.tokenCount += 1;
+  
+    // Returns true iff the user exists.
+    findUser(username) {
+      if (!this.users[username]) {
+        return false;
+      } else {
+        return true;
+      }
     }
-    removeToken() {
-        if(this.tokenCount <= 0) return;
-        this.tokenCount -= 1;
+  
+    // Returns true iff the password is the one we have stored (in plaintext = bad
+    // but easy).
+    validatePassword(name, pwd) {
+      if (!this.findUser(name)) {
+        return false;
+      }
+      if (this.users[name] !== pwd) {
+        return false;
+      }
+      return true;
     }
-    hasTokens() {
-        return this.tokenCount > 0;
+  
+    // Add a user to the "database".
+    addUser(name, pwd) {
+      if (this.findUser(name)) {
+        return false;
+      }
+      this.users[name] = pwd;
+      this.tokenCount[name] = 1;
+      return true;
     }
-    hasResidence() {
-        return this.residence !== "";
+
+    // Get token count of user
+    getTokenCount(name) {
+
+        if (Object.keys(this.tokenCount).includes(name)) {
+
+            return this.tokenCount[name];
+
+        }
+        else {
+
+            return -1;
+
+        }
+
     }
-    hasFavoriteLocation() {
-        return this.favoriteLocation !== "";
+
+    // Adding tokens to user
+    addTokens(name) {
+
+        if (Object.keys(this.tokenCount).includes(name)) {
+
+            return ++this.tokenCount[name];
+
+        }
+        else {
+
+            return -1;
+
+        }
+
     }
-}
+
+    // Removing tokens to user
+    removeTokens(name) {
+
+        if (Object.keys(this.tokenCount).includes(name)) {
+
+            return --this.tokenCount[name];
+
+        }
+        else {
+
+            return -1;
+
+        }
+
+    }
+
+  }
+  
+  export default new Users();
+  
