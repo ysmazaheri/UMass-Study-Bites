@@ -141,23 +141,40 @@ formButton.addEventListener("click", async () => {
     else {
         // Sign in
 
-        const password = document.getElementById('password').value;
-        const username = document.getElementById('username').value;
+        const password = document.getElementById('password-login').value;
+        const username = document.getElementById('username-login').value;
+
+        console.log(username);
+        console.log(password);
 
         try {
+
+            let requestBody = { username: username, password: password };
+            let requestBodyJSON = JSON.stringify(requestBody);
              
-            let loginResponse = await fetch(`${URL}/login?username=${username}&password=${password}`, {
-                method: "GET"
+            let loginResponse = await fetch(`${URL}/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: requestBodyJSON
             });
+
+            if (loginResponse.status === 200) {
+
+
+            }
+            else {
+
+                alert('Username does not exist');
+
+            }
         
         } catch (err) {
 
-            alert('Username or password is incorrect');
+            alert('Error trying to log user in');
 
         }
-
-        document.getElementById('password').value = '';
-        document.getElementById('username').value = '';
     }
 });
 
