@@ -144,9 +144,6 @@ formButton.addEventListener("click", async () => {
         const password = document.getElementById('password-login').value;
         const username = document.getElementById('username-login').value;
 
-        console.log(username);
-        console.log(password);
-
         try {
 
             let requestBody = { username: username, password: password };
@@ -162,6 +159,7 @@ formButton.addEventListener("click", async () => {
 
             if (loginResponse.status === 200) {
 
+                alert('Successfully logged in');
 
             }
             else {

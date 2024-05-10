@@ -444,16 +444,19 @@ async function createUser(response, user) {
  */
 async function loadUser(response, user) {
 
+  let loadedUser;
+
   if (user === undefined) {
     response.writeHead(400, headerFields);
     response.write("Error: Username Required");
     response.end();
   } else {
     try {
-      await userDB.loadUser(user);
+      loadedUser = await userDB.loadUser(user);
       response.writeHead(200, headerFields);
       response.write("User Loaded");
       response.end();
+      return loadedUser;
     } catch (err) {
       response.writeHead(500, headerFields);
       response.write("Internal Server Error: Could Not Load User");
@@ -640,13 +643,24 @@ app
 
   app
   .route('/login')
-  .get(async (req, res) => {
+  .post(async (req, res) => {
 
-    let options = req.query;
-    let username = options.username;
-    let password = options.password;
+    try {
 
-    await loadUser(username);
+      let info = req.body;
+      let username = info.username;
+      let password = info.password;
+
+      let loadedUser = await loadUser(res, username);
+
+      if (loadedUser.password === password) console.log("hooray");
+
+    }
+    catch (err) {
+
+
+
+    }
 
   })
 
