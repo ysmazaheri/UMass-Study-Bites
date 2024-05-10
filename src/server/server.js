@@ -645,22 +645,13 @@ app
   .route('/login')
   .post(async (req, res) => {
 
-    try {
+    let info = req.body;
+    let username = info.username;
+    let password = info.password;
 
-      let info = req.body;
-      let username = info.username;
-      let password = info.password;
+    let loadedUser = await loadUser(res, username);
 
-      let loadedUser = await loadUser(res, username);
-
-      if (loadedUser.password === password) console.log("hooray");
-
-    }
-    catch (err) {
-
-
-
-    }
+    if (loadedUser.password === password) console.log("hooray");
 
   })
 
