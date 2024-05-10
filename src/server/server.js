@@ -432,6 +432,36 @@ async function createUser(response, user) {
   }
 }
 
+/**
+ * Asynchronously loads a user using provided username. If the user is not
+ * provided, it responds with a 400 status code indicating a bad request.
+ *
+ * @async
+ * @param {object} response - The HTTP response object used to send back data to
+ * the client. It must have `writeHead`, `write`, and `end` methods available.
+ * @param {string} [user] - The user to be created. If not
+ * provided, the function will respond with an error message.
+ */
+async function loadUser(response, user) {
+
+  if (user === undefined) {
+    response.writeHead(400, headerFields);
+    response.write("Error: Username Required");
+    response.end();
+  } else {
+    try {
+      await userDB.loadUser(user);
+      response.writeHead(200, headerFields);
+      response.write("User Loaded");
+      response.end();
+    } catch (err) {
+      response.writeHead(500, headerFields);
+      response.write("Internal Server Error: Could Not Load User");
+      response.end();
+    }
+  }
+}
+
 /*************************/
 //SAVING THE REST OF USER DB MANAGEMENT FOR LATER
 /*************************/
@@ -556,26 +586,69 @@ app
   .all(MethodNotAllowedHandler);
 
   //USER ROUTES NOT DONE
+
   // app
   // .route("/login")
   // .post(async (req, res) => {
 
-  //   const options = request.query;
-  //   await loadUser(options.id);
+  //   try {
+
+  //     const options = request.query;
+  //     let username = options.username;
+  //     let password = options.password;
+  //     let loadedUser = await loadUser(username);
+  //     if (password === loadedUser.password) {
+
+        
+
+  //     }
+    
+  //   }
+  //   catch (err) {
+
+
+
+  //   }
+
 
   // })
   // .all(MethodNotAllowedHandler);
 
   app
-  .route("/register")
-  .post(async (req, res) => {
+  .route("/check-user")
+  .get(async (req, res) => {
 
-    let newUser = req.body;
-    console.log(newUser._id);
-    await createUser(res, newUser);
+    let options = req.query;
+    let username = options.username;
+
+    await loadUser(res, username);
+    return res;
 
   })
   .all(MethodNotAllowedHandler);
+
+  app
+  .route('/register')
+  .post(async (req, res) => {
+
+    let newUser = req.body;
+
+    await createUser(res, newUser);
+    return res;
+
+  })
+
+  app
+  .route('/login')
+  .get(async (req, res) => {
+
+    let options = req.query;
+    let username = options.username;
+    let password = options.password;
+
+    await loadUser(username);
+
+  })
 
 // this should always be the last route
 app.route("*").all(async (request, response) => {

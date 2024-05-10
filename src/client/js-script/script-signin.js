@@ -1,6 +1,5 @@
 import User from "../js-models/user.js";
 
-
 /**
  * DOM elements for cover section
  */
@@ -94,75 +93,71 @@ formButton.addEventListener("click", async () => {
         const username = document.getElementById('username').value;
         const confpass = document.getElementById('confirm-pass').value;
 
-        // Check if username already exists
-
-        try {
-
-            let usernameLoaded = loadUser(username);
-            alert('Username already exists');
-            return;
-
-        }
-        catch (err) {
-
-        }
+        // Check if password matches confirm password
 
         if (password !== confpass) {
             alert("Passwords must match.");
             return;
         }
 
+        // Try to register user
+    
         try {
 
             const userNew = new User(username, password);
             const userNewJSON = JSON.stringify(userNew);
-            //fetch user route from server.js. routes are not done.
 
-            let registerResponse = fetch(`${URL}/register`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: userNewJSON
+            let userCheckResponse = await fetch(`${URL}/check-user?username=${username}`, {
+                method: "GET"
             });
 
+            if (userCheckResponse.status === 200) alert("Username already exists");
+            else {
 
+                let registerResponse = await fetch(`${URL}/register`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: userNewJSON
+                });
+
+                if (registerResponse.status === 200) alert('Successfully created user');
+
+            }
 
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
             document.getElementById('confirm-pass').value = '';
 
-            alert("Sign up successful.");
-            return;
-
-        } catch (e) {
+        } catch (err) {
             
-            alert('Sign up error');
+            alert('Error trying to register your account');
             return;
 
         }
 
-    } else {
+    } 
+    else {
         // Sign in
-        // try {
-        //     const pass = document.getElementById('pass');
-        //     const user = document.getElementById('user');
-        //     const loadedUser = await loadUser(user); 
-          
-        //     if (loadedUser.password !== pass || loadedUser === undefined) {
-        //         alert("Incorrect Username or Password");
-        //         return;
-        //     }
-            
-        //     localStorage.setItem('currentUser', JSON.stringify(loadedUser));
-        //     tokenBox.style.display = 'display';
-        //     alert("Sign in successful.");
-        // } catch (e) {
-        //     handleError(e);
-        // }
 
-        // document.getElementById('pass').value = '';
-        // document.getElementById('user').value = '';
+        const password = document.getElementById('password').value;
+        const username = document.getElementById('username').value;
+
+        try {
+             
+            let loginResponse = await fetch(`${URL}/login?username=${username}&password=${password}`, {
+                method: "GET"
+            });
+        
+        } catch (err) {
+
+            alert('Username or password is incorrect');
+
+        }
+
+        document.getElementById('password').value = '';
+        document.getElementById('username').value = '';
     }
 });
 
