@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 /**
  * User signed-in, then display tokens
  */
-var signedIn = localStorage.getItem('currentUser');
+let signedIn = localStorage.getItem('currentUser');
 
 let tokenContainer = document.getElementsByClassName('token-container')[0];
 
