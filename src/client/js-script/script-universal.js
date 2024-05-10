@@ -118,3 +118,25 @@ async function addOrdersToPouch(){
     await createOrder(order4);
     console.log(loadAllOrders());
 }*/
+
+const signupSidebar = document.getElementById('sign-in-sign-up-sidebar');
+const logoutSidebar = document.getElementById('logout-sidebar');
+
+function checkedLoggedIn() {
+
+    if (window.localStorage.getItem('user')) {
+
+        signupSidebar.style.display = 'none';
+        logoutSidebar.style.display = 'block';
+
+    }
+    else {
+
+        signupSidebar.style.display = 'block';
+        logoutSidebar.style.display = 'none';
+
+    }
+
+}
+
+checkedLoggedIn();
