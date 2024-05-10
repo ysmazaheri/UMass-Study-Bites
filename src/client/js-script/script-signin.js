@@ -122,6 +122,8 @@ formButton.addEventListener("click", async () => {
     
         try {
 
+            // Create the new user and stringify it to pass it through the fetch call for register
+
             const userNew = new User(username, password);
             const userNewJSON = JSON.stringify(userNew);
 
@@ -173,9 +175,6 @@ formButton.addEventListener("click", async () => {
         const username = document.getElementById('username-login').value;
 
         try {
-
-            const userNew = new User(username, password);
-            const userNewJSON = JSON.stringify(userNew);
 
             // Send a request to check if username exists
 
