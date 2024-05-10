@@ -640,6 +640,7 @@ app
     return res;
 
   })
+  .all(MethodNotAllowedHandler);
 
   app
   .route('/login')
@@ -651,17 +652,18 @@ app
 
     let loadedUser = await loadUser(res, username);
 
-    if (loadedUser.password === password) console.log("hooray");
+    return newRes;
 
   })
+  .all(MethodNotAllowedHandler);
 
 // this should always be the last route
 app.route("*").all(async (request, response) => {
   response.status(404).send(`Not found: ${request.path}`);
 });
 
-// app.listen(port);
+app.listen(port);
 
-app.listen(port, () => {
-  console.log(`App now listening at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`App now listening at http://localhost:${port}`);
+// });

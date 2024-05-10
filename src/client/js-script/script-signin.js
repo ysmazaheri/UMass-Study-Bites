@@ -20,6 +20,16 @@ const formTitle = document.getElementById('sign-in-sign-up-form-title');
 const confirmPassInput = document.getElementById('confirm-pass');
 
 /**
+ * DOM elements for input fields
+ */
+
+const password = document.getElementById('password');
+const username = document.getElementById('username');
+const confpass = document.getElementById('confirm-pass');
+const usernameLogin = document.getElementById('username-login');
+const passwordLogin = document.getElementById('password-login');
+
+/**
  * Text content for cover section
  */
 const titles = ["Sign In", "Sign Up"];
@@ -61,6 +71,14 @@ function slide () {
         formButton.innerHTML = coverButtonValues[(idxCount + 1) % 2];
         formRegister.style.display = formType[idxCount];
         formLogin.style.display = formType[(idxCount + 1) % 2];
+
+        // Clearing the form
+
+        password.value = '';
+        username.value = '';
+        confpass.value = '';
+        usernameLogin.value = '';
+        passwordLogin.value = '';
 
         // Adding confirm password input field
         if (idxCount) confirmPassInput.removeAttribute("hidden");
@@ -157,16 +175,18 @@ formButton.addEventListener("click", async () => {
                 body: requestBodyJSON
             });
 
-            if (loginResponse.status === 200) {
+            console.log(loginResponse.json);
 
-                alert('Successfully logged in');
+            // if (res.JSON === 200) {
 
-            }
-            else {
+            //     alert('Successfully logged in');
 
-                alert('Username does not exist');
+            // }
+            // else {
 
-            }
+            //     alert('Username does not exist');
+
+            // }
         
         } catch (err) {
 
