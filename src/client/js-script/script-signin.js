@@ -81,6 +81,7 @@ function slide () {
 coverButton.addEventListener("click", () => slide());
 
 const URL = "http://localhost:3000";
+const ls = window.localStorage;
 
 /**
  * Handle form submission for sign in or sign up
@@ -108,50 +109,60 @@ formButton.addEventListener("click", async () => {
 
         if (password !== confpass) {
             alert("Passwords must match.");
+            return;
         }
 
         try {
 
             const userNew = new User(username, password);
+            const userNewJSON = JSON.stringify(userNew);
             //fetch user route from server.js. routes are not done.
 
-            let registerResponse = fetch(`${URL}/register?username=${username}`, {
+            let registerResponse = fetch(`${URL}/register`, {
                 method: "POST",
-              });
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: userNewJSON
+            });
+
+
+
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('confirm-pass').value = '';
 
             alert("Sign up successful.");
+            return;
 
         } catch (e) {
             
             alert('Sign up error');
+            return;
 
         }
-
-        // document.getElementById('username').value = '';
-        // document.getElementById('password').value = '';
-        // document.getElementById('confirm-pass').value = '';
 
     } else {
         // Sign in
-        try {
-            const pass = document.getElementById('pass');
-            const user = document.getElementById('user');
-            const loadedUser = await loadUser(user); 
+        // try {
+        //     const pass = document.getElementById('pass');
+        //     const user = document.getElementById('user');
+        //     const loadedUser = await loadUser(user); 
           
-            if (loadedUser.password !== pass || loadedUser === undefined) {
-                alert("Incorrect Username or Password");
-                return;
-            }
+        //     if (loadedUser.password !== pass || loadedUser === undefined) {
+        //         alert("Incorrect Username or Password");
+        //         return;
+        //     }
             
-            localStorage.setItem('currentUser', JSON.stringify(loadedUser));
-            tokenBox.style.display = 'display';
-            alert("Sign in successful.");
-        } catch (e) {
-            handleError(e);
-        }
+        //     localStorage.setItem('currentUser', JSON.stringify(loadedUser));
+        //     tokenBox.style.display = 'display';
+        //     alert("Sign in successful.");
+        // } catch (e) {
+        //     handleError(e);
+        // }
 
-        document.getElementById('pass').value = '';
-        document.getElementById('user').value = '';
+        // document.getElementById('pass').value = '';
+        // document.getElementById('user').value = '';
     }
 });
 

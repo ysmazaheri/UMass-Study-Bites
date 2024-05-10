@@ -570,8 +570,9 @@ app
   .route("/register")
   .post(async (req, res) => {
 
-    const options = req.query;
-    await createUser(res, options.username);
+    let newUser = req.body;
+    console.log(newUser._id);
+    await createUser(res, newUser);
 
   })
   .all(MethodNotAllowedHandler);
