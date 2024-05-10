@@ -634,7 +634,9 @@ app
   })
   .all(MethodNotAllowedHandler);
 
-  //USER ROUTES NOT DONE
+  // User routes
+
+  // Check whether username exists in pouch
 
   app
   .route("/check-user")
@@ -649,6 +651,8 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+  // Creates a user if username doesn't already exist and return a status code.
+
   app
   .route('/register')
   .post(async (req, res) => {
@@ -660,6 +664,8 @@ app
 
   })
   .all(MethodNotAllowedHandler);
+
+  // Logs a user in and authenticates given password with password associated with user
 
   app
   .route('/login')

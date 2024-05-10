@@ -125,12 +125,18 @@ formButton.addEventListener("click", async () => {
             const userNew = new User(username, password);
             const userNewJSON = JSON.stringify(userNew);
 
+            // Send a request to check if username exists
+
             let userCheckResponse = await fetch(`${URL}/check-user?username=${username}`, {
                 method: "GET"
             });
 
+            // Alerts if username exists if user check response returns a success (if loadUser worked on the given username)
+
             if (userCheckResponse.status === 200) alert("Username already exists");
             else {
+
+                // Sends a request to register a user
 
                 let registerResponse = await fetch(`${URL}/register`, {
                     method: "POST",
@@ -140,9 +146,13 @@ formButton.addEventListener("click", async () => {
                     body: userNewJSON
                 });
 
+                // Alerts if user has been successfully registered
+
                 if (registerResponse.status === 200) alert('Successfully created user');
 
             }
+
+            // Clear form
 
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
@@ -164,29 +174,49 @@ formButton.addEventListener("click", async () => {
 
         try {
 
-            let requestBody = { username: username, password: password };
-            let requestBodyJSON = JSON.stringify(requestBody);
+            const userNew = new User(username, password);
+            const userNewJSON = JSON.stringify(userNew);
 
-            console.log(requestBodyJSON);
-             
-            let loginResponse = await fetch(`${URL}/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: requestBodyJSON
+            // Send a request to check if username exists
+
+            let userCheckResponse = await fetch(`${URL}/check-user?username=${username}`, {
+                method: "GET"
             });
 
-            let data = await loginResponse.json();
+            // If username exists, attempt to log user in
 
-            if (data.match) {
+            if (userCheckResponse.status === 200) { 
 
-                alert('Successfully logged in');
-                window.location.href = "index.html";
-                window.localStorage.setItem('user', data.user);
+                let requestBody = { username: username, password: password };
+                let requestBodyJSON = JSON.stringify(requestBody);
+                
+                // Sends request to login user
 
+                let loginResponse = await fetch(`${URL}/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: requestBodyJSON
+                });
+
+                // Catches data returned by the authenticate function in server.js
+
+                let data = await loginResponse.json();
+
+                // Checks whether password of user and given password match and alert a successful login
+
+                if (data.match) {
+
+                    alert('Successfully logged in');
+                    window.location.href = "index.html";
+                    window.localStorage.setItem('user', data.user);
+
+                }
             }
             else {
+
+                // Alerts if the username or password does not match the records
 
                 alert('Username or password is incorrect');
 
@@ -199,38 +229,3 @@ formButton.addEventListener("click", async () => {
         }
     }
 });
-
-// /**
-//  * Handle errors during sign in or sign up
-//  * @param {Error} error - The error object
-//  */
-// function handleError(error) {
-//     console.error(error);
-//     alert("Incorrect Sign-in Attempt. Please try again.");
-// }
-
-const tokenContainer = document.getElementsByClassName('token-container')[0];
-tokenContainer.style.display = 'none';
-
-// async function checkLoggedIn() {
-
-//     //Retrieve all current menus from PouchDB
-//     try {
-
-//         let loginResponse = await fetch(`${URL}/login`, {
-//             method: "GET",
-//         });
-//         let loginJSON = await loginResponse.json();
-//         let username = loginJSON.id;
-//         console.log(username);
-
-//     }
-//     catch (ex) {
-
-//         console.log('Error retrieving menus');
-
-//     }
-
-// }
-
-// checkLoggedIn();

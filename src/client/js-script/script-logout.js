@@ -1,3 +1,5 @@
+// Logs user out and redirects to home page after some time
+
 function logoutUser() {
 
     window.localStorage.removeItem('user');
