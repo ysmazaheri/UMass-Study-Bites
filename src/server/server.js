@@ -5,6 +5,7 @@ import * as userDB from "./js-databases/db-user.js";
 import * as orderDB from "./js-databases/db-order.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { pass } from "three/examples/jsm/nodes/Nodes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -465,6 +466,51 @@ async function loadUser(response, user) {
   }
 }
 
+/**
+ * Asynchronously authenticates a password using provided user and password. If the user or password is not
+ * provided, it responds with a 400 status code indicating a bad request.
+ *
+ * @async
+ * @param {object} response - The HTTP response object used to send back data to
+ * the client. It must have `writeHead`, `write`, and `end` methods available.
+ * @param {string} [user] - The user to be created. If not
+ * provided, the function will respond with an error message.
+ */
+async function authenticate(response, body, user, password) {
+
+  let loadedUser;
+
+  if (user === undefined || password === undefined) {
+    response.writeHead(400, headerFields);
+    response.write("Error: User and Password Required");
+    response.end();
+  } else {
+    try {
+
+      if (user.password === password) {
+
+        body = { user: user, match: true }
+
+      }
+      else {
+
+        body = { user: user, match: false }
+
+      }
+
+      response.json(body);
+
+    } catch (err) {
+
+      console.log(err);
+
+      response.writeHead(500, headerFields);
+      response.write("Internal Server Error: User Not Initialized Properly");
+      response.end();
+    }
+  }
+}
+
 /*************************/
 //SAVING THE REST OF USER DB MANAGEMENT FOR LATER
 /*************************/
@@ -590,33 +636,6 @@ app
 
   //USER ROUTES NOT DONE
 
-  // app
-  // .route("/login")
-  // .post(async (req, res) => {
-
-  //   try {
-
-  //     const options = request.query;
-  //     let username = options.username;
-  //     let password = options.password;
-  //     let loadedUser = await loadUser(username);
-  //     if (password === loadedUser.password) {
-
-        
-
-  //     }
-    
-  //   }
-  //   catch (err) {
-
-
-
-  //   }
-
-
-  // })
-  // .all(MethodNotAllowedHandler);
-
   app
   .route("/check-user")
   .get(async (req, res) => {
@@ -646,13 +665,12 @@ app
   .route('/login')
   .post(async (req, res) => {
 
-    let info = req.body;
-    let username = info.username;
-    let password = info.password;
+    let username = req.body.username;
+    let password = req.body.password;
 
-    let loadedUser = await loadUser(res, username);
+    let loadedUser = await userDB.loadUser(username);
 
-    return newRes;
+    await authenticate(res, req.body, loadedUser, password);
 
   })
   .all(MethodNotAllowedHandler);

@@ -166,6 +166,8 @@ formButton.addEventListener("click", async () => {
 
             let requestBody = { username: username, password: password };
             let requestBodyJSON = JSON.stringify(requestBody);
+
+            console.log(requestBodyJSON);
              
             let loginResponse = await fetch(`${URL}/login`, {
                 method: "POST",
@@ -175,18 +177,20 @@ formButton.addEventListener("click", async () => {
                 body: requestBodyJSON
             });
 
-            console.log(loginResponse.json);
+            let data = await loginResponse.json();
 
-            // if (res.JSON === 200) {
+            if (data.match) {
 
-            //     alert('Successfully logged in');
+                alert('Successfully logged in');
+                window.location.href = "index.html";
+                window.localStorage.setItem('user', data.user);
 
-            // }
-            // else {
+            }
+            else {
 
-            //     alert('Username does not exist');
+                alert('Username or password is incorrect');
 
-            // }
+            }
         
         } catch (err) {
 
