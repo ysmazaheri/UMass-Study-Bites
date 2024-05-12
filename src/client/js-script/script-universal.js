@@ -133,3 +133,46 @@ async function addOrdersToPouch(){
     await createOrder(order4);
     console.log(loadAllOrders());
 }*/
+
+const signupSidebar = document.getElementById('sign-in-sign-up-sidebar');
+const logoutSidebar = document.getElementById('logout-sidebar');
+const tokenContainer = document.getElementsByClassName('token-container')[0];
+
+// function checkedLoggedIn() {
+
+//     if (window.localStorage.getItem('user')) {
+
+//         signupSidebar.style.display = 'none';
+//         logoutSidebar.style.display = 'block';
+//         tokenContainer.style.display = 'block';
+
+//     }
+//     else {
+
+//         signupSidebar.style.display = 'block';
+//         logoutSidebar.style.display = 'none';
+//         tokenContainer.style.display = 'none';
+
+//     }
+
+// }
+
+async function checkLoginStatus() {
+    try {
+      const response = await fetch('/check-login');
+      const data = await response.json();
+      return data.loggedIn;
+    } catch (error) {
+      console.error('Error checking login status:', error);
+      return false;
+    }
+}
+  
+// Example usage
+checkLoginStatus().then(loggedIn => {
+    if (loggedIn) {
+        console.log('User is logged in!');
+    } else {
+        console.log('User is not logged in.');
+    }
+});

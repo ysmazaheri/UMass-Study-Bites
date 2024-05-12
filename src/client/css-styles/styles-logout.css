@@ -1,0 +1,42 @@
+#logout-container {
+
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    /* border: 2px solid black; */
+
+}
+
+#logout-message {
+
+    font-size: 3rem;
+    display: inline-block;
+
+    /* border: 2px solid black; */
+
+}
+
+#back-to-home {
+
+    width: 150px;
+    height: 50px;
+    background-color: #971B2F;
+    border-radius: 40px;
+    border-color: white;
+    border-style: solid;
+    color: white;
+    font-size: 1rem;
+    margin: 10px 0px 0px 0px;
+    transition-duration: 0.2s;
+
+}
+
+#back-to-home:hover {
+
+    transform: scale(1.05);
+
+}
