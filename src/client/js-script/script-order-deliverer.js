@@ -1,8 +1,3 @@
-/*import OrderStorage from "../js-models/OrderStorage.js";
-import Order from "../js-models/order.js";
-import OrderCart from "../js-models/orderCart.js";
-*/
-
 import { OrderStorage } from "../js-models/OrderStorage.js";
 const orderStorage = new OrderStorage();
 
