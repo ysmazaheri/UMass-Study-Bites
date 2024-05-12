@@ -3,6 +3,41 @@ import Menu from "../js-models/menu.js";
 import Order from "../js-models/order.js";
 
 
+/**
+ * Check to see if user is logged in
+ */
+
+const signupSidebar = document.getElementById('sign-in-sign-up-sidebar');
+const logoutSidebar = document.getElementById('logout-sidebar');
+const tokenContainer = document.getElementsByClassName('token-container')[0];
+const tokenBalance = document.getElementsByClassName('token-balance')[0];
+
+function checkedLoggedIn() {
+
+    if (window.localStorage.getItem('user')) {
+
+        let userParsed = JSON.parse(window.localStorage.getItem('user'));
+
+        signupSidebar.style.display = 'none';
+        logoutSidebar.style.display = 'block';
+        tokenContainer.style.display = 'block';
+        tokenBalance.innerHTML = userParsed.tokenCount;
+
+    }
+    else {
+
+        signupSidebar.style.display = 'block';
+        logoutSidebar.style.display = 'none';
+        tokenContainer.style.display = 'none';
+
+    }
+
+}
+
+checkedLoggedIn();
+
+
+
 let toggleButton = document.getElementById("sidebar-toggle");
 toggleButton.addEventListener("click", toggleSidebar);
 
@@ -80,35 +115,3 @@ if (user !== null) {
     }
 }
 
-/**
- * Check to see if user is logged in
- */
-
-const signupSidebar = document.getElementById('sign-in-sign-up-sidebar');
-const logoutSidebar = document.getElementById('logout-sidebar');
-const tokenContainer = document.getElementsByClassName('token-container')[0];
-const tokenBalance = document.getElementsByClassName('token-balance')[0];
-
-function checkedLoggedIn() {
-
-    if (window.localStorage.getItem('user')) {
-
-        let userParsed = JSON.parse(window.localStorage.getItem('user'));
-
-        signupSidebar.style.display = 'none';
-        logoutSidebar.style.display = 'block';
-        tokenContainer.style.display = 'block';
-        tokenBalance.innerHTML = userParsed.tokenCount;
-
-    }
-    else {
-
-        signupSidebar.style.display = 'block';
-        logoutSidebar.style.display = 'none';
-        tokenContainer.style.display = 'none';
-
-    }
-
-}
-
-checkedLoggedIn();
