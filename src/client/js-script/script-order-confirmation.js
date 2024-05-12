@@ -9,10 +9,14 @@ let diningHall = orderStorage.getSelections().pickUpLocation;
 let residence = orderStorage.getSelections().dropOffLocation;
 const orderCart = new OrderCart();
 
+const orderer = document.getElementById("enter-name");
 const orderListElement = document.getElementById('order-preview-list');
 const pickupLocElement = document.getElementById("show-pickup");
 const dropoffLocElement = document.getElementById("show-dropoff");
 
+let userObject = JSON.parse(window.localStorage.getItem('user'));
+
+orderer.value = userObject._id;
 pickupLocElement.value = diningHall;
 pickupLocElement.setAttribute("readonly", "readonly");
 dropoffLocElement.value = residence;
