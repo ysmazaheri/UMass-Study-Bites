@@ -85,8 +85,33 @@ if (user !== null) {
     }
 }
 
+ * Check to see if the user is logged in
+ */
 
+const signupSidebar = document.getElementById('sign-in-sign-up-sidebar');
+const logoutSidebar = document.getElementById('logout-sidebar');
+const tokenContainer = document.getElementsByClassName('token-container')[0];
 
+function checkedLoggedIn() {
+
+    if (window.localStorage.getItem('user')) {
+
+        signupSidebar.style.display = 'none';
+        logoutSidebar.style.display = 'block';
+        tokenContainer.style.display = 'block';
+
+    }
+    else {
+
+        signupSidebar.style.display = 'block';
+        logoutSidebar.style.display = 'none';
+        tokenContainer.style.display = 'none';
+
+    }
+
+}
+
+checkedLoggedIn();
 
 //Put all other code above this point because it's super long
 

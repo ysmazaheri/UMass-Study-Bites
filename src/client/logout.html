@@ -1,27 +1,26 @@
+<!-- Page for creating or signing into an account -->
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Delivery Completion</title>
-    <script type="module" src="./js-script/script-universal.js" defer></script>
-    <script type="module" src="./js-script/script-delivery-completion.js"></script>
-    <link rel="stylesheet" href="../css-styles/styles-order-delivery-completion.css">
+    <title>Thank-You</title>
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="../css-styles/styles-logout.css">
     <link rel="stylesheet" href="../css-styles/styles-universal.css">
+    <!-- JavaScript Files -->
+    <script type="module" src="../js-script/script-logout.js" defer></script>
+    <script type="module" src="../js-script/script-universal.js" defer></script>
 </head>
-
 <body>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Topbar -->
-
     <div class="topbar">
 
         <i id="sidebar-toggle" class="fa fa-bars"></i>
-
+        UMass Study Bites
         <div class="token-container">
             Token Balance: <span class="token-balance">5</span>
         </div>
@@ -48,17 +47,19 @@
         </div>
 
         <div class="main">
-            <header>
-                <h1>Delivery Tracker</h1>
-            </header>
-            <main>
-                <section class="completion-message">
-                    <h2>Delivery Completed</h2>
-                    <p>Your order has been successfully delivered.</p>
-                    <p>We appreciate your support!</p>
-                    <a href="./index.html"><div id="home">Homepage</div></a>
-                </section>
-            </main>
+
+            <div id="logout-container">
+
+                <div id="logout-message">
+
+                    You have been logged out
+
+                </div>
+
+                <button id="back-to-home" type="button">Back To Home</button>
+
+            </div>
+
         </div>
 
     </div>
@@ -67,5 +68,4 @@
         <!-- Footer content like copyright, links to privacy policy, etc. -->
     </footer>
 </body>
-
 </html>
