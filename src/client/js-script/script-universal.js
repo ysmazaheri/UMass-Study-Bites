@@ -71,17 +71,20 @@ user.deliverer = true;*/
 
 let user = localStorage.getItem('user');
 
-if (user.deliverer) {
-    let deliveryDashboardLink = document.createElement("a");
-    deliveryDashboardLink.href = "../order-deliverer.html";
-    deliveryDashboardLink.className = "site-nav-bar-link";
-    deliveryDashboardLink.textContent = "Delivery";
-    deliveryDashboardLink.id = "deliverer-link";
-
-    let siteNavBarLinks = document.querySelector(".site-nav-bar-links");
-    let lastSiteNavBarLink = siteNavBarLinks.lastElementChild;
-    siteNavBarLinks.insertBefore(deliveryDashboardLink, lastSiteNavBarLink.nextSibling);
+if (user !== null) {
+    if (user.deliverer) {
+        let deliveryDashboardLink = document.createElement("a");
+        deliveryDashboardLink.href = "../order-deliverer.html";
+        deliveryDashboardLink.className = "site-nav-bar-link";
+        deliveryDashboardLink.textContent = "Delivery";
+        deliveryDashboardLink.id = "deliverer-link";
+    
+        let siteNavBarLinks = document.querySelector(".site-nav-bar-links");
+        let lastSiteNavBarLink = siteNavBarLinks.lastElementChild;
+        siteNavBarLinks.insertBefore(deliveryDashboardLink, lastSiteNavBarLink.nextSibling);
+    }
 }
+
 
 
 
