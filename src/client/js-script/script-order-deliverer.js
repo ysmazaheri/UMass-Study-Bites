@@ -48,6 +48,8 @@ btnOne.addEventListener('click', async function () {
 
 
 btnTwo.addEventListener('click', async function () {
+  const orderId = orderStorage.getId();
+  
   try {
     const response = await fetch(`${URL}/order-complete?id=${orderId}`, {
       method: 'PUT'

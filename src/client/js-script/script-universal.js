@@ -55,21 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-/**
- * User signed-in, then display tokens.
- */
-let signedIn = localStorage.getItem('user');
-
-let tokenContainer = document.getElementsByClassName('token-container')[0];
-
-if (tokenContainer !== undefined) {
-    if (signedIn !== null) {
-        tokenContainer.style.display = 'block';
-    } else {
-        tokenContainer.style.display = 'none';
-    }
-}
-
 
 /**
  * Delivery Dashboard Page. If user is deliverer they will have access to the page.
