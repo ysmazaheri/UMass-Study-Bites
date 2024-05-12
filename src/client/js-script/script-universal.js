@@ -61,17 +61,15 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 
 //class User is for testing purposes only.
-class User {
+/*class User {
     constructor(deliverer) {
         this.deliverer = deliverer;
     }
 }
 let user = new User();
-user.deliverer = true;
+user.deliverer = true;*/
 
-
-//let user = localStorage.getItem('user');
-// the default is that user is not a deliverer.
+let user = localStorage.getItem('user');
 
 if (user.deliverer) {
     let deliveryDashboardLink = document.createElement("a");
