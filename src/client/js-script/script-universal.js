@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 /**
  * User signed-in, then display tokens.
  */
-let signedIn = localStorage.getItem('currentUser');
+let signedIn = localStorage.getItem('user');
 
 let tokenContainer = document.getElementsByClassName('token-container')[0];
 
@@ -85,7 +85,7 @@ let user = new User();
 user.deliverer = true;
 
 
-//let user = localStorage.getItem('currentUser');
+//let user = localStorage.getItem('user');
 // the default is that user is not a deliverer.
 
 if (user.deliverer) {
