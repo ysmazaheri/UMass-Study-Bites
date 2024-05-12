@@ -260,7 +260,8 @@ async function readOrder(response, id) {
   try {
     const order = await orderDB.loadOrder(id);
     response.writeHead(200, jsonFields);
-    response.write(order);
+    let order2 = JSON.stringify(order);
+    response.write(order2);
     response.end();
   } catch (err) {
     response.writeHead(404, headerFields);
