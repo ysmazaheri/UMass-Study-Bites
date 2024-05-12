@@ -4,7 +4,7 @@ export default class User {
         this.password = password;
         this.tokenCount = 1;
         this._id = name;
-
+        this.deliverer = false;
     }
 
     addToken() {
