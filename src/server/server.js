@@ -511,16 +511,6 @@ async function authenticate(response, body, user, password) {
   }
 }
 
-// const isAuthenticated = (req, res, next) => {
-//   if (req.session && req.session.user) {
-//     // User is authenticated, proceed to the next middleware/route handler
-//     next();
-//   } else {
-//     // User is not authenticated, send a 401 Unauthorized response
-//     res.status(401).send('Unauthorized');
-//   }
-// };
-
 /*************************/
 //SAVING THE REST OF USER DB MANAGEMENT FOR LATER
 /*************************/
@@ -692,19 +682,6 @@ app
 
   })
   .all(MethodNotAllowedHandler);
-
-  // app.get('/protected-route', isAuthenticated, async (req, res) => {
-  //   // This route is only accessible to authenticated users
-  //   res.send('Welcome to the protected route!');
-  // });
-
-  // app.get('/check-login', (req, res) => {
-  //   if (req.session && req.session.user) {
-  //     res.json({ loggedIn: true, user: req.session.user });
-  //   } else {
-  //     res.json({ loggedIn: false });
-  //   }
-  // });
 
 // this should always be the last route
 app.route("*").all(async (request, response) => {
