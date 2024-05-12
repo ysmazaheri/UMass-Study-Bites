@@ -28,7 +28,7 @@ try {
 }
 catch (err) {
 
-  alert('AHHHH');
+  console.log('Unable to read order');
 
 }
 
@@ -101,7 +101,24 @@ deliveryInput.value = orderStorage.getPickUp();
 
 // Hardwired continue button 
 const continueButton = document.getElementById('continue-button');
-continueButton.addEventListener('click', () => {
+continueButton.addEventListener('click', deleteAndRedirect);
+
+
+/*
+* Upon completion of a delivery, the order is removed from the database via a fetch call
+* Logs the success or failure of this deletion, then redirects the user to the thank you page
+*/
+async function deleteAndRedirect(){
+  //fetch delete the current order
+  try{
+    let res = await fetch(`http://localhost:3000/order-delete?id=${id}&rev=${rev}`,{
+      method: "DELETE"
+    });
+    console.log(res.body);
+  }catch(ex){
+    console.log('Failed to delete order.');
+  }
+
   // Navigate to thank-you.html
   window.location.href = 'thank-you.html';
-});
+}

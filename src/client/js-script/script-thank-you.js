@@ -12,7 +12,7 @@ backButton.addEventListener("click", () => {
 
 const URL = "http://localhost:3000";
 
-try{
+/*try{
     let allOrdersResp = await fetch(`${URL}/order-all`, {
       method: "GET",
     });
@@ -20,5 +20,5 @@ try{
     console.log(allOrders);
 }catch(err){
     console.log(err);
-}
+}*/
 

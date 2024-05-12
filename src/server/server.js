@@ -351,11 +351,10 @@ async function completeOrder(response, id) {
  */
 async function deleteOrder(response, id, rev) {
   try {
-    const order = await orderDB.deleteOrder(id,rev);
+    await orderDB.removeOrder(id,rev);
     response.writeHead(200, headerFields);
     response.write('Order Deleted');
     response.end();
-    orderDB.removeOrder(id);
   } catch (err) {
     response.writeHead(404, headerFields);
     response.write('Error: Order Not Found');
@@ -625,7 +624,7 @@ app
   .route("/order-delete")
   .delete(async (request, response) => {
     const options = request.query;
-    await deleteOrder(response, options.id);
+    await deleteOrder(response, options.id, options.rev);
   })
   .all(MethodNotAllowedHandler);
 
