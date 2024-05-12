@@ -56,18 +56,49 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 /**
- * User signed-in, then display tokens
+ * User signed-in, then display tokens.
  */
 let signedIn = localStorage.getItem('currentUser');
 
 let tokenContainer = document.getElementsByClassName('token-container')[0];
 
-if (signedIn !== null) {
+if (tokenContainer !== undefined) {
+    if (signedIn !== null) {
         tokenContainer.style.display = 'block';
-} else {
+    } else {
         tokenContainer.style.display = 'none';
+    }
 }
 
+
+/**
+ * Delivery Dashboard Page. If user is deliverer they will have access to the page.
+ */
+
+//class User is for testing purposes only.
+class User {
+    constructor(deliverer) {
+        this.deliverer = deliverer;
+    }
+}
+let user = new User();
+user.deliverer = true;
+
+
+//let user = localStorage.getItem('currentUser');
+// the default is that user is not a deliverer.
+
+if (user.deliverer) {
+    let deliveryDashboardLink = document.createElement("a");
+    deliveryDashboardLink.href = "../order-deliverer.html";
+    deliveryDashboardLink.className = "site-nav-bar-link";
+    deliveryDashboardLink.textContent = "Delivery";
+    deliveryDashboardLink.id = "deliverer-link";
+
+    let siteNavBarLinks = document.querySelector(".site-nav-bar-links");
+    let lastSiteNavBarLink = siteNavBarLinks.lastElementChild;
+    siteNavBarLinks.insertBefore(deliveryDashboardLink, lastSiteNavBarLink.nextSibling);
+}
 
 
 

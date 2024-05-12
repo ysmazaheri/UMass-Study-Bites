@@ -5,7 +5,7 @@ export default class User {
         this._id = name;
         this.residence = "";
         this.favoriteLocation = "";
-
+        this.deliverer = false;
     }
     addToken() {
         this.tokenCount += 1;

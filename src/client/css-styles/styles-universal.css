@@ -161,3 +161,8 @@ a:active {
     font-size:40px;
     color:#FFFFFF;
 }
+
+#deliverer-link {
+    padding: 2.5px;
+    font-size: 33.4px;
+}
