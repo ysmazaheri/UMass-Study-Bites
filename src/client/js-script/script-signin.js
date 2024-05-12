@@ -199,7 +199,7 @@ formButton.addEventListener("click", async () => {
                     body: requestBodyJSON
                 });
 
-                // Catches data returned by the authenticate function in server.js
+                // // Catches data returned by the authenticate function in server.js
 
                 let data = await loginResponse.json();
 
@@ -209,7 +209,7 @@ formButton.addEventListener("click", async () => {
 
                     alert('Successfully logged in');
                     window.location.href = "index.html";
-                    window.localStorage.setItem('user', data.user);
+                    window.localStorage.setItem('user', JSON.stringify(data.user));
 
                 }
             }
