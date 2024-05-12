@@ -120,6 +120,8 @@ async function loadOrders(){
                 orderStorage.saveDropOff(order.residence);
                 // Retrieve the name of the recipeint
                 orderStorage.saveName(order.orderer.split(' ')[0]);
+
+                orderStorage.saveOrderId(order._id);
                 // Go to delivery confirmation page, displaying the retrieved information for confirmation
                 window.location.href = 'order-confirmation-for-delivery.html';
             });
