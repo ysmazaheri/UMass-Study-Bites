@@ -92,14 +92,18 @@ if (user !== null) {
 const signupSidebar = document.getElementById('sign-in-sign-up-sidebar');
 const logoutSidebar = document.getElementById('logout-sidebar');
 const tokenContainer = document.getElementsByClassName('token-container')[0];
+const tokenBalance = document.getElementsByClassName('token-balance')[0];
 
 function checkedLoggedIn() {
 
     if (window.localStorage.getItem('user')) {
 
+        let userParsed = JSON.parse(window.localStorage.getItem('user'));
+
         signupSidebar.style.display = 'none';
         logoutSidebar.style.display = 'block';
         tokenContainer.style.display = 'block';
+        tokenBalance.innerHTML = userParsed.tokenCount;
 
     }
     else {
