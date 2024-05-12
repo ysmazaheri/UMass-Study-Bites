@@ -85,7 +85,8 @@ if (user !== null) {
     }
 }
 
- * Check to see if the user is logged in
+/**
+ * Check to see if user is logged in
  */
 
 const signupSidebar = document.getElementById('sign-in-sign-up-sidebar');
