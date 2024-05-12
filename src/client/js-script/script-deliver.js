@@ -63,7 +63,7 @@ async function loadOrders(){
     orderListElement.innerHTML = `
                             <div id="order-list-header">
                                 <div id="name-header" class="order-header">
-                                    Recipient Name
+                                    Recipient Username
                                 </div>
                                 <div id="pickup-header" class="order-header">
                                     Pickup Point
