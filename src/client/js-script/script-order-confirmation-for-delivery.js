@@ -2,6 +2,37 @@ import { OrderCart } from "../js-models/OrderCart.js";
 import { OrderStorage } from "../js-models/OrderStorage.js";
 
 const orderCart = new OrderCart();
+
+// Setting order cart to be the order cart of the current order
+
+const URL = "http://localhost:3000";
+let id;
+let rev;
+let food;
+
+try {
+  
+  let getOrderResponse = await fetch(`${URL}/order-read?id=${window.localStorage.getItem('orderId')}`);
+  let data = await getOrderResponse.json();
+
+  id = data._id;
+  rev = data._rev;
+  food = data.food;
+
+  for (let i = 0; i < food.length; i++) {
+
+    orderCart.addOI(food[i]);
+
+  }
+
+}
+catch (err) {
+
+  alert('AHHHH');
+
+}
+
+
 const orderStorage = new OrderStorage();
 const orderListElement = document.getElementById('order-preview-list');
 
