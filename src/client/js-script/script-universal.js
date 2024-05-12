@@ -55,6 +55,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+/**
+ * Check to see if the user is logged in
+ */
+
 const signupSidebar = document.getElementById('sign-in-sign-up-sidebar');
 const logoutSidebar = document.getElementById('logout-sidebar');
 const tokenContainer = document.getElementsByClassName('token-container')[0];
