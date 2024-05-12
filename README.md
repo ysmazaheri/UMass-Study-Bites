@@ -5,8 +5,12 @@ Campus Food Delivery Service:
 - using express.js to host a server containing menus, orders, and users
 - using maps for coordinates
 
-run "npm i" or "npm install" to download all required packages
-run "npm start" to begin the server, then visit 'localhost:3000' to view the homepage and begin using the app.
+**Setup**
+
+Run "npm i" or "npm install" to download all required packages
+Rename src/client/YOUR_SECRETS.js to 'secrets.js', and put your Google Maps API key (if you have one) in the specified place in the file
+- If you do not have a Google Maps API key, you must still rename the file, the map will simply not appear
+Run "npm start" to begin the server, then visit 'localhost:3000' to view the homepage and begin using the app.
 
 **IMPORTANT**
 If a 'node-modules' folder is present BEFORE running npm install (this is unlikely to ever occur), make sure to delete it before installing packages.

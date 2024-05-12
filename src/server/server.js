@@ -5,7 +5,6 @@ import * as userDB from "./js-databases/db-user.js";
 import * as orderDB from "./js-databases/db-order.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { pass } from "three/examples/jsm/nodes/Nodes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

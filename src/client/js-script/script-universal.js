@@ -2,11 +2,6 @@
 import Menu from "../js-models/menu.js";
 import Order from "../js-models/order.js";
 
-//addMenusToPouch(); //Un-comment this line to force populate local PouchDB with the above menus **DO NOT LEAVE UNCOMMENTED**
-//addOrdersToPouch(); //Un-comment this line to force populate the local PouchDB with the above orders
-
-//fills pouch with local menus and orders if local instance is empty
-//fillPouchIfEmpty();
 
 let toggleButton = document.getElementById("sidebar-toggle");
 toggleButton.addEventListener("click", toggleSidebar);
@@ -117,66 +112,3 @@ function checkedLoggedIn() {
 }
 
 checkedLoggedIn();
-
-//Put all other code above this point because it's super long
-
-//Setup for placeholder data in PouchDB. 
-/*
-let order1 = new Order('Ian McGregor', 'Franklin Dining Commons', 'JQA Hall', {"Tomato Bisque": 2, "Teriyaki Chicken Roll": 1});
-order1.setTime('12:00 AM');
-let order2 = new Order('Said', 'Worcester Dining Commons', 'Wheeler Hall', {"Grilled Chicken Breast": 1, "French Fries": 3, "Berkshire Burger Patty": 1});
-order2.setTime('9:00 AM');
-let order3 = new Order('Vrishabh', 'Franklin Dining Commons', 'IDK Hall', {"Chicken Noodle Soup": 5, "French Fries": 3});
-order3.setTime('12:00 PM');
-let order4 = new Order('Drew', 'Berkshire Dining Commons', 'W.E.B. Du Bois Library', {"Scrambled Eggs": 2, "Teriyaki Chicken Roll": 2});
-order4.setTime('12:00 AM');
-
-async function fillPouchIfEmpty(){
-    let numMenus = (await loadAllMenus()).length;
-    let numOrders = (await loadAllOrders()).length;
-    if(numMenus === 0){
-        addMenusToPouch();
-    }
-    if(numOrders === 0){
-        addOrdersToPouch();
-    }
-}
-
-async function addMenusToPouch(){
-    let frankBreak = new Menu("Franklin Dining Commons", "Breakfast", frankBreakfastMenu);
-    await createMenu(frankBreak);
-    let frankLunch = new Menu("Franklin Dining Commons", "Lunch", frankLunchMenu);
-    await createMenu(frankLunch);
-    let frankDinner = new Menu("Franklin Dining Commons", "Dinner", frankDinnerMenu);
-    await createMenu(frankDinner);
-
-    let wooBreak = new Menu("Worcester Dining Commons", "Breakfast", wooBreakfastMenu);
-    await createMenu(wooBreak);
-    let wooLunch = new Menu("Worcester Dining Commons", "Lunch", wooLunchMenu);
-    await createMenu(wooLunch);
-    let wooDinner = new Menu("Worcester Dining Commons", "Dinner", wooDinnerMenu);
-    await createMenu(wooDinner);
-
-    let hampBreak = new Menu("Hampshire Dining Commons", "Breakfast", hampBreakfastMenu);
-    await createMenu(hampBreak);
-    let hampLunch = new Menu("Hampshire Dining Commons", "Lunch", hampLunchMenu);
-    await createMenu(hampLunch);
-    let hampDinner = new Menu("Hampshire Dining Commons", "Dinner", hampDinnerMenu);
-    await createMenu(hampDinner);
-
-    let berkBreak = new Menu("Berkshire Dining Commons", "Breakfast", berkBreakfastMenu);
-    await createMenu(berkBreak);
-    let berkLunch = new Menu("Berkshire Dining Commons", "Lunch", berkLunchMenu);
-    await createMenu(berkLunch);
-    let berkDinner = new Menu("Berkshire Dining Commons", "Dinner", berkDinnerMenu);
-    await createMenu(berkDinner);
-
-}
-
-async function addOrdersToPouch(){
-    await createOrder(order1);
-    await createOrder(order2);
-    await createOrder(order3);
-    await createOrder(order4);
-    console.log(loadAllOrders());
-}*/
