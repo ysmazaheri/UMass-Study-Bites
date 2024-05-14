@@ -319,7 +319,7 @@ function initializeOptionsInteractions() {
     });
 }
 
-// NEXT BUTTON
+// NEXT BUTTON, navigates to order page if user has selected a valid location
 document.getElementById('nextBtn').addEventListener('click', function() {
     // If no valid location is selected, alert
     if (selectedLocations.length === 0) {
@@ -334,7 +334,7 @@ document.getElementById('nextBtn').addEventListener('click', function() {
     window.location.href = 'order.html';
   });
 
-// BACK BUTTON
+// BACK BUTTON, nativates back to homepage
 document.getElementById('backBtn').addEventListener('click', function() {
   // Navigate to index.html
   window.location.href = 'index.html';
@@ -359,7 +359,7 @@ function filterMap() {
     });
 }
 
-// LOCATION OPTION FILTER
+// LOCATION OPTION FILTER, uses searchbar in the same way as homepage filter
 function filterOptions() {
     // Update the list of what location options are on the page currently, in case it has changed
     let locationOptions = document.getElementsByClassName('location');

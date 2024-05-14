@@ -1,3 +1,4 @@
+//Object used to define each user, stored in PouchDB
 export default class User {
     constructor(name,password){
 
@@ -7,26 +8,26 @@ export default class User {
         this.deliverer = false;
     }
 
-    addToken() {
+    addToken() { //Adds a token to the user
 
         this.tokenCount += 1;
 
     }
 
-    removeToken() {
+    removeToken() { //Removes a token from the user
 
         if(this.tokenCount <= 0) return;
         this.tokenCount -= 1;
 
     }
 
-    hasTokens() {
+    hasTokens() { //Checks if user has any tokens, returns boolean
 
         return this.tokenCount > 0;
 
     }
 
-    validatePassword(pass) {
+    validatePassword(pass) { //Checks if inputted password matches stored value. These would be encrypted hashes in a live version
 
         return pass === this.password;
 

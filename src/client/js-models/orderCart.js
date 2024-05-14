@@ -1,5 +1,5 @@
 const ls = window.localStorage;
-
+//Object that contains the 'cart' of a user currently ordering food. Used in local storage
 export class OrderCart {
 
     #OIList;

@@ -12,12 +12,23 @@ Rename src/client/YOUR_SECRETS.js to 'secrets.js', and put your Google Maps API 
 - If you do not have a Google Maps API key, you must still rename the file, the map will simply not appear
 Run "npm start" to begin the server, then visit 'localhost:3000' to view the homepage and begin using the app.
 
+
 **IMPORTANT**
 If a 'node-modules' folder is present BEFORE running npm install (this is unlikely to ever occur), make sure to delete it before installing packages.
 Some packages are OS-specific, and may not be compatible with your machine.
 
 On pages containing menus, if your local database is empty, it is required to 'refresh menus' via the button.
-This will populate your database with our placeholder menus
+This will populate your database with our placeholder menus.
+
+
+**Updating Local Storage**
+
+The placeholder menus used in this project are stored in src/server/js-databases/db-menu.js
+To change any of these menus, simply update the JSON object in that file, save, and restart the server. 
+Then, clicking 'refresh menus' on any of the pages with that button will refresh your local database with the new menu(s).
+
+Updating locally stored users and deliveries requires creating users and ordering food in the app itself.
+Users cannot be deleted through the app, but orders are deleted by completing them via the Delivery page
 
 
 **Pages**
@@ -50,7 +61,7 @@ In our app, the user experience is as follows
 Another user will deliver this order
 - Use the 'deliver' page to view available deiliveries
 - Click a delivery to assign the delivery to yourself
-- Upon the delivery's completion, complete the order 
+- Upon the delivery's completion, the order is removed from the database
 
 
 **File Structure**

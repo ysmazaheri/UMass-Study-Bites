@@ -162,7 +162,7 @@ function filterMap() {
     });
 }
 
-// LOCATION OPTION FILTER
+// LOCATION OPTION FILTER, uses searchbar to filter out non-matching entries
 function filterOptions() {
     // Update the list of what location options are on the page currently, in case it has changed
     let locationOptions = document.getElementsByClassName('location');

@@ -1,5 +1,6 @@
+//Object used to define each menu, stored in PouchDB
 export default class Menu {
-    constructor(diningHall,meal,food){//food is (probably) a JSON object
+    constructor(diningHall,meal,food){//food is a JSON object
         this.diningHall = diningHall;
         this.meal = meal;
         this.food = food;

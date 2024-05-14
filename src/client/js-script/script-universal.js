@@ -86,18 +86,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-/**
- * Delivery Dashboard Page. If user is deliverer they will have access to the page.
- */
-
-//class User is for testing purposes only.
-/*class User {
-    constructor(deliverer) {
-        this.deliverer = deliverer;
-    }
-}
-let user = new User();
-user.deliverer = true;*/
 
 let user = localStorage.getItem('user');
 
