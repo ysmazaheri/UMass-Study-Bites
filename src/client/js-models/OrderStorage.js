@@ -1,5 +1,5 @@
 export class OrderStorage {
-
+//Class used to store local orders before they are placed and sent to the server
     constructor () {
 
     }

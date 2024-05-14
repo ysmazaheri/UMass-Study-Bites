@@ -510,10 +510,8 @@ async function authenticate(response, body, user, password) {
   }
 }
 
-/*************************/
-//SAVING THE REST OF USER DB MANAGEMENT FOR LATER
-/*************************/
 
+//Server routes and middleware
 
 const app = express();
 const port = 3000;
@@ -539,6 +537,7 @@ const MethodNotAllowedHandler = async (request, response) => {
 
 //menu routes
 
+// Retrieves menu by dining hall and meal. Since only 1 copy is stored at a time, this is sufficient
 app
   .route("/menu-read")
   .get(async (request, response) => {
@@ -548,6 +547,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Creates menu in database given a Menu object
 app
   .route("/menu-create")
   .post(async (request, response) => {
@@ -557,6 +557,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Updates menu in database via dining hall, meal, and food JSON object
   app
   .route("/menu-update")
   .put(async (request, response) => {
@@ -565,6 +566,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Deletes a menu from DB given its id and rev properties
   app
   .route("/menu-delete")
   .delete(async (request, response) => {
@@ -573,6 +575,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Retrieves all menus from DB as an array
   app
   .route("/menu-all")
   .get(async (request, response) => {
@@ -580,6 +583,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Clears out DB, then populates it with new menus 
   app
   .route("/menu-refresh")
   .get(async (request, response) => {
@@ -588,6 +592,8 @@ app
   .all(MethodNotAllowedHandler);
 
   //orders
+
+// Returns an order given its id
   app
   .route("/order-read")
   .get(async (request, response) => {
@@ -596,6 +602,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Creates an order in the database given an Order object
 app
   .route("/order-create")
   .post(async (request, response) => {
@@ -604,6 +611,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Updates an order given its id and a new deliverer to assign
   app
   .route("/order-update")
   .put(async (request, response) => {
@@ -612,6 +620,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Marks a given order as completed by its id
   app
   .route("/order-complete")
   .put(async (request, response) => {
@@ -620,6 +629,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Deletes an order from the database given its id and rev properties
   app
   .route("/order-delete")
   .delete(async (request, response) => {
@@ -628,6 +638,7 @@ app
   })
   .all(MethodNotAllowedHandler);
 
+// Returns all orders as an array of objects
   app
   .route("/order-all")
   .get(async (request, response) => {
@@ -689,6 +700,3 @@ app.route("*").all(async (request, response) => {
 
 app.listen(port);
 
-// app.listen(port, () => {
-//   console.log(`App now listening at http://localhost:${port}`);
-// });

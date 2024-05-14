@@ -1,8 +1,8 @@
 const ls = window.localStorage;
-
+//Object that defines a placed order - stored in PouchDB, and completed by a user via the Deliver page
 export default class Order {
 
-    constructor(orderer,diningHall,residence,food){ //food can be JSON or string, idk
+    constructor(orderer,diningHall,residence,food){
 
         this.orderer = orderer;
         this.diningHall = diningHall;
@@ -16,25 +16,25 @@ export default class Order {
         
     }
 
-    complete() {
+    complete() { //Marks order as completed
 
         this.isCompleted = true;
 
     }
 
-    setDeliverer(deliverer) {
+    setDeliverer(deliverer) { //Sets a user as the deliverer for the order
 
         this.deliverer = deliverer;
 
     }
 
-    hasDeliverer() {
+    hasDeliverer() { //Returns true/false based on whether or not the order has a deliverer assigned
 
         return this.deliverer !== "";
 
     }
 
-    setTime(time) {
+    setTime(time) { //Sets time the order was placed
 
         this.time = time;
 
@@ -42,7 +42,7 @@ export default class Order {
 
 }
 
-function readableTime(date) {
+function readableTime(date) {//Converts time to a readable string
     if (typeof(date) != typeof(new Date())) {
         console.log("Date/Time is of incorrect type!");
         return("Error: Could Not Load Time");

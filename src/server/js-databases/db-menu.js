@@ -101,7 +101,7 @@ export async function refreshMenus() {
     }
     console.log('removed success');
 
-    //adds new copies of menu
+    //adds new copies of all local menus
     let jsonMenu = JSON.stringify(frankBreakfastMenu);
     let menuToAdd = new Menu('Franklin Dining Commons','Breakfast',jsonMenu);
 
@@ -167,6 +167,7 @@ export async function refreshMenus() {
 
 
 //Placeholder menus used, as scraping real menus is not permitted by UMass, and out-of-scope for this project
+//These are treated as the 'food' property in the Menu class
 
 let frankBreakfastMenu = {
     "Hot Breakfast Items": [

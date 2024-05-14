@@ -7,12 +7,6 @@ const URL = "http://localhost:3000";
 const btnOne = document.getElementById('btnone');
 const btnTwo = document.getElementById('btntwo');
 
-//async function updateOrder(response, id, deliverer) { -- asssign the deliverer to order...
-/*
-await response = await fetch(`${URL}/order-update?id=${orderId}&deliverer=${}`, {
-  method: 'PUT'
-});
-*/
 
 btnOne.addEventListener('click', async function () {
   const orderId = orderStorage.getId();

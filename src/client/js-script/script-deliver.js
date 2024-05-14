@@ -1,5 +1,5 @@
 import { OrderStorage } from "../js-models/OrderStorage.js";
-import { OrderCart } from "../js-models/OrderCart.js";
+import { OrderCart } from "../js-models/orderCart.js";
 
 const pickupFilerElement = document.getElementById('pickup-search');
 const dropoffFilerElement = document.getElementById('delivery-search');
@@ -15,6 +15,8 @@ let orderOptions = document.getElementsByClassName('order');
 pickupFilerElement.addEventListener('input', filterOptions);
 dropoffFilerElement.addEventListener('input', filterOptions);
 
+
+// Filters all orders that appear on-screen, based on the current value in the searchbar
 function filterOptions() {
     // Update the list of what order options are on the page currently, in case it has changed
     orderOptions = document.getElementsByClassName('order');
