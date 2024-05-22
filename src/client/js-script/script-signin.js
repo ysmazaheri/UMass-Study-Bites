@@ -23,12 +23,12 @@ const confirmPassInput = document.getElementById('confirm-pass');
  * DOM elements for input fields
  */
 
-const password = document.getElementById('password');
-const email = document.getElementById('email');
-const username = document.getElementById('username');
-const confpass = document.getElementById('confirm-pass');
-const usernameLogin = document.getElementById('username-login');
-const passwordLogin = document.getElementById('password-login');
+const passwordField = document.getElementById('password');
+const emailField = document.getElementById('email');
+const usernameField = document.getElementById('username');
+const confPassField = document.getElementById('confirm-pass');
+const usernameLoginField = document.getElementById('username-login');
+const passwordLoginField = document.getElementById('password-login');
 
 /**
  * Text content for cover section
@@ -75,11 +75,11 @@ function slide () {
 
         // Clearing the form
 
-        password.value = '';
-        username.value = '';
-        confpass.value = '';
-        usernameLogin.value = '';
-        passwordLogin.value = '';
+        passwordField.value = '';
+        usernameField.value = '';
+        confPassField.value = '';
+        usernameLoginField.value = '';
+        passwordLoginField.value = '';
 
         // Adding confirm password input field
         if (idxCount) confirmPassInput.removeAttribute("hidden");
@@ -106,10 +106,10 @@ const ls = window.localStorage;
  * Generates username by dropping '@umass.edu' from email field
  * Populates username with 'invalid email' if the email does not meet criteria
  */
-email.addEventListener("input", (event) => {
+emailField.addEventListener("input", (event) => {
     let emailText = event.target.value;
     let usernameText = isValidEmail(emailText) ? emailText.split('@umass.edu')[0] : "Invalid Email";
-    username.value = usernameText; 
+    usernameField.value = usernameText; 
 });
 
 /**
@@ -143,9 +143,9 @@ formButton.addEventListener("click", async () => {
     if (idxCount === 1) {
         // Sign up
 
-        const password = document.getElementById('password').value;
-        const username = document.getElementById('username').value;
-        const confpass = document.getElementById('confirm-pass').value;
+        const password = passwordField.value;
+        const username = usernameField.value;
+        const confpass = confPassField.value;
 
         // Check if password matches confirm password
 
@@ -192,9 +192,9 @@ formButton.addEventListener("click", async () => {
 
             // Clear form
 
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            document.getElementById('confirm-pass').value = '';
+            usernameField.value = '';
+            passwordField.value = '';
+            confPassField.value = '';
 
         } catch (err) {
             
@@ -207,8 +207,8 @@ formButton.addEventListener("click", async () => {
     else {
         // Sign in
 
-        const password = document.getElementById('password-login').value;
-        const username = document.getElementById('username-login').value;
+        const password = passwordLoginField.value;
+        const username = usernameLoginField.value;
 
         try {
 
